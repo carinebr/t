@@ -1,0 +1,23 @@
+all: release/t1
+
+release/t1: obj/appli.o obj/t1.o
+	g++ -o release/t1 obj/appli.o obj/t1.o
+
+obj/appli.o: ../common/src/appli.cpp
+	g++ -o obj/appli.o -c ../common/src/appli.cpp -W -Wall -ansi -pedantic -I ../common/inc/ -I ./inc/ 
+
+obj/t1.o: src/t1.cpp ../common/inc/appli.h
+	g++ -o obj/t1.o -c src/t1.cpp -W -Wall -ansi -pedantic -I ../common/inc/ -I ./inc/
+
+clean:
+	rm -rf obj/*.o
+
+mrproper: clean
+	rm -rf release/t1
+
+##http://gl.developpez.com/tutoriel/outil/makefile/
+
+##output dir    http://stackoverflow.com/questions/1814270/gcc-g-option-to-place-all-object-files-into-separate-directory
+##http://gl.developpez.com/tutoriel/outil/makefile/
+##http://stackoverflow.com/questions/1139271/makefiles-with-source-files-in-different-directories
+
