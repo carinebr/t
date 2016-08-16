@@ -1,19 +1,24 @@
-all: release/t1
+CC=g++
+CFLAGS=-W -Wall -ansi -pedantic -I ../common/inc/ -I ./inc/
+LDFLAGS=
+EXEC=release/t1
+
+all: $(EXEC)
 
 release/t1: obj/appli.o obj/t1.o
-	g++ -o release/t1 obj/appli.o obj/t1.o
+	$(CC) -o $@ $^ $(LDFLAGS)  ##$@ est le target , release/t1 dans ce cas
 
 obj/appli.o: ../common/src/appli.cpp
-	g++ -o obj/appli.o -c ../common/src/appli.cpp -W -Wall -ansi -pedantic -I ../common/inc/ -I ./inc/ 
+	$(CC) -o $@ -c $< -W -Wall -ansi -pedantic -I ../common/inc/ -I ./inc/ 
 
 obj/t1.o: src/t1.cpp ../common/inc/appli.h
-	g++ -o obj/t1.o -c src/t1.cpp -W -Wall -ansi -pedantic -I ../common/inc/ -I ./inc/
+	$(CC) -o $@ -c $< -W -Wall -ansi -pedantic -I ../common/inc/ -I ./inc/
 
 clean:
 	rm -rf obj/*.o
 
 mrproper: clean
-	rm -rf release/t1
+	rm -rf $(EXEC)
 
 ##http://gl.developpez.com/tutoriel/outil/makefile/
 
