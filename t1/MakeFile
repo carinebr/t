@@ -1,11 +1,24 @@
+DEBUG=yes
+
 CC=g++
-CFLAGS=-W -Wall -ansi -pedantic -I ../common/inc/ -I ./inc/
+ifeq ($(DEBUG),yes)
+    CFLAGS=-W -Wall -ansi -pedantic -I ../common/inc/ -I ./inc/ -g
+else
+    CFLAGS=-W -Wall -ansi -pedantic -I ../common/inc/ -I ./inc/
+endif
+    
 LDFLAGS=
 EXEC=release/t1
+SRC=$(wildcard src/*.cpp ../common/src/*.cpp)
+OBJ=$(SRC:.c=.o)
 
 all: $(EXEC)
-
-release/t1: obj/appli.o obj/t1.o
+ifeq ($(DEBUG),yes)
+	@echo "debug mode generation"
+else
+	@echo "release mode generation"
+endif
+$(EXEC): obj/appli.o obj/t1.o
 	$(CC) -o $@ $^ $(LDFLAGS)  ##$@ est le target , release/t1 dans ce cas
 
 obj/appli.o: ../common/src/appli.cpp
