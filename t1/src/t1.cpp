@@ -2,6 +2,7 @@
 #include "appli.h"
 
 using namespace std;
+//github.com prenom de mon amour + br sis:atom + 2 milles quinz
 //git   ouvrir un compte non reconnaisable sous git (nouveau mail???)
 //ouvrir un projet 't' avec ce compte 
 //cloner sous ~ ce projet   clone https://github.com/yehudabr/t
