@@ -1,0 +1,25 @@
+adresse ip VS ADRESSE MAC
+
+Adresse ip: (v4 ou v6)adresse logique de sous reseau (un sous reseau subnet est connecte au reseau internet par une passerelle)
+adresse mac: adresse physique de la carte reseau
+
+Les adresse ip sont routables au dela du sous reseau. Les adresses mac non.
+
+Le switch se base sur les adresses mac dans le sous reseau et sur les adresses ip au dela du sous reseau.
+Une passerelle gateway est un ordi contenant plusieurs carte resau permetant de communiquer entre sous reseau. C'est un serveur.
+Un hub est moins intelligeant qu'un switch. Il transmet a tous les membres du reseau.
+
+
+
+Relation entre network id et masque mask
+adresse: 129.41.3.5
+mask 255.255.0.0
+donc
+network id 129.41
+host id 3.5
+
+127.0.0.1 sous reseau compose uniquement de ma machine cree par l'os . en fait, 127.x.x.x
+
+adresse de broadcast: se termine pas 255, ou 255.255 ou par 255.255.255 . Correspond a l'adresse de tous les host du sous reseau
+
+

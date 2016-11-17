@@ -3,10 +3,7 @@
 
 using namespace std;
 //github.com prenom de mon amour + br sis:atom + 2 milles quinz
-//git   ouvrir un compte non reconnaisable sous git (nouveau mail???)
-//ouvrir un projet 't' avec ce compte 
 //cloner sous ~ ce projet   clone https://github.com/yehudabr/t
-//     le proj est vide
 //git config user.email "yehuda_braun@yahoo.com"     c local au repertoire/repository
 //git config user.name "<le nom>" idem!!
 //ajouter les fichiers
@@ -19,7 +16,8 @@ using namespace std;
 //coder une lecture ou un ping reseau - ex: google.com
 //tester - exception
 //multi threading
-
+//reseau https://openclassrooms.com/courses/apprenez-le-fonctionnement-des-reseaux-tcp-ip
+//       https://openclassrooms.com/courses/les-reseaux-de-zero
 //declaration de l'instance (privee!) du singletone Appli
 Appli* Appli::m_Instance = NULL;
 int main()
