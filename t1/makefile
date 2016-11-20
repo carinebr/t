@@ -18,17 +18,17 @@ ifeq ($(DEBUG),yes)
 else
 	@echo "release mode generation"
 endif
-$(EXEC): obj/appli.o obj/t1.o
-	@$(CC) -o $@ $^ $(LDFLAGS)  ##$@ est le target , release/t1 dans ce cas
+$(EXEC): $(OBJ)
+	@$(CC) -o $@ $? $(LDFLAGS)  ##$@ est le target , release/t1 dans ce cas. $? est la liste des dependences + recente que le target
 
-obj/appli.o: ../common/src/appli.cpp
+../common/src/appli.o: ../common/src/appli.cpp ../common/inc/appli.h
 	@$(CC) -o $@ -c $< $(CFLAGS)
 
-obj/t1.o: src/t1.cpp ../common/inc/appli.h
+src/t1.o: src/t1.cpp ../common/inc/appli.h
 	@$(CC) -o $@ -c $< $(CFLAGS)
 
 clean:
-	rm -rf obj/*.o
+	rm -rf src/*.o ../common/src/*.o
 
 mrproper: clean
 	rm -rf $(EXEC)
