@@ -11,6 +11,8 @@ LDFLAGS=
 EXEC=release/t1
 SRC=$(wildcard src/*.cpp ../common/src/*.cpp)
 OBJ=$(SRC:.cpp=.o)
+DEPS:=$(OBJ:.o=.d)
+-include $(DEPS)
 
 all: $(EXEC)
 ifeq ($(DEBUG),yes)
@@ -21,11 +23,13 @@ endif
 $(EXEC): $(OBJ)
 	@$(CC) -o $@ $? $(LDFLAGS)  ##$@ est le target , release/t1 dans ce cas. $? est la liste des dependences + recente que le target
 
-../common/src/appli.o: ../common/src/appli.cpp ../common/inc/appli.h
-	@$(CC) -o $@ -c $< $(CFLAGS)   ##$< nom de la premiere dependance
+../common/src/appli.o: ../common/src/appli.cpp 
+	@$(CC) $(CFLAGS) -MM -MT $@ -MF $(patsubst %.o,%.d,$@) $<
+	@$(CC) -o $@ -c $< $(CFLAGS) ##$< nom de la premiere dependance
 
-src/t1.o: src/t1.cpp ../common/inc/appli.h
-	@$(CC) -o $@ -c $< $(CFLAGS)   ##$< nom de la premiere dependance
+src/t1.o: src/t1.cpp
+	@$(CC) $(CFLAGS) -MM -MT $@ -MF $(patsubst %.o,%.d,$@) $<
+	@$(CC) -o $@ -c $< $(CFLAGS)  ##$< nom de la premiere dependance
 
 clean:
 	rm -rf src/*.o ../common/src/*.o
