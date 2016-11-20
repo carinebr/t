@@ -22,10 +22,10 @@ $(EXEC): $(OBJ)
 	@$(CC) -o $@ $? $(LDFLAGS)  ##$@ est le target , release/t1 dans ce cas. $? est la liste des dependences + recente que le target
 
 ../common/src/appli.o: ../common/src/appli.cpp ../common/inc/appli.h
-	@$(CC) -o $@ -c $< $(CFLAGS)
+	@$(CC) -o $@ -c $< $(CFLAGS)   ##$< nom de la premiere dependance
 
 src/t1.o: src/t1.cpp ../common/inc/appli.h
-	@$(CC) -o $@ -c $< $(CFLAGS)
+	@$(CC) -o $@ -c $< $(CFLAGS)   ##$< nom de la premiere dependance
 
 clean:
 	rm -rf src/*.o ../common/src/*.o
