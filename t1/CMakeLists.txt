@@ -16,3 +16,5 @@ add_executable(t1 ${SOURCES})
 
 #mode debug
 set(CMAKE_BUILD_TYPE Debug)
+#compilation flags
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -pedantic -Wno-unused-function")
