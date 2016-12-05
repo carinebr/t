@@ -1,7 +1,7 @@
 #voir http://derekmolloy.ie/hello-world-introductions-to-cmake/
 #a editer a chaque changement dans la composition du projet. 
-#Puis, invoquer a partir du repertoire obj 'cmake ..' Le binaire sera sous obj/
-#todo - option de compilation -g -Wall et autres
+#Puis, invoquer a partir du repertoire obj 'cmake ..'  cela creera un MAkeFile sous obj/
+#todo - OK option de compilation -g -Wall et autres
 #     - mettre le objets sous obj et le target (t1) sous release
 #make doit etre invoque a partir de obj/
 

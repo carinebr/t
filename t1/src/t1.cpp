@@ -12,6 +12,9 @@ using namespace std;
 //OK transformer Appli en singletone. 
 //OK makefile utilise cmake sous obj lancer make. Si un changement a CMakeLists.txt est fait (ex: nouvelle option de compile), lancer a partir de 
 //obj cmake ..  . Un fichier nouveau fichier MakeFile sera cree
+//
+//
+//doxygene
 //ouverture de fichier
 //lecture ini
 //coder une lecture ou un ping reseau - ex: google.com
