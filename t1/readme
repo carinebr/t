@@ -1,0 +1,9 @@
+Projet-buid
+* editer les sources a partir de t/t1 (t est le repertoire du projet git)
+* pour build avec CMake, lancer Ctl-B. Cia lance t/t1/ms qui fait cd obj, lance 'make' puis revient a t/t1
+  le binaire t1 est sous obj.
+  Si un changement a CMakeLists.txt est fait (ex: nouvelle option de compile), lancer a partir de obj 'cmake ..'
+  Un fichier nouveau fichier obj/Makefile sera cree. Du coup, il faut mettre CMakeLists.txt sous git, pas obj/Makefile
+
+Tags
+* il faut entretenir le fichier indexT1

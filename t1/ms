@@ -1,0 +1,6 @@
+#!/bin/bash
+clear
+cd obj
+echo building t1... 
+make
+cd ..

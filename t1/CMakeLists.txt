@@ -3,6 +3,7 @@
 #Puis, invoquer a partir du repertoire obj 'cmake ..'  cela creera un MAkeFile sous obj/
 #todo - OK option de compilation -g -Wall et autres
 #     - mettre le objets sous obj et le target (t1) sous release
+#     - changer les repertoire inc en include - sous git puis sous CMakeLists.txt
 #make doit etre invoque a partir de obj/
 
 cmake_minimum_required(VERSION 3.0.2)
