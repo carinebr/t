@@ -1,9 +1,8 @@
-#ifndef APPLI_H_INCLUDED
-#define APPLI_H_INCLUDED
+#ifndef INIVALUES_H_INCLUDED
+#define INIVALUES_H_INCLUDED
 
-/// \file application ini values handlerr
+/// \file inivalues.h
 /// \brief application ini values handling
-class ifstream;
 
 class IniValues
 {
@@ -13,4 +12,4 @@ class IniValues
         //constructor
         IniValues();
 };
-#endif  //APPLI_H_INCLUDED
+#endif  //INIVALUES_H_INCLUDED

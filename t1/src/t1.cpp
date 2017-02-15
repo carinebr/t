@@ -7,6 +7,7 @@
 /// 
 #include <iostream>
 #include "appli.h"
+#include "tester.h"
 
 using namespace std;
 //github.com prenom de mon amour + br sis:atom + 2 milles quinz
@@ -33,21 +34,18 @@ using namespace std;
 //       https://openclassrooms.com/courses/les-reseaux-de-zero
 //declaration de l'instance (privee!) du singletone Appli
 Appli* Appli::m_Instance = NULL;
-
+Tester* Tester::m_Instance = NULL;
 ///
 /// \fn main()
 /// \brief main entry
 ///
-int main()
+int main(int argc, char* argv[])
 {
-    string sNomPrenom;
-    Appli * appliInstance1 = Appli::getInstance();//constructing an Appli object is impossible(private constructor).
-    Appli * appliInstance2 = Appli::getInstance();//constructing an Appli object is impossible(private constructor).
-    appliInstance1->someFunction();
-    appliInstance2->someFunction();
-    cout << "nom prenom" <<endl;
-    getline(cin, sNomPrenom);
-    cout<<"nom prenom:"<<sNomPrenom<<endl;
+    Appli * appliInstance = Appli::getInstance();//constructing an Appli object is impossible(private constructor).
+    Tester* theTester = Tester::getInstance();
+    cout << "ini file name: " << argv[1] <<endl;
+    appliInstance->readIniFile(argv[1]);
     delete Appli::getInstance();
+    delete Tester::getInstance();
     return 0;
 }

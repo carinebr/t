@@ -1,17 +1,17 @@
 #ifndef APPLI_H_INCLUDED
 #define APPLI_H_INCLUDED
 
-/// \file application data handler
-/// \brief application data handling
-class ifstream;
-
+#include <string>
+using namespace std;
+/// \file appli.h
+/// \brief application data handling header
 class Appli
 {
     public :
         static Appli* getInstance();
         ///destructor
         ~Appli(void);
-        void someFunction();
+        int readIniFile(const string& in_sIniFile);
     private:
         static Appli* m_Instance;
         ///constructor
