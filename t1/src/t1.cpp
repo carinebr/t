@@ -42,9 +42,10 @@ Tester* Tester::m_Instance = NULL;
 int main(int argc, char* argv[])
 {
     Appli * appliInstance = Appli::getInstance();//constructing an Appli object is impossible(private constructor).
-    Tester* theTester = Tester::getInstance();
+    Tester* theTester = Tester::getInstance();//to be freed
     cout << "ini file name: " << argv[1] <<endl;
     appliInstance->readIniFile(argv[1]);
+    theTester->testIt("appli");
     delete Appli::getInstance();
     delete Tester::getInstance();
     return 0;

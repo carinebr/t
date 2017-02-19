@@ -33,23 +33,25 @@ Appli* Appli::getInstance()
     return m_Instance;
 }
 
-/** \fn Appli::readIniFile(const string& in_sIniFile)
-* \brief lit l'ini file et ecrit les donnees dans le map
-* \param[in] in_sIniFile      nom de l'ini file
-* \return 0 - ok else ko
-*/
+/**
+ * \fn Appli::readIniFile(const string& in_sIniFile)
+ * \brief lit l'ini file et ecrit les donnees dans le map
+ * \param[in] in_sIniFile      nom de l'ini file
+ * \return 0 - ok else ko
+ */
 int Appli::readIniFile(const string& in_sIniFile)
 {
     //ouverture fic ini
     ifstream iniFile(in_sIniFile.c_str());
     if (!iniFile)
-        return 1;//todo ammeliorer
+        return 1;//todo ammeliorer  utiliser des exceptions
     string sLine;
+    //todo put the name/values in a map
     while (getline(iniFile, sLine))
     {
         cout<< sLine <<endl;
     }
-    
+
     //lecture des champs
     //fermeture 
     iniFile.close();

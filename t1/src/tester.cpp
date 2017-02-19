@@ -29,3 +29,16 @@ Tester* Tester::getInstance()
 //    cout << "Tester::getInstance() invoqued" <<endl;
     return m_Instance;
 }
+
+/**
+ * \fn Tester::testIt(const string& in_sWhichTest)
+ * \brief launch a specific test or all the tests
+ * \param[in] in_sWhichTest test to be launched, include all
+ * \return 1 ok 0/ko
+ */
+int Tester::testIt(const string& in_sWhichTest)
+{
+    //todo get an appli instance
+    //
+    return 1;
+}
