@@ -2,6 +2,7 @@
 /// \brief functionnality testing implemetation
 
 #include <iostream>
+#include "appli.h"
 #include "tester.h"
 using namespace std;
 
@@ -40,5 +41,10 @@ int Tester::testIt(const string& in_sWhichTest)
 {
     //todo get an appli instance
     //
+    if (in_sWhichTest == "appli")
+    {
+        Appli * appliInstance = Appli::getInstance();//constructing an Appli object is impossible(private constructor).
+        appliInstance->readIniFile();
+    }
     return 1;
 }

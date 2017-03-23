@@ -39,10 +39,10 @@ Appli* Appli::getInstance()
  * \param[in] in_sIniFile      nom de l'ini file
  * \return 0 - ok else ko
  */
-int Appli::readIniFile(const string& in_sIniFile)
+int Appli::readIniFile()
 {
     //ouverture fic ini
-    ifstream iniFile(in_sIniFile.c_str());
+    ifstream iniFile(m_sIniFile.c_str());
     if (!iniFile)
         return 1;//todo ammeliorer  utiliser des exceptions
     string sLine;
@@ -57,3 +57,22 @@ int Appli::readIniFile(const string& in_sIniFile)
     iniFile.close();
     return 0;
 }
+/**
+ * \fn const string& Appli::getIniFileName()
+ * \brief get fctn for m_sIniFile
+ * \return m_sIniFile the ini file name
+ */
+const string& Appli::getIniFileName()
+{
+    return "";
+}
+/**
+ * \fn Appli::setIniFile(const string& in_sIniFile)
+ * \brief set fctn of m_sIniFile member
+ * \param[in] in_sIniFile      nom de l'ini file
+ */
+void Appli::setIniFile(const string& in_sIniFile)
+{
+    m_sIniFile = in_sIniFile;
+}
+

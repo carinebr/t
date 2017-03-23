@@ -25,9 +25,10 @@ using namespace std;
 //   invoquer avec singletone. commenter.
 // * ouverture de fichier
 // * lecture ini
-// * coder une lecture ou un ping reseau - ex: google.com
+// * std : containers, iterators, algorithm, RAII, function objects, and predicates
+// * coder une lecture ou un ping reseau - ex: google.com  use boost::asio
 // * tester - exception
-// * multi threading
+// * multi threading     utiliser std::thread ??
 //
 //
 //reseau https://openclassrooms.com/courses/apprenez-le-fonctionnement-des-reseaux-tcp-ip
@@ -42,9 +43,9 @@ Tester* Tester::m_Instance = NULL;
 int main(int argc, char* argv[])
 {
     Appli * appliInstance = Appli::getInstance();//constructing an Appli object is impossible(private constructor).
-    Tester* theTester = Tester::getInstance();//to be freed
     cout << "ini file name: " << argv[1] <<endl;
-    appliInstance->readIniFile(argv[1]);
+    appliInstance->setIniFile(argv[1]);
+    Tester* theTester = Tester::getInstance();//to be deleted
     theTester->testIt("appli");
     delete Appli::getInstance();
     delete Tester::getInstance();

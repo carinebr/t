@@ -11,10 +11,13 @@ class Appli
         static Appli* getInstance();
         ///destructor
         ~Appli(void);
-        int readIniFile(const string& in_sIniFile);
+        int readIniFile();
+        const string& getIniFileName();
+        void setIniFile(const string& in_sIniFile);
     private:
         static Appli* m_Instance;
         ///constructor
         Appli();
+        string m_sIniFile;
 };
 #endif  //APPLI_H_INCLUDED
