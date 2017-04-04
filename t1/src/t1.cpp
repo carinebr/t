@@ -21,15 +21,18 @@ using namespace std;
 // * doxygene
 //   voir http://franckh.developpez.com/tutoriels/outils/doxygen/#LII-B et
 //        http://www-numi.fnal.gov/offline_software/srt_public_context/WebDocs/doxygen-howto.html
-// * faire une class de test. faire une fonction test("")  qui orientrai vers les differents tests, avec option pour "all"
-//   invoquer avec singletone. commenter.
-// * ouverture de fichier
-// * lecture ini
+// * OK faire une class de test. faire une fonction test("")  qui orientrai vers les differents tests, avec option pour "all"
+//      invoquer avec singletone. commenter.
+// * OK ouverture de fichier
+// * OK lecture ini
 // * std : containers, iterators, algorithm, RAII, function objects, and predicates
 // * coder une lecture ou un ping reseau - ex: google.com  use boost::asio
 // * tester - exception
-// * multi threading     utiliser std::thread ??
-//
+// * multi threading utiliser std::thread ??   https://curl.haxx.se/libcurl/c/multithread.html
+//                                             https://openclassrooms.com/courses/la-programmation-systeme-en-c-sous-unix/les-threads-3
+//                                             en c++, c + complique. Il y a des nouveaux supports au niveau
+// * deriver exception et utiliser la class derivee a la place de exception
+// * log lie a appli. verser dans log les excptions
 //
 //reseau https://openclassrooms.com/courses/apprenez-le-fonctionnement-des-reseaux-tcp-ip
 //       https://openclassrooms.com/courses/les-reseaux-de-zero
@@ -42,11 +45,18 @@ Tester* Tester::m_Instance = NULL;
 ///
 int main(int argc, char* argv[])
 {
-    Appli * appliInstance = Appli::getInstance();//constructing an Appli object is impossible(private constructor).
-    cout << "ini file name: " << argv[1] <<endl;
-    appliInstance->setIniFile(argv[1]);
-    Tester* theTester = Tester::getInstance();//to be deleted
-    theTester->testIt("appli");
+    try
+    {
+        Appli * appliInstance = Appli::getInstance();//constructing an Appli object is impossible(private constructor).
+        cout << "ini file name: " << argv[1] <<endl;
+        appliInstance->setIniFile(argv[1]);
+        Tester* theTester = Tester::getInstance();//to be deleted
+        theTester->testIt("appli");
+    }
+    catch (const exception& e)
+    {
+        cerr << e.what();
+    }
     delete Appli::getInstance();
     delete Tester::getInstance();
     return 0;

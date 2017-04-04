@@ -44,7 +44,14 @@ int Tester::testIt(const string& in_sWhichTest)
     if (in_sWhichTest == "appli")
     {
         Appli * appliInstance = Appli::getInstance();//constructing an Appli object is impossible(private constructor).
-        appliInstance->readIniFile();
+        try
+        {
+            appliInstance->readIniFile();
+        }
+        catch(const exception& e)
+        {
+            throw;//handled in the invoker funct
+        }
     }
     return 1;
 }

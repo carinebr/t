@@ -5,7 +5,7 @@
 #include <string>
 using namespace std;
 #include "appli.h"
-
+#include "excepterr.h"
 using namespace std;
 
 /// \fn Appli::Appli()
@@ -41,10 +41,14 @@ Appli* Appli::getInstance()
  */
 int Appli::readIniFile()
 {
-    //ouverture fic ini
+    //mouverture fic ini
     ifstream iniFile(m_sIniFile.c_str());
     if (!iniFile)
-        return 1;//todo ammeliorer  utiliser des exceptions
+    {
+        string sErr("open ");
+        sErr.append(m_sIniFile).append(" failure");
+        throw ExceptErr(1, sErr, 0);
+    }
     string sLine;
     //todo put the name/values in a map
     while (getline(iniFile, sLine))
@@ -64,7 +68,7 @@ int Appli::readIniFile()
  */
 const string& Appli::getIniFileName()
 {
-    return "";
+    return m_sIniFile;
 }
 /**
  * \fn Appli::setIniFile(const string& in_sIniFile)

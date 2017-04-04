@@ -1,9 +1,10 @@
 Projet-buid
 * editer les sources a partir de t/t1 (t est le repertoire du projet git)
 * pour build avec CMake, lancer Ctl-B. Ca lance t/t1/ms qui fait cd obj, lance 'make' puis revient a t/t1
-  le binaire t1 est sous obj. Les *.cpp..o sont sous obj/CMakeFiles/t1.dir/home/developpement/..
-  Si un changement a CMakeLists.txt est fait (ex: nouvelle option de compile ou nouveau fic), lancer a partir de obj 'cmake ..'
-  (ne pas oublier la maj des fichiers tags). Chaque lancement de 'cmake ..' met Makefile a jour.
+  le binaire t1 est sous obj/ . Les *.cpp..o sont sous obj/CMakeFiles/t1.dir/home/developpement/..
+  Si un changement a CMakeLists.txt est fait (ex: nouvelle option de compile) ou si nouveau fic(inutile de mettre 
+  CMakeLists.txt a jour si sous les rep sources/inc), lancer a partir de obj 'cmake ..' (avec ..)
+  (ne pas oublier la maj des fichiers tags si nouveau). Chaque lancement de 'cmake ..' met Makefile a jour.
   Un fichier nouveau fichier obj/Makefile sera cree. Du coup, il faut mettre CMakeLists.txt sous git, pas obj/Makefile
 
 * Tags
