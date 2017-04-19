@@ -25,6 +25,7 @@ using namespace std;
 //      invoquer avec singletone. commenter.
 // * OK ouverture de fichier
 // * OK lecture ini
+// * connect/read/control a usb device
 // * std : containers, iterators, algorithm, RAII, function objects, and predicates
 // * coder une lecture ou un ping reseau - ex: google.com  use boost::asio
 // * tester - exception

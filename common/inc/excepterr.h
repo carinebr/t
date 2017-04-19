@@ -5,7 +5,7 @@ using namespace std;
 class ExceptErr: public exception
 {
 public:
-    ExceptErr(int num = 0, const string & phrase = "", int level = 0) throw();
+    ExceptErr(int num, int level, const string & phrase, const string& module, int line) throw();
  
     virtual const char* what() const throw();
      
@@ -15,6 +15,8 @@ public:
  
 private:
     int m_num;
-    string m_phrase;
     int m_level;
+    string m_phrase;
+    string m_module;
+    int m_line;
 };

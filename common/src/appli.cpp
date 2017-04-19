@@ -41,13 +41,13 @@ Appli* Appli::getInstance()
  */
 int Appli::readIniFile()
 {
-    //mouverture fic ini
+    // open ini file
     ifstream iniFile(m_sIniFile.c_str());
     if (!iniFile)
     {
         string sErr("open ");
         sErr.append(m_sIniFile).append(" failure");
-        throw ExceptErr(1, sErr, 0);
+        throw ExceptErr(1, 0, sErr, __FILE__, __LINE__);
     }
     string sLine;
     //todo put the name/values in a map
