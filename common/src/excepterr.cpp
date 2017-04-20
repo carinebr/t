@@ -7,7 +7,7 @@ ExceptErr::ExceptErr(int num, int level, const string& phrase, const string& mod
     char szLine[31 + 1];
 
     sprintf(szLine, ", - line: %d\n", line);
-    m_phrase = "exception!!: " + m_phrase + "\nmodule: " + module +  " - function: " + function + "()" + szLine;
+    m_phrase = "exception!!: " + m_phrase + "\nat\nmodule: " + module +  " - function: " + function + "()" + szLine;
 }
 
 const char* ExceptErr::what() const throw()

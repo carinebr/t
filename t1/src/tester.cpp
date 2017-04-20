@@ -1,5 +1,5 @@
 /// \file tester.cpp
-/// \brief functionnality testing implemetation
+/// \brief functionnality testing implementation
 
 #include <iostream>
 #include "appli.h"
