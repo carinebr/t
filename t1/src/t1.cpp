@@ -8,7 +8,7 @@
 #include <iostream>
 #include "appli.h"
 #include "tester.h"
-
+#include "excepterr.h"
 using namespace std;
 //github.com prenom de mon amour + br sis:atom + 2 milles quinz
 //cloner sous ~ ce projet   clone https://github.com/yehudabr/t
@@ -53,6 +53,11 @@ int main(int argc, char* argv[])
         appliInstance->setIniFile(argv[1]);
         Tester* theTester = Tester::getInstance();//to be deleted
         theTester->testIt("appli");
+    }
+    catch(ExceptErr& e)
+    {
+        e.addStackInfo(__FILE__, __FUNCTION__, __LINE__);
+        cerr<<e.what();
     }
     catch (const exception& e)
     {

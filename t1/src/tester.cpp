@@ -50,14 +50,14 @@ int Tester::testIt(const string& in_sWhichTest)
         {
             appliInstance->readIniFile();
         }
-        catch(const ExceptErr& e)
+        catch(ExceptErr& e)
         {
             //todo ajouter a ExceptErr un methode pour ajouter la ligne a la pile. A utiliser a chaque catch(ExceptErr...
+            e.addStackInfo(__FILE__, __FUNCTION__, __LINE__);
             throw;//handled in the invoker funct
         }
         catch(const exception& e)
         {
-
             throw;//handled in the invoker funct
         }
     }

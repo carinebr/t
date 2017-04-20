@@ -47,7 +47,7 @@ int Appli::readIniFile()
     {
         string sErr("open ");
         sErr.append(m_sIniFile).append(" failure");
-        throw ExceptErr(1, 0, sErr, __FILE__, __LINE__);
+        throw ExceptErr(1, 0, sErr, __FILE__, __FUNCTION__, __LINE__);
     }
     string sLine;
     //todo put the name/values in a map
