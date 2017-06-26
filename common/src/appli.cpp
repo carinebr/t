@@ -3,7 +3,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-using namespace std;
 #include "appli.h"
 #include "excepterr.h"
 using namespace std;
@@ -36,6 +35,7 @@ Appli* Appli::getInstance()
 /**
  * \fn Appli::readIniFile(const string& in_sIniFile)
  * \brief lit l'ini file et ecrit les donnees dans le map
+ *  l'ini file est de la forme 
  * \param[in] in_sIniFile      nom de l'ini file
  * \return 0 - ok else ko
  */
@@ -53,7 +53,14 @@ int Appli::readIniFile()
     //todo put the name/values in a map
     while (getline(iniFile, sLine))
     {
-        cout<< sLine <<endl;
+        if (sLine[0] == '#')
+            continue;
+        size_t nPosDelimiter = sLine.find_first_of("="); 
+        if (nPosDelimiter == string::npos)
+            continue;
+        string sKey=sLine.substr(0, nPosDelimiter);
+        string sValue=sLine.substr(nPosDelimiter + 1, string::npos);//+ 1 for the =
+        cout<< "key:" << sKey << " - value:" << sValue << endl;
     }
 
     //lecture des champs
