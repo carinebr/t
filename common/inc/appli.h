@@ -2,6 +2,8 @@
 #define APPLI_H_INCLUDED
 
 #include <string>
+#include <map>
+
 using namespace std;
 /// \file appli.h
 /// \brief application data handling header
@@ -19,5 +21,6 @@ class Appli
         ///constructor
         Appli();
         string m_sIniFile;
+        map <string, string> m_mapIniValues;
 };
 #endif  //APPLI_H_INCLUDED

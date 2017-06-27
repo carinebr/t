@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <map>
 #include "appli.h"
 #include "excepterr.h"
 using namespace std;
@@ -60,6 +61,14 @@ int Appli::readIniFile()
             continue;
         string sKey=sLine.substr(0, nPosDelimiter);
         string sValue=sLine.substr(nPosDelimiter + 1, string::npos);//+ 1 for the =
+        //add to the map
+        std::pair<std::map<string, string>::iterator,bool> ret;
+        ret = m_mapIniValues.insert(std::pair<string, string>(sKey, sValue));
+        if (!ret.second)
+        {
+            cout <<"problem while inserting value: " << sValue << "for key : " << sKey << endl;
+            continue;
+        }
         cout<< "key:" << sKey << " - value:" << sValue << endl;
     }
 
