@@ -2,12 +2,11 @@
 /// \brief  application level data handling
 #include <iostream>
 #include <fstream>
-#include <string>
-#include <map>
 #include "appli.h"
 #include "excepterr.h"
 using namespace std;
 
+static const string EMPTY_STRING;
 /// \fn Appli::Appli()
 /// \brief constructor
 Appli::Appli(void)
@@ -33,6 +32,19 @@ Appli* Appli::getInstance()
     return m_Instance;
 }
 
+/**
+ "* \fn Appli::getInivalue(const string& in_sKey)
+ * \brief renvoie la valeur associee a une key dans le map
+ * \param[in] const string& in_sKey
+ * \return const string key associated value
+ */
+const string& Appli::getInivalue(const string& in_sKey)
+{
+    std::map<string, string>::iterator itr;
+    if ((itr = m_mapIniValues.find(in_sKey)) != m_mapIniValues.end())
+        return itr->second;
+    return EMPTY_STRING;
+}
 /**
  * \fn Appli::readIniFile(const string& in_sIniFile)
  * \brief lit l'ini file et ecrit les donnees dans le map

@@ -16,6 +16,7 @@ class Appli
         int readIniFile();
         const string& getIniFileName();
         void setIniFile(const string& in_sIniFile);
+        const string& getInivalue(const string& in_sKey);
     private:
         static Appli* m_Instance;
         ///constructor

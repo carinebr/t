@@ -9,6 +9,8 @@
 #include "appli.h"
 #include "tester.h"
 #include "excepterr.h"
+#include "httpUtils.h"
+
 using namespace std;
 //github.com prenom de mon amour + br sis:atom + 2 milles quinz
 //cloner sous ~ ce projet   clone https://github.com/yehudabr/t
@@ -53,6 +55,13 @@ int main(int argc, char* argv[])
         appliInstance->setIniFile(argv[1]);
         Tester* theTester = Tester::getInstance();//to be deleted
         theTester->testIt("appli");
+        //requestb.in request 
+        if (!appliInstance->getInivalue("requestbin").empty())
+        {
+            cout << "valeur de requestbin: "<< appliInstance->getInivalue("requestbin") << endl;
+            sendHttpRequest(appliInstance->getInivalue("requestbin"));
+        }
+
     }
     catch(ExceptErr& e)
     {
