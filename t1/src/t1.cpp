@@ -9,7 +9,8 @@
 #include "appli.h"
 #include "tester.h"
 #include "excepterr.h"
-#include "httpUtils.h"
+#include "httputils.h"
+#include "logger.h"
 
 using namespace std;
 //github.com prenom de mon amour + br sis:atom + 2 milles quinz
@@ -42,6 +43,7 @@ using namespace std;
 //declaration de l'instance (privee!) du singletone Appli
 Appli* Appli::m_Instance = NULL;
 Tester* Tester::m_Instance = NULL;
+Logger* Logger::m_Instance = NULL;
 ///
 /// \fn main()
 /// \brief main entry
