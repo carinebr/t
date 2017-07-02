@@ -55,8 +55,11 @@ int main(int argc, char* argv[])
         Appli * appliInstance = Appli::getInstance();//constructing an Appli object is impossible(private constructor).
         cout << "ini file name: " << argv[1] <<endl;
         appliInstance->setIniFile(argv[1]);
+        appliInstance->readIniFile();
+        Logger * theLogger = Logger::getInstance();
+        theLogger->logIt(INF, __FILE__, __FUNCTION__, __LINE__, "========================== new run =============================");
         Tester* theTester = Tester::getInstance();//to be deleted
-        theTester->testIt("appli");
+        //theTester->testIt("appli");
         //requestb.in request 
         if (!appliInstance->getInivalue("requestbin").empty())
         {

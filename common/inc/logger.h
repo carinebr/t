@@ -3,6 +3,7 @@
 
 #include <string>
 
+enum LoggerLevelEnum {INF, DBG, ERR};
 using namespace std;
 /// \file logger.h
 /// \brief log handler header
@@ -12,8 +13,8 @@ class Logger
         static Logger* getInstance();
         ///destructor
         ~Logger(void);
-        void setLogFile(const string& in_sIniFile);
-        const string& getInivalue(const string& in_sKey);
+        void logIt(LoggerLevelEnum in_nLevel, const string& in_sFile, const string& in_sFunction, 
+                int in_nLine, const string& in_sPhrase);
     private:
         static Logger* m_Instance;
         ///constructor
