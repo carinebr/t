@@ -5,6 +5,7 @@
 #include "logger.h"
 
 static size_t write_callback(char *ptr, size_t size, size_t nmemb, void *userdata);
+static string sPostThis("kukuriku kukuriku POST");
 int sendHttpRequest(const string& in_sUrl)
 {
     CURL *curl;
@@ -20,10 +21,12 @@ int sendHttpRequest(const string& in_sUrl)
         return 0;
     }
     curl_easy_setopt(curl, CURLOPT_URL, in_sUrl.c_str());
-    curl_easy_setopt(curl, CURLOPT_URL, "http://www.google.co.il/");
+    //curl_easy_setopt(curl, CURLOPT_URL, "http://www.google.co.il/");//seulement si get
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
     //curl_easy_setopt(curl, CURLOPT_POST, 1L);
+    curl_easy_setopt(curl, CURLOPT_POSTFIELDS, sPostThis.c_str());
+    curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, sPostThis.length());
     res = curl_easy_perform(curl);
     if (res != CURLE_OK)
     {
