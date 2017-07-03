@@ -54,6 +54,8 @@ const string& Appli::getInivalue(const string& in_sKey)
  */
 int Appli::readIniFile()
 {
+    //clear the map member
+    m_mapIniValues.clear();
     // open ini file
     ifstream iniFile(m_sIniFile.c_str());
     if (!iniFile)
@@ -78,10 +80,9 @@ int Appli::readIniFile()
         ret = m_mapIniValues.insert(std::pair<string, string>(sKey, sValue));
         if (!ret.second)
         {
-            cout <<"problem while inserting value: " << sValue << "for key : " << sKey << endl;
             continue;
         }
-        cout<< "key:" << sKey << " - value:" << sValue << endl;
+//      cout<< "key:" << sKey << " - value:" << sValue << endl;
     }
 
     //lecture des champs

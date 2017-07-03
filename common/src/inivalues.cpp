@@ -10,13 +10,13 @@ using namespace std;
 /// 
 IniValues::IniValues(void)
 {
-    cout << "inivalues class constructor" <<endl;
+    //cout << "inivalues class constructor" <<endl;
 }
 
 /// \fn IniValues::~IniValues(void)
 /// destructor
 IniValues::~IniValues(void)
 {
-    cout << "inivalues class destructor" <<endl;
+    //cout << "inivalues class destructor" <<endl;
 }
 

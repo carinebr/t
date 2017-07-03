@@ -53,7 +53,7 @@ int main(int argc, char* argv[])
     try
     {
         Appli * appliInstance = Appli::getInstance();//constructing an Appli object is impossible(private constructor).
-        cout << "ini file name: " << argv[1] <<endl;
+        //cout << "ini file name: " << argv[1] <<endl;
         appliInstance->setIniFile(argv[1]);
         appliInstance->readIniFile();
         Logger * theLogger = Logger::getInstance();
@@ -63,7 +63,7 @@ int main(int argc, char* argv[])
         //requestb.in request 
         if (!appliInstance->getInivalue("requestbin").empty())
         {
-            cout << "valeur de requestbin: "<< appliInstance->getInivalue("requestbin") << endl;
+            //cout << "valeur de requestbin: "<< appliInstance->getInivalue("requestbin") << endl;
             sendHttpRequest(appliInstance->getInivalue("requestbin"));
         }
 

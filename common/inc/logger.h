@@ -3,7 +3,7 @@
 
 #include <string>
 
-enum LoggerLevelEnum {INF, DBG, ERR};
+enum LoggerLevelEnum {NOLOG, INF, DBG, ERR};
 using namespace std;
 /// \file logger.h
 /// \brief log handler header
