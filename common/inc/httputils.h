@@ -8,6 +8,5 @@ using namespace std;
 /// \brief http utilities header
 
 int sendHttpRequestMthread(const string& in_sUrl);
-void* sendHttpRequest(void * ptr);
 #endif  //HTTPUTILS_H_INCLUDED
 

@@ -66,7 +66,7 @@ int main(int argc, char* argv[])
         //requestb.in request 
         if (!appliInstance->getInivalue("requestbin").empty())
         {
-            sendHttpRequest((void *)appliInstance->getInivalue("requestbin").c_str());
+//            sendHttpRequest((void *)appliInstance->getInivalue("requestbin").c_str());
             sendHttpRequestMthread(appliInstance->getInivalue("requestbin"));
         }
 
