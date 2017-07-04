@@ -1,11 +1,14 @@
 #include <iostream>
 #include <curl/curl.h>
+#include <pthread.h>
 #include "httputils.h"
 #include "excepterr.h"
 #include "logger.h"
 
 static size_t write_callback(char *ptr, size_t size, size_t nmemb, void *userdata);
 static string sPostThis("kukuriku kukuriku POST");
+
+
 int sendHttpRequest(const string& in_sUrl)
 {
     CURL *curl;

@@ -11,6 +11,7 @@
 #include "excepterr.h"
 #include "httputils.h"
 #include "logger.h"
+#include "mthread.h"
 
 using namespace std;
 //github.com prenom de mon amour + br sis:atom + 2 milles quinz
@@ -58,7 +59,9 @@ int main(int argc, char* argv[])
         appliInstance->readIniFile();
         Logger * theLogger = Logger::getInstance();
         theLogger->logIt(INF, __FILE__, __FUNCTION__, __LINE__, "========================== new run =============================");
-        Tester* theTester = Tester::getInstance();//to be deleted
+        //testMThread();
+        //return 0;
+        //Tester* theTester = Tester::getInstance();
         //theTester->testIt("appli");
         //requestb.in request 
         if (!appliInstance->getInivalue("requestbin").empty())
