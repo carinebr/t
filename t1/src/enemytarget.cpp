@@ -21,6 +21,16 @@ EnemyTarget::EnemyTarget(void)
     Logger::getInstance()->logIt(DBG, "", "", 0, sLog);
 }
 
+/// \fn EnemyTarget::EnemyTarget(const EnemyTarget&)
+/// copy constructor
+/// 
+EnemyTarget::EnemyTarget(const EnemyTarget&)
+{
+    m_EnemyTargetCounter++;
+    string sLog("tester class COPY CONStructor - num of enemy targets: " + std::to_string(m_EnemyTargetCounter));
+    Logger::getInstance()->logIt(DBG, "", "", 0, sLog);
+}
+
 /// \fn EnemyTarget::~EnemyTarget(void)
 /// destructor
 EnemyTarget::~EnemyTarget(void)
@@ -30,3 +40,11 @@ EnemyTarget::~EnemyTarget(void)
     Logger::getInstance()->logIt(DBG, "", "", 0, sLog);
 }
 
+/**
+ * \fn getEnemyTargetCount()
+ * \brief returns the m_EnemyTargetCounter member
+ */
+size_t EnemyTarget::getEnemyTargetCount()
+{
+    return m_EnemyTargetCounter;
+}

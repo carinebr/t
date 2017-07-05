@@ -10,6 +10,8 @@ class EnemyTarget
     public :
         //constructor
         EnemyTarget();
+        /// copy constructor
+        EnemyTarget(const EnemyTarget&);
         //destructor
         ~EnemyTarget(void);
         size_t getEnemyTargetCount();

@@ -5,7 +5,7 @@
 #include "appli.h"
 #include "tester.h"
 #include "excepterr.h"
-#include "enemytarget.h"
+#include "enemytank.h"
 
 using namespace std;
 
@@ -64,7 +64,9 @@ int Tester::testIt(const string& in_sWhichTest)
     }
     else if(in_sWhichTest == "inheritance")
     {
-        EnemyTarget enemyTarget;
+        //EnemyTarget enemyTarget1;
+        //EnemyTarget enemyTarget2(enemyTarget1);
+        EnemyTank enemyTank1;
     }
     return 1;
 }
