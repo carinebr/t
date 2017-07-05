@@ -59,15 +59,11 @@ int main(int argc, char* argv[])
         appliInstance->readIniFile();
         Logger * theLogger = Logger::getInstance();
         theLogger->logIt(INF, __FILE__, __FUNCTION__, __LINE__, "========================== new run =============================");
-        //testMThread();
-        //return 0;
-        //Tester* theTester = Tester::getInstance();
-        //theTester->testIt("appli");
+        Tester::getInstance()->testIt("inheritance");
         //requestb.in request 
         if (!appliInstance->getInivalue("requestbin").empty())
         {
-//            sendHttpRequest((void *)appliInstance->getInivalue("requestbin").c_str());
-            sendHttpRequestMthread(appliInstance->getInivalue("requestbin"));
+            //sendHttpRequestMthread(appliInstance->getInivalue("requestbin"));
         }
 
     }

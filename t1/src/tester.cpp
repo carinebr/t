@@ -5,6 +5,7 @@
 #include "appli.h"
 #include "tester.h"
 #include "excepterr.h"
+#include "enemytarget.h"
 
 using namespace std;
 
@@ -60,6 +61,10 @@ int Tester::testIt(const string& in_sWhichTest)
         {
             throw;//handled in the invoker funct
         }
+    }
+    else if(in_sWhichTest == "inheritance")
+    {
+        EnemyTarget enemyTarget;
     }
     return 1;
 }
