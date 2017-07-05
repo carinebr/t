@@ -61,6 +61,8 @@ const string & HttpThreadInfo::getUrl(void)
 int sendHttpRequestMthread(const string& in_sUrl)
 {
     int i;
+    string* pStrHttpRet = NULL;
+
     
     pthread_t tid[7];
     curl_global_init(CURL_GLOBAL_ALL);
@@ -70,17 +72,23 @@ int sendHttpRequestMthread(const string& in_sUrl)
     {
         pthread_create (&tid[i], NULL, sendHttpRequest, (void*) &httpThreadInfo);
     }
-    // wait for the thread execution end
+    // wait for the thread execution end. without it, the main thread will end before the end of the http request
     for(i=0; i< MAX_THREAD_NUMBER; i++)
     {
-        pthread_join(tid[i], NULL);//without it, the main thread will end before the end of the http request
+        pthread_join(tid[i], (void**)&pStrHttpRet);
+        if (pStrHttpRet != NULL)
+            httpThreadInfo.logIt(DBG, __FILE__, __FUNCTION__, __LINE__, *(string*)pStrHttpRet + " - thread: " 
+                    + std::to_string(i));
     }
+    if (pStrHttpRet != NULL)
+        delete(pStrHttpRet);
     curl_global_cleanup();
     return 0;
 }
 static void* sendHttpRequest(void* in_HttpThreadInfo)
 {
     string sUrl;
+    string* pStringErr = new(string);
     sUrl = ((HttpThreadInfo*)in_HttpThreadInfo)->getUrl();
     CURL *curl;
     CURLcode res;
@@ -91,8 +99,8 @@ static void* sendHttpRequest(void* in_HttpThreadInfo)
     /* Check for errors */ 
     if(!curl)
     {
-        string sErr = "curl_easy_init() failed for url : " + sUrl;
-        ((HttpThreadInfo*)in_HttpThreadInfo)->logIt(DBG, __FILE__, __FUNCTION__, __LINE__, sErr);
+        *pStringErr = "curl_easy_init() failed for url : " + sUrl;
+        ((HttpThreadInfo*)in_HttpThreadInfo)->logIt(DBG, __FILE__, __FUNCTION__, __LINE__, *pStringErr);
         return NULL;
     }
     curl_easy_setopt(curl, CURLOPT_URL, sUrl.c_str());
@@ -105,19 +113,19 @@ static void* sendHttpRequest(void* in_HttpThreadInfo)
     res = curl_easy_perform(curl);
     if (res != CURLE_OK)
     {
-        string sErr = "curl_easy_perform() failed for url : " + sUrl;
-        ((HttpThreadInfo*)in_HttpThreadInfo)->logIt(DBG, __FILE__, __FUNCTION__, __LINE__, sErr);
+        *pStringErr = "curl_easy_perform() failed for url : " + sUrl;
+        ((HttpThreadInfo*)in_HttpThreadInfo)->logIt(DBG, __FILE__, __FUNCTION__, __LINE__, *pStringErr);
         ((HttpThreadInfo*)in_HttpThreadInfo)->logIt(DBG, __FILE__, __FUNCTION__, __LINE__, curl_easy_strerror(res));
     }
     else
     {
-        string sErr = "curl_easy_perform() succeeded for url : " + sUrl + " - resp : ";
-        sErr += readBuffer; 
-        ((HttpThreadInfo*)in_HttpThreadInfo)->logIt(DBG, __FILE__, __FUNCTION__, __LINE__, sErr);
+        *pStringErr = "curl_easy_perform() succeeded for url : " + sUrl + " - resp : ";
+        *pStringErr += readBuffer; 
+        ((HttpThreadInfo*)in_HttpThreadInfo)->logIt(DBG, __FILE__, __FUNCTION__, __LINE__, *pStringErr);
     }
     curl_easy_cleanup(curl);
 
-    return NULL;
+    pthread_exit((void*)pStringErr);//to be freed by the invoker
 }
 
 static size_t write_callback(char *ptr, size_t size, size_t nmemb, void *userdata)
