@@ -46,6 +46,18 @@ EnemyTank::~EnemyTank(void)
  * \fn getEnemyTankCount()
  * \brief returns the m_EnemyTankCounter member
  */
+
+/**
+ * \fn = operator
+ * \brief assignement operator
+ * \param[in] tank to be copied
+ * \return *this
+ */
+EnemyTank EnemyTank::operator= (const EnemyTank& in_theOtherTank)
+{
+    m_sCommander = in_theOtherTank.m_sCommander;
+    return *this;
+}
 size_t EnemyTank::getEnemyTankCount() const
 {
     return m_EnemyTankCounter;

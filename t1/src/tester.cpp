@@ -65,9 +65,24 @@ int Tester::testIt(const string& in_sWhichTest)
     }
     else if(in_sWhichTest == "inheritance")
     {
+        string sLog;
         EnemyTarget enemyTarget1;
         EnemyTank enemyTank1;
-        string sLog("num of targets after tank creation :" + std::to_string(enemyTank1.getEnemyTargetCount()));
+        enemyTank1.setCommander("john");
+        sLog = " tank1 commender : " + enemyTank1.getCommander();
+        Logger::getInstance()->logIt(DBG, "", "", 0, sLog);
+        sLog = "num of targets after tank creation :" + enemyTank1.getEnemyTargetCount();
+        Logger::getInstance()->logIt(DBG, "", "", 0, sLog);
+        EnemyTank enemyTank2;
+        enemyTank2.setCommander("jack");
+        sLog = " tank2 commander : " + enemyTank2.getCommander();
+        Logger::getInstance()->logIt(DBG, "", "", 0, sLog);
+        
+        enemyTank2 = enemyTank1;
+        sLog = " tank2 commander : " + enemyTank2.getCommander();
+        Logger::getInstance()->logIt(DBG, "", "", 0, sLog);
+
+        sLog = "num of targets after tank creation :" + enemyTank1.getEnemyTargetCount();
         Logger::getInstance()->logIt(DBG, "", "", 0, sLog);
         EnemyTarget * ptrEnemyTank2 = new EnemyTank;
         sLog = "num of targets after second tank creation :" + std::to_string((*ptrEnemyTank2).getEnemyTargetCount());

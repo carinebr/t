@@ -17,7 +17,11 @@ class EnemyTank : public EnemyTarget
         //destructor
         ~EnemyTank(void);
         size_t getEnemyTankCount() const;
+        void setCommander(const string in_sCommander){m_sCommander = in_sCommander;}
+        const string& getCommander() const {return m_sCommander;}
+        EnemyTank operator=(const EnemyTank& in_theOtherTank);
     private:
         static size_t m_EnemyTankCounter;
+        string m_sCommander;
 };
 #endif  //ENEMYTANK_H_INCLUDED
