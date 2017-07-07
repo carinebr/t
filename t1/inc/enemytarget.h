@@ -13,8 +13,13 @@ class EnemyTarget
         /// copy constructor
         EnemyTarget(const EnemyTarget&);
         //destructor
-        ~EnemyTarget(void);
-        size_t getEnemyTargetCount();
+        virtual ~EnemyTarget(void);
+        size_t getEnemyTargetCount() const;
+        virtual const string& className() const;
+
+    protected:
+        string m_sClassName;
+
     private:
         static size_t m_EnemyTargetCounter;
 };

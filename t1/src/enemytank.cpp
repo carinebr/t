@@ -16,8 +16,9 @@ size_t EnemyTank::m_EnemyTankCounter;
 /// 
 EnemyTank::EnemyTank(void)
 {
+    m_sClassName = "EnemyTank";
     m_EnemyTankCounter++;
-    string sLog("tester class CONStructor - num of enemy tanks: " + std::to_string(m_EnemyTankCounter));
+    string sLog(className() + " CONStructor - num of enemy tanks: " + std::to_string(m_EnemyTankCounter));
     Logger::getInstance()->logIt(DBG, "", "", 0, sLog);
 }
 
@@ -26,8 +27,9 @@ EnemyTank::EnemyTank(void)
 /// 
 EnemyTank::EnemyTank(const EnemyTank&)
 {
-    m_EnemyTankCounter++;
-    string sLog("tester class COPY CONStructor - num of enemy tanks: " + std::to_string(m_EnemyTankCounter));
+    m_sClassName = "EnemyTank";
+    m_EnemyTankCounter++;  
+    string sLog(className() + " COPY CONStructor - num of enemy tanks: " + std::to_string(m_EnemyTankCounter));
     Logger::getInstance()->logIt(DBG, "", "", 0, sLog);
 }
 
@@ -36,7 +38,7 @@ EnemyTank::EnemyTank(const EnemyTank&)
 EnemyTank::~EnemyTank(void)
 {
     m_EnemyTankCounter--;
-    string sLog("tester class DEStructor - num of enemy tanks: " + std::to_string(m_EnemyTankCounter));
+    string sLog(className() + " DEStructor - num of enemy tanks: " + std::to_string(m_EnemyTankCounter));
     Logger::getInstance()->logIt(DBG, "", "", 0, sLog);
 }
 
@@ -44,7 +46,7 @@ EnemyTank::~EnemyTank(void)
  * \fn getEnemyTankCount()
  * \brief returns the m_EnemyTankCounter member
  */
-size_t EnemyTank::getEnemyTankCount()
+size_t EnemyTank::getEnemyTankCount() const
 {
     return m_EnemyTankCounter;
 }

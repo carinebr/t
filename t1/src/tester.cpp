@@ -6,6 +6,7 @@
 #include "tester.h"
 #include "excepterr.h"
 #include "enemytank.h"
+#include "logger.h"
 
 using namespace std;
 
@@ -64,9 +65,16 @@ int Tester::testIt(const string& in_sWhichTest)
     }
     else if(in_sWhichTest == "inheritance")
     {
-        //EnemyTarget enemyTarget1;
-        //EnemyTarget enemyTarget2(enemyTarget1);
+        EnemyTarget enemyTarget1;
         EnemyTank enemyTank1;
+        string sLog("num of targets after tank creation :" + std::to_string(enemyTank1.getEnemyTargetCount()));
+        Logger::getInstance()->logIt(DBG, "", "", 0, sLog);
+        EnemyTarget * ptrEnemyTank2 = new EnemyTank;
+        sLog = "num of targets after second tank creation :" + std::to_string((*ptrEnemyTank2).getEnemyTargetCount());
+        Logger::getInstance()->logIt(DBG, "", "", 0, sLog);
+
+        delete ptrEnemyTank2;
+
     }
     return 1;
 }

@@ -2,6 +2,7 @@
 /// \brief EnemyTarget class implementation
 
 #include <iostream>
+#include <string>
 #include "appli.h"
 #include "enemytarget.h"
 #include "excepterr.h"
@@ -14,20 +15,20 @@ size_t EnemyTarget::m_EnemyTargetCounter;
 /// \fn EnemyTarget::EnemyTarget(void)
 /// constructor
 /// 
-EnemyTarget::EnemyTarget(void)
+EnemyTarget::EnemyTarget(void):m_sClassName("EnemyTarget")
 {
     m_EnemyTargetCounter++;
-    string sLog("tester class CONStructor - num of enemy targets: " + std::to_string(m_EnemyTargetCounter));
+    string sLog(className() + " CONStructor - num of enemy targets: " + std::to_string(m_EnemyTargetCounter));
     Logger::getInstance()->logIt(DBG, "", "", 0, sLog);
 }
 
 /// \fn EnemyTarget::EnemyTarget(const EnemyTarget&)
 /// copy constructor
 /// 
-EnemyTarget::EnemyTarget(const EnemyTarget&)
+EnemyTarget::EnemyTarget(const EnemyTarget&):m_sClassName("EnemyTarget")
 {
     m_EnemyTargetCounter++;
-    string sLog("tester class COPY CONStructor - num of enemy targets: " + std::to_string(m_EnemyTargetCounter));
+    string sLog(className() + " COPY CONStructor - num of enemy targets: " + std::to_string(m_EnemyTargetCounter));
     Logger::getInstance()->logIt(DBG, "", "", 0, sLog);
 }
 
@@ -36,7 +37,7 @@ EnemyTarget::EnemyTarget(const EnemyTarget&)
 EnemyTarget::~EnemyTarget(void)
 {
     m_EnemyTargetCounter--;
-    string sLog("tester class DEStructor - num of enemy targets: " + std::to_string(m_EnemyTargetCounter));
+    string sLog(className() + " DEStructor - num of enemy targets: " + std::to_string(m_EnemyTargetCounter));
     Logger::getInstance()->logIt(DBG, "", "", 0, sLog);
 }
 
@@ -44,7 +45,15 @@ EnemyTarget::~EnemyTarget(void)
  * \fn getEnemyTargetCount()
  * \brief returns the m_EnemyTargetCounter member
  */
-size_t EnemyTarget::getEnemyTargetCount()
+size_t EnemyTarget::getEnemyTargetCount() const
 {
     return m_EnemyTargetCounter;
+}
+/**
+ * \fn classname()
+ * \* brief return the class name
+ */
+const string& EnemyTarget::className() const
+{
+    return m_sClassName;
 }

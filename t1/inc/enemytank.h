@@ -16,7 +16,7 @@ class EnemyTank : public EnemyTarget
         EnemyTank(const EnemyTank&);
         //destructor
         ~EnemyTank(void);
-        size_t getEnemyTankCount();
+        size_t getEnemyTankCount() const;
     private:
         static size_t m_EnemyTankCounter;
 };
