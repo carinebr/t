@@ -7,6 +7,7 @@
 #include "excepterr.h"
 #include "enemytank.h"
 #include "logger.h"
+#include "arraystmpl.h"
 
 using namespace std;
 
@@ -92,4 +93,19 @@ int Tester::testIt(const string& in_sWhichTest)
 
     }
     return 1;
+}
+
+/**
+ *\fn testTemplate
+ \*\brief test les template
+ *
+ */
+void Tester::testTemplate()
+{
+    int a = 7, b = 5;
+
+    Logger::getInstance()->logIt(DBG, "", "", 0, to_string(aSimpleTmplFunc<int>(a, b)));
+    
+    int arg[] = {1245, 345, 0, -6, 5};
+    Logger::getInstance()->logIt(DBG, "", "", 0, to_string(average<int, double>(arg, 5)));
 }

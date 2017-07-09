@@ -65,6 +65,7 @@ int main(int argc, char* argv[])
         {
             //sendHttpRequestMthread(appliInstance->getInivalue("requestbin"));
         }
+        Tester::getInstance()->testTemplate();
 
     }
     catch(ExceptErr& e)

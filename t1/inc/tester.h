@@ -12,6 +12,7 @@ class Tester
         //destructor
         ~Tester(void);
         int testIt(const string& in_sWhichTest);
+        void testTemplate();
     private:
         static Tester* m_Instance;
         //constructor
