@@ -57,3 +57,17 @@ const string& EnemyTarget::className() const
 {
     return m_sClassName;
 }
+
+/**
+ * \fn assignement operator
+ * \brief assignement operator
+ * \param[in] another EnemyTarget
+ * \return EnemyTarget&
+ */
+EnemyTarget& EnemyTarget::operator=(const EnemyTarget& in_AnotherTarget)
+{
+    m_sClassName=in_AnotherTarget.getClassName();
+    m_EnemyTargetCounter = in_AnotherTarget.getEnemyTargetCount();
+    return *this;
+}
+

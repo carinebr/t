@@ -16,11 +16,12 @@ class EnemyTarget
         virtual ~EnemyTarget(void);
         size_t getEnemyTargetCount() const;
         virtual const string& className() const;
-
-    protected:
-        string m_sClassName;
+        EnemyTarget& operator=(const EnemyTarget& in_AnotherTArget);
+        const string& getClassName() const{return m_sClassName;}
+        void setClassName(const string& in_sClassName){m_sClassName = in_sClassName;}
 
     private:
+        string m_sClassName;
         static size_t m_EnemyTargetCounter;
 };
 #endif  //ENEMYTARGET_H_INCLUDED

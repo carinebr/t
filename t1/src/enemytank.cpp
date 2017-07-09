@@ -16,7 +16,7 @@ size_t EnemyTank::m_EnemyTankCounter;
 /// 
 EnemyTank::EnemyTank(void)
 {
-    m_sClassName = "EnemyTank";
+    setClassName("EnemyTank");
     m_EnemyTankCounter++;
     string sLog(className() + " CONStructor - num of enemy tanks: " + std::to_string(m_EnemyTankCounter));
     Logger::getInstance()->logIt(DBG, "", "", 0, sLog);
@@ -27,7 +27,7 @@ EnemyTank::EnemyTank(void)
 /// 
 EnemyTank::EnemyTank(const EnemyTank&)
 {
-    m_sClassName = "EnemyTank";
+    setClassName("EnemyTank");
     m_EnemyTankCounter++;  
     string sLog(className() + " COPY CONStructor - num of enemy tanks: " + std::to_string(m_EnemyTankCounter));
     Logger::getInstance()->logIt(DBG, "", "", 0, sLog);
@@ -53,8 +53,9 @@ EnemyTank::~EnemyTank(void)
  * \param[in] tank to be copied
  * \return *this
  */
-EnemyTank EnemyTank::operator= (const EnemyTank& in_theOtherTank)
+EnemyTank& EnemyTank::operator= (const EnemyTank& in_theOtherTank)
 {
+    EnemyTarget::operator =(in_theOtherTank);
     m_sCommander = in_theOtherTank.m_sCommander;
     return *this;
 }
