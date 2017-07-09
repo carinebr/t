@@ -108,4 +108,23 @@ void Tester::testTemplate()
     
     int arg[] = {1245, 345, 0, -6, 5};
     Logger::getInstance()->logIt(DBG, "", "", 0, to_string(average<int, double>(arg, 5)));
+
+    int c(8), d(123);
+    Logger::getInstance()->logIt(DBG, "", "", 0, to_string(minimum<int, int>(c, d)));
+
+    double e(123.678), dd(124.567);
+    Logger::getInstance()->logIt(DBG, "", "", 0, to_string(minimum<double, double>(e, dd)));
+
+    double ee(123.678);
+    int ddd(122.567);
+    Logger::getInstance()->logIt(DBG, "", "", 0, to_string(minimum<double, int>(ee, ddd)));
+
+    std::vector<int> myVec;
+    myVec.push_back(14);
+    myVec.push_back(16);
+    myVec.push_back(17);
+    myVec.push_back(18);
+    myVec.push_back(19);
+
+    Logger::getInstance()->logIt(DBG, "", "", 0, to_string(average2<int, double>(myVec))); 
 }
