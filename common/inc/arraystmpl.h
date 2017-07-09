@@ -7,15 +7,19 @@
 #include <string>
 #include<vector>
 using namespace std;
-//template <typename Type>
+
+
+template <typename T>
 class ArraysTmpl
 {
 public:
     ArraysTmpl();
  
     virtual ~ArraysTmpl();
+    void push_back(const T& in_element);
  
 private:
+    T* m_theArray;
 };
 
 template <typename T>
