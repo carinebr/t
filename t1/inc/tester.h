@@ -13,6 +13,8 @@ class Tester
         ~Tester(void);
         int testIt(const string& in_sWhichTest);
         void testTemplate();
+        void testFactory();
+        void testNullClass();
     private:
         static Tester* m_Instance;
         //constructor

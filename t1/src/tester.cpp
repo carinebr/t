@@ -8,9 +8,17 @@
 #include "enemytank.h"
 #include "logger.h"
 #include "arraystmpl.h"
+#include "person.h"
+#include "date.h"
 
 using namespace std;
 
+class NullClass
+{
+    public:
+        template <class T>
+            operator T*() const {return 0;}
+};
 /// \fn Tester::Tester(void)
 /// constructor
 /// 
@@ -127,4 +135,27 @@ void Tester::testTemplate()
     myVec.push_back(19);
 
     Logger::getInstance()->logIt(DBG, "", "", 0, to_string(average2<int, double>(myVec))); 
+}
+
+/**
+ *\fn testTemplate
+ \*\brief test les template
+ *
+ */
+void Tester::testNullClass()
+{
+    const NullClass __NULL;
+}
+
+/**
+ *\fn testFactory
+ \*\brief test le factory de Person
+ *
+ */
+void Tester::testFactory()
+{
+    Date aBirthDay("une date de naisance");
+    Person* pPerson = Person::makePerson(aBirthDay);
+    Logger::getInstance()->logIt(DBG, "", "", 0, pPerson->birthDate().getDate());
+    delete pPerson;
 }
