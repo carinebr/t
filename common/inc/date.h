@@ -14,6 +14,8 @@ class Date
         ///destructor
         ~Date(void);
         const string& getDate() const;
+        ///copy constructor
+        Date(const Date& in_anotherDate);
     private:
         string m_sDate;
 };

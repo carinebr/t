@@ -26,3 +26,12 @@ const string& Date::getDate() const
 {
     return m_sDate;
 }
+
+/**
+ * \fn Date::Date(const Date& in_anotherDate)
+ * \brief copy construtor
+ */
+Date::Date(const Date& in_anotherDate)
+{
+    m_sDate = in_anotherDate.m_sDate;
+}
