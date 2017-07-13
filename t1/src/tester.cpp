@@ -13,12 +13,6 @@
 
 using namespace std;
 
-class NullClass
-{
-    public:
-        template <class T>
-            operator T*() const {return 0;}
-};
 /// \fn Tester::Tester(void)
 /// constructor
 /// 
@@ -137,6 +131,13 @@ void Tester::testTemplate()
     Logger::getInstance()->logIt(DBG, "", "", 0, to_string(average2<int, double>(myVec))); 
 }
 
+class NullClass
+{
+    public:
+        template <class T>
+            operator T*() const {return 0;}
+        operator NullClass* () const {return 0;}
+};
 /**
  *\fn testTemplate
  \*\brief test les template
@@ -144,7 +145,10 @@ void Tester::testTemplate()
  */
 void Tester::testNullClass()
 {
-    const NullClass __NULL;
+    //const NullClass nullObject;
+    //les 2 lignes suivantes sont equivalantes
+    //NullClass* ncPtr = nullObject.operator NullClass*();
+    //ncPtr = *nullObject;
 }
 
 /**
@@ -158,4 +162,37 @@ void Tester::testFactory()
     Person* pPerson = Person::makePerson(aBirthDay);
     Logger::getInstance()->logIt(DBG, "", "", 0, pPerson->birthDate().getDate());
     delete pPerson;
+}
+class MyClass
+{
+    public:
+        MyClass(){Logger::getInstance()->logIt(DBG, "", "", 0, "MyClass CONSTRUCTOR");}
+        ~MyClass(){Logger::getInstance()->logIt(DBG, "", "", 0, "MyClass DESTRUCTOR");}
+};
+
+/**
+ *\fn testTemplate
+ \*\brief test la creation de templates particulierement; un vector de pointeur de class passe t il par le 
+ *        destructeur au moment de erase
+ */
+void Tester::testVectorErase()
+{
+    std::vector<MyClass*> v;
+    for( int i=0; i< 5; i++)
+        v.push_back(new MyClass);
+    int i = 0;
+    for(std::vector<MyClass*>::iterator itr = v.begin(); itr != v.end(); itr++)
+    {
+        delete(*itr);
+        Logger::getInstance()->logIt(DBG, "", "", 0, std::to_string(i));
+        i++;
+    }
+    v.clear();
+    std::vector<MyClass> v2;
+    Logger::getInstance()->logIt(DBG, "", "", 0, "\n2eme partie\n");
+    MyClass mc;
+    Logger::getInstance()->logIt(DBG, "", "", 0, "2eme partie avant pushback");
+    v2.push_back(mc);
+    v2.clear();
+    Logger::getInstance()->logIt(DBG, "", "", 0, "2eme partie apres clear");
 }

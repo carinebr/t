@@ -67,6 +67,7 @@ int main(int argc, char* argv[])
         }
         Tester::getInstance()->testTemplate();
         Tester::getInstance()->testFactory();
+        Tester::getInstance()->testVectorErase();
 
     }
     catch(ExceptErr& e)

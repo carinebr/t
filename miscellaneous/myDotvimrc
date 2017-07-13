@@ -125,3 +125,11 @@ nmap <C-j> :bp<CR>
 
 " build
 nmap <C-b> :! ./ms<CR>
+nmap <C-m> :! ./Make<CR>
+" disable errors bells
+set noeb vb t_vb=
+
+"display all the lines in diff (vimdiff) mode
+if &diff                             " only for diff mode/vimdiff
+    set diffopt=filler,context:1000000 " filler is default and inserts empty lines for sync
+endif

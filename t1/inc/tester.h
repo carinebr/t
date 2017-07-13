@@ -15,6 +15,7 @@ class Tester
         void testTemplate();
         void testFactory();
         void testNullClass();
+        void testVectorErase();
     private:
         static Tester* m_Instance;
         //constructor
