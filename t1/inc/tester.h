@@ -19,6 +19,7 @@ class Tester
         void testOddOccurencesInArrays();
         void testPermMissingElemLessons3();
         void testFrogJmpLessons3();
+        void testMissingIntegerLesson4();
     private:
         static Tester* m_Instance;
         //constructor

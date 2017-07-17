@@ -18,6 +18,7 @@ using namespace std;
 int solutionTestOddOccurencesInArrays(vector<int> &A);
 int solutionPermMissingElemLessons3(vector<int>& A);
 int solutionFrogJmpLesson3(int x, int y, int d);
+int solutionMissingIntegerLesson4(vector<int>& A);
 
 /// \fn Tester::Tester(void)
 /// constructor
@@ -374,7 +375,7 @@ void Tester::testFrogJmpLessons3()
 
 int solutionFrogJmpLesson3(int X, int Y, int D)
 {
-#define LOGS(str)
+//#define LOGS(str)
     LOGS("");
     int sum(X), steps(0);
     while (sum<Y)
@@ -385,4 +386,52 @@ int solutionFrogJmpLesson3(int X, int Y, int D)
     LOGS("X: " + std::to_string(X) + " Y: " + std::to_string(Y) + " D: "
             + std::to_string(D) + " steps: " + std::to_string(steps));
     return steps;
+}
+
+/**
+ * \fn Tester::testMissingIntegerLesson4()
+ * \brief test codility lesson 4 MissingInteger
+ */
+void Tester::testMissingIntegerLesson4()
+{
+    vector<int> A;
+    A.push_back(1);
+    A.push_back(3);
+    A.push_back(6);
+    A.push_back(4);
+    A.push_back(2);
+    solutionMissingIntegerLesson4(A);
+    return;
+}
+
+/**
+ * \fn solutionMissingIntegerLesson4(vector<int> &A)
+ *     l'idee est d'utiliser une struct vector d'aide qui en passamt sur le premier vector
+ *     ecrit l'info du 1er vector dans le 2eme
+ */
+int solutionMissingIntegerLesson4(vector<int> & A)
+{
+#define LOGS(STR)
+    size_t i, size_a(A.size());
+    //utiliser un array <bool>
+    vector<bool> B(size_a + 1, false);
+    for (i=0; i< size_a + 1; i++)
+    {
+        if (A[i]> 0 && A[i] <= static_cast<int> (size_a + 1))
+        {
+            LOGS("A[i]: " + std::to_string(A[i]));
+            B[A[i]-1] = true;
+        }
+    }
+//    for (i = 0; i < B.size() + 1; i++)
+//        LOGS(std::to_string(B[i]));
+    for (i=0; i<B.size(); i++)
+    {
+        if (B[i] == false)
+        {
+            LOGS(std::to_string(i+1));
+            return i+1;
+        }
+    }
+    return 0;
 }
