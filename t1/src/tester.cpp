@@ -15,6 +15,9 @@
 
 using namespace std;
 
+int solutionTestOddOccurencesInArrays(vector<int> &A);
+
+
 /// \fn Tester::Tester(void)
 /// constructor
 /// 
@@ -198,6 +201,7 @@ void Tester::testVectorErase()
     v2.clear();
     Logger::getInstance()->logIt(DBG, "", "", 0, "2eme partie apres clear");
 }
+
 /**
  * \fn Tester::testOddoccurencesInArrays()
  * \brief lesson 2 in codility.com
@@ -205,41 +209,57 @@ void Tester::testVectorErase()
 void Tester::testOddOccurencesInArrays()
 {
     vector<int> v;
-    v.push_back(8);
-    v.push_back(8);
-    v.push_back(4);
-    v.push_back(444);
-    v.push_back(5);
-    v.push_back(4);
-    v.push_back(5);
-    v.push_back(6);
-    v.push_back(6);
+//    v.push_back(8);
+//    v.push_back(8);
+//    v.push_back(4);
+//    v.push_back(444);
+//    v.push_back(5);
+//    v.push_back(4);
+//    v.push_back(5);
+//    v.push_back(6);
+//    v.push_back(6);
+//    v.push_back(7);
+//    v.push_back(444);
+//    v.push_back(789);
+//    v.push_back(789);
+    v.push_back(9);
+    v.push_back(3);
+    v.push_back(9);
+    v.push_back(3);
+    v.push_back(9);
     v.push_back(7);
-    v.push_back(444);
-    v.push_back(789);
-    v.push_back(789);
-//8 4 8 5 4 5 6 6 7
-    for (vector<int>::iterator itr = v.begin(); itr != v.end(); itr++)
+    v.push_back(9);
+    solutionTestOddOccurencesInArrays(v);
+    //8 4 8 5 4 5 6 6 7
+}
+/**
+ * \fn solutionTestOddOccurencesInArrays
+ * \brief solution of testOddOccurencesInArrays
+ * \param[in] vector<int> &A
+ */
+int solutionTestOddOccurencesInArrays(vector<int> &A)
+{
+//#define LOGS(STR) 
+    for (vector<int>::iterator itr = A.begin(); itr != A.end(); itr++)
     {
-        cout << *itr << " ";
-        LOGIT(std::to_string(*itr));
+        LOGS(std::to_string(*itr));
     }
     bool removed(false);
     LOGS("");
-    for (vector<int>::iterator itr = v.begin(); itr != v.end(); itr++)
+    for (vector<int>::iterator itr = A.begin(); itr != A.end(); itr++)
     {
         removed = false;
         LOGS("*itr:" + std::to_string(*itr));
         vector<int>::iterator itr2=itr;
         itr2++;
-        for ( ;itr2 != v.end(); itr2++)
+        for ( ;itr2 != A.end(); itr2++)
         {
             if (*itr == *itr2)
             {
                 LOGS("erase itr2: " + std::to_string(*itr2));
                 LOGS("erase itr: " + std::to_string(*itr));
-                v.erase(itr2);
-                itr = v.erase(itr);
+                A.erase(itr2);
+                itr = A.erase(itr);
                 removed = true;
                 break;
             }
@@ -251,10 +271,10 @@ void Tester::testOddOccurencesInArrays()
         }
     }
     LOGS("fin!");
-    for (vector<int>::iterator itr = v.begin(); itr != v.end(); itr++)
+    for (vector<int>::iterator itr = A.begin(); itr != A.end(); itr++)
     {
         LOGS("*itr: " + std::to_string(*itr));
     }
-
-    return;
+    
+    return *(A.begin());
 }
