@@ -16,7 +16,8 @@
 using namespace std;
 
 int solutionTestOddOccurencesInArrays(vector<int> &A);
-
+int solutionPermMissingElemLessons3(vector<int>& A);
+int solutionFrogJmpLesson3(int x, int y, int d);
 
 /// \fn Tester::Tester(void)
 /// constructor
@@ -277,4 +278,111 @@ int solutionTestOddOccurencesInArrays(vector<int> &A)
     }
     
     return *(A.begin());
+}
+
+/**
+ * \fn Tester::testPermMissingElemLessons3
+ * \brief test lessons 3 codility.com
+ */
+void Tester::testPermMissingElemLessons3()
+{
+    vector<int> A;
+    A.push_back(2);
+    A.push_back(3);
+    A.push_back(4);
+    A.push_back(1);
+    A.push_back(6);
+    A.push_back(7);
+    A.push_back(9);
+    A.push_back(10);
+    A.push_back(5);
+    solutionPermMissingElemLessons3(A);
+    A.clear();
+    A.push_back(1);
+    solutionPermMissingElemLessons3(A);
+}
+
+/**
+ * \fn solutionPermMissingElemLessons3
+ * \brief codility lessons 3
+ * \param[in] const vectoor<int> A
+ * \return the missing element
+ */
+int solutionPermMissingElemLessons3(vector<int> &A)
+{
+    int max(A.size() + 1);
+    bool found(false);
+//#define LOGS(STR) 
+    vector<int>::iterator itr, itr2;
+    if (A.size() == 1)
+        return 2;
+    for (itr = A.begin(); itr != A.end(); itr++)
+    {
+        LOGS(std::to_string(*itr));
+    }
+    
+    for (itr = A.begin(); itr != A.end(); itr++)
+    {
+        LOGS("*itr: " + std::to_string(*itr));
+        if(*itr != max)
+        {
+            found = false;
+            for (itr2 = A.begin(); itr2 != A.end(); itr2++)
+            {
+                if (itr == itr2)
+                    continue;
+                if (*itr2 == (*itr) + 1)
+                {
+                    found = true;
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+        }
+        if (found == false)
+            break;
+    }
+    if (found == false)
+    {
+        LOGS("missing elem: " + std::to_string((*itr) + 1));
+        return (*itr) + 1;
+    }
+    return 0;
+}
+
+/**
+ * \fn testFrogJmpLessons3()
+ */
+void Tester::testFrogJmpLessons3()
+{
+    solutionFrogJmpLesson3(1, 2, 3);
+    solutionFrogJmpLesson3(1, 10, 3);
+    solutionFrogJmpLesson3(1, 100, 3);
+    solutionFrogJmpLesson3(1, 2, 10);
+    solutionFrogJmpLesson3(1, 1, 3);
+} 
+/**
+ * \fn solutionFrogJmpLesson3
+ * \brief frog jump
+ * \param[in] X, Y, D
+ * \return number of steps
+ * Vraie solutionp; pas de loop = res = x-y / d (eventuellement + 1)
+ */
+
+int solutionFrogJmpLesson3(int X, int Y, int D)
+{
+#define LOGS(str)
+    LOGS("");
+    int sum(X), steps(0);
+    while (sum<Y)
+    {
+        steps++;
+        sum+=D;
+    }
+    LOGS("X: " + std::to_string(X) + " Y: " + std::to_string(Y) + " D: "
+            + std::to_string(D) + " steps: " + std::to_string(steps));
+    return steps;
 }

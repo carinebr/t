@@ -17,6 +17,8 @@ class Tester
         void testNullClass();
         void testVectorErase();
         void testOddOccurencesInArrays();
+        void testPermMissingElemLessons3();
+        void testFrogJmpLessons3();
     private:
         static Tester* m_Instance;
         //constructor

@@ -68,8 +68,9 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testTemplate();
         //Tester::getInstance()->testFactory();
         //Tester::getInstance()->testVectorErase();
-        Tester::getInstance()->testOddOccurencesInArrays();
-
+        //Tester::getInstance()->testOddOccurencesInArrays();
+        //Tester::getInstance()->testPermMissingElemLessons3();
+        Tester::getInstance()->testFrogJmpLessons3();
     }
     catch(ExceptErr& e)
     {
