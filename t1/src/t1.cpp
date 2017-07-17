@@ -65,9 +65,10 @@ int main(int argc, char* argv[])
         {
             //sendHttpRequestMthread(appliInstance->getInivalue("requestbin"));
         }
-        Tester::getInstance()->testTemplate();
-        Tester::getInstance()->testFactory();
-        Tester::getInstance()->testVectorErase();
+        //Tester::getInstance()->testTemplate();
+        //Tester::getInstance()->testFactory();
+        //Tester::getInstance()->testVectorErase();
+        Tester::getInstance()->testOddOccurencesInArrays();
 
     }
     catch(ExceptErr& e)

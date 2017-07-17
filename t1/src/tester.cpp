@@ -2,6 +2,7 @@
 /// \brief functionnality testing implementation
 
 #include <iostream>
+#include <list>
 #include "appli.h"
 #include "tester.h"
 #include "excepterr.h"
@@ -195,4 +196,62 @@ void Tester::testVectorErase()
     v2.push_back(mc);
     v2.clear();
     Logger::getInstance()->logIt(DBG, "", "", 0, "2eme partie apres clear");
+}
+
+/**
+ * \fn Tester::testOddoccurencesInArrays()
+ * \brief lesson 2 in codility.com
+ */
+void Tester::testOddOccurencesInArrays()
+{
+    list<int> l;
+    l.push_back(8);
+    l.push_back(4);
+    l.push_back(444);
+    l.push_back(8);
+    l.push_back(5);
+    l.push_back(4);
+    l.push_back(5);
+    l.push_back(6);
+    l.push_back(6);
+    l.push_back(7);
+    l.push_back(444);
+//8 4 8 5 4 5 6 6 7
+    for (list<int>::iterator itr = l.begin(); itr != l.end(); itr++)
+    {
+        cout << *itr << " ";
+    }
+    bool removed(false);
+    cout << endl;
+    cout << endl;
+    for (list<int>::iterator itr = l.begin(); itr != l.end(); itr++)
+    {
+        removed = false;
+        cout << *itr << endl;
+        list<int>::iterator itr2=itr;
+        itr2++;
+        for ( ;itr2 != l.end(); itr2 ++)
+        {
+            if (*itr == *itr2)
+            {
+                cout <<*itr<< endl;
+                l.erase(itr2);
+                l.erase(itr++);
+                removed = true;
+                break;
+            }
+        }
+        if (removed)
+        {
+            itr--;
+            continue;
+        }
+    }
+    cout<< "fin!" << endl;
+    for (list<int>::iterator itr = l.begin(); itr != l.end(); itr++)
+    {
+        cout << *itr << " ";
+    }
+    cout << endl;
+    return;
 }

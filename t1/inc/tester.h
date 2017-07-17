@@ -16,6 +16,7 @@ class Tester
         void testFactory();
         void testNullClass();
         void testVectorErase();
+        void testOddOccurencesInArrays();
     private:
         static Tester* m_Instance;
         //constructor

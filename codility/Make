@@ -1,0 +1,1 @@
+gcc -Wall -g *.c -lcurl -o codi
