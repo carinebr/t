@@ -19,6 +19,7 @@ int solutionTestOddOccurencesInArrays(vector<int> &A);
 int solutionPermMissingElemLessons3(vector<int>& A);
 int solutionFrogJmpLesson3(int x, int y, int d);
 int solutionMissingIntegerLesson4(vector<int>& A);
+int solutionContDivLesson5(int A, int B, int K);
 
 /// \fn Tester::Tester(void)
 /// constructor
@@ -411,7 +412,7 @@ void Tester::testMissingIntegerLesson4()
  */
 int solutionMissingIntegerLesson4(vector<int> & A)
 {
-#define LOGS(STR)
+//#define LOGS(STR)
     size_t i, size_a(A.size());
     //utiliser un array <bool>
     vector<bool> B(size_a + 1, false);
@@ -434,4 +435,32 @@ int solutionMissingIntegerLesson4(vector<int> & A)
         }
     }
     return 0;
+}
+
+/**
+ * \fn testCountDivLesson5
+ */
+void Tester::testCountDivLesson5()
+{
+    solutionContDivLesson5(8, 34, 3);
+    solutionContDivLesson5(6, 11, 2);
+    solutionContDivLesson5(6, 7, 2);
+    solutionContDivLesson5(6, 6, 2);
+    solutionContDivLesson5(6, 11, 13);
+}
+
+/**
+ * \fn solutionContDivLesson5
+ */
+int solutionContDivLesson5(int A, int B, int K)
+{
+//#define LOGS(s)
+    int sum(0);
+    for (int i = A; i < B+1; i++)
+        if (i%K == 0)
+            sum++;
+    LOGS("A: " + std::to_string(A) + ", B: " + std::to_string(B) +
+            ", K: " + std::to_string(K) + " - result: "
+            + std::to_string(sum));
+    return sum;
 }
