@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <list>
+#include <vector>
 #include "appli.h"
 #include "tester.h"
 #include "excepterr.h"
@@ -197,46 +198,48 @@ void Tester::testVectorErase()
     v2.clear();
     Logger::getInstance()->logIt(DBG, "", "", 0, "2eme partie apres clear");
 }
-
 /**
  * \fn Tester::testOddoccurencesInArrays()
  * \brief lesson 2 in codility.com
  */
 void Tester::testOddOccurencesInArrays()
 {
-    list<int> l;
-    l.push_back(8);
-    l.push_back(4);
-    l.push_back(444);
-    l.push_back(8);
-    l.push_back(5);
-    l.push_back(4);
-    l.push_back(5);
-    l.push_back(6);
-    l.push_back(6);
-    l.push_back(7);
-    l.push_back(444);
+    vector<int> v;
+    v.push_back(8);
+    v.push_back(8);
+    v.push_back(4);
+    v.push_back(444);
+    v.push_back(5);
+    v.push_back(4);
+    v.push_back(5);
+    v.push_back(6);
+    v.push_back(6);
+    v.push_back(7);
+    v.push_back(444);
+    v.push_back(789);
+    v.push_back(789);
 //8 4 8 5 4 5 6 6 7
-    for (list<int>::iterator itr = l.begin(); itr != l.end(); itr++)
+    for (vector<int>::iterator itr = v.begin(); itr != v.end(); itr++)
     {
         cout << *itr << " ";
+        LOGIT(std::to_string(*itr));
     }
     bool removed(false);
-    cout << endl;
-    cout << endl;
-    for (list<int>::iterator itr = l.begin(); itr != l.end(); itr++)
+    LOGS("");
+    for (vector<int>::iterator itr = v.begin(); itr != v.end(); itr++)
     {
         removed = false;
-        cout << *itr << endl;
-        list<int>::iterator itr2=itr;
+        LOGS("*itr:" + std::to_string(*itr));
+        vector<int>::iterator itr2=itr;
         itr2++;
-        for ( ;itr2 != l.end(); itr2 ++)
+        for ( ;itr2 != v.end(); itr2++)
         {
             if (*itr == *itr2)
             {
-                cout <<*itr<< endl;
-                l.erase(itr2);
-                l.erase(itr++);
+                LOGS("erase itr2: " + std::to_string(*itr2));
+                LOGS("erase itr: " + std::to_string(*itr));
+                v.erase(itr2);
+                itr = v.erase(itr);
                 removed = true;
                 break;
             }
@@ -247,11 +250,11 @@ void Tester::testOddOccurencesInArrays()
             continue;
         }
     }
-    cout<< "fin!" << endl;
-    for (list<int>::iterator itr = l.begin(); itr != l.end(); itr++)
+    LOGS("fin!");
+    for (vector<int>::iterator itr = v.begin(); itr != v.end(); itr++)
     {
-        cout << *itr << " ";
+        LOGS("*itr: " + std::to_string(*itr));
     }
-    cout << endl;
+
     return;
 }

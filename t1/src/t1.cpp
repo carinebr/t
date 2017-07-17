@@ -59,7 +59,7 @@ int main(int argc, char* argv[])
         appliInstance->readIniFile();
         Logger * theLogger = Logger::getInstance();
         theLogger->logIt(INF, __FILE__, __FUNCTION__, __LINE__, "========================== new run =============================");
-        Tester::getInstance()->testIt("inheritance");
+        //Tester::getInstance()->testIt("inheritance");
         //requestb.in request 
         if (!appliInstance->getInivalue("requestbin").empty())
         {
