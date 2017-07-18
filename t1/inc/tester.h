@@ -21,6 +21,7 @@ class Tester
         void testFrogJmpLessons3();
         void testMissingIntegerLesson4();
         void testCountDivLesson5();
+        void testDistinctLesson6();
     private:
         static Tester* m_Instance;
         //constructor

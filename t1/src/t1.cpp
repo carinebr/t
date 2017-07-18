@@ -72,7 +72,8 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testPermMissingElemLessons3();
         //Tester::getInstance()->testFrogJmpLessons3();
         //Tester::getInstance()->testMissingIntegerLesson4();
-        Tester::getInstance()->testCountDivLesson5();
+        //Tester::getInstance()->testCountDivLesson5();
+        Tester::getInstance()->testDistinctLesson6();
     }
     catch(ExceptErr& e)
     {

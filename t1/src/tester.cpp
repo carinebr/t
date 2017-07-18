@@ -4,6 +4,7 @@
 #include <iostream>
 #include <list>
 #include <vector>
+#include <algorithm>
 #include "appli.h"
 #include "tester.h"
 #include "excepterr.h"
@@ -20,6 +21,7 @@ int solutionPermMissingElemLessons3(vector<int>& A);
 int solutionFrogJmpLesson3(int x, int y, int d);
 int solutionMissingIntegerLesson4(vector<int>& A);
 int solutionContDivLesson5(int A, int B, int K);
+int solutionDistinctLesson6(vector<int>& A);
 
 /// \fn Tester::Tester(void)
 /// constructor
@@ -463,4 +465,46 @@ int solutionContDivLesson5(int A, int B, int K)
             ", K: " + std::to_string(K) + " - result: "
             + std::to_string(sum));
     return sum;
+}
+
+/**
+ * \fn testDistinctLesson6
+ * \brief
+ */
+void Tester::testDistinctLesson6()
+{
+    int myA[] = {2, 1, 1, 2, 3, 1};
+    vector<int> A (myA, myA + 6);
+    solutionDistinctLesson6(A);
+
+    A.clear();
+    solutionDistinctLesson6(A);
+
+    A.push_back(3);
+    solutionDistinctLesson6(A);
+    A.push_back(2);
+    solutionDistinctLesson6(A);
+}
+
+/**
+ * \fn solutionDistinctLesson6
+ * \brief return the number of distinct value
+ */
+int solutionDistinctLesson6(vector<int>& A)
+{
+    size_t i;
+    int res(1);
+    
+    if(A.size() == 0)
+        return 0;
+    vector<int> B(A);
+    std::sort(B.begin(), B.end());
+    
+    for (i = 1; i < B.size(); i++)
+    {
+       if (B[i-1]!=B[i])
+          res++;
+    } 
+    //LOGS("res: " + std::to_string(res));
+    return res;
 }
