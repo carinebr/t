@@ -5,6 +5,7 @@
 #include <list>
 #include <vector>
 #include <algorithm>
+#include <stack>
 #include "appli.h"
 #include "tester.h"
 #include "excepterr.h"
@@ -22,6 +23,7 @@ int solutionFrogJmpLesson3(int x, int y, int d);
 int solutionMissingIntegerLesson4(vector<int>& A);
 int solutionContDivLesson5(int A, int B, int K);
 int solutionDistinctLesson6(vector<int>& A);
+int solutionBracketsLesson7(const string& S);
 
 /// \fn Tester::Tester(void)
 /// constructor
@@ -507,4 +509,102 @@ int solutionDistinctLesson6(vector<int>& A)
     } 
     //LOGS("res: " + std::to_string(res));
     return res;
+}
+
+/**
+ * \fn Tester::testBracketsLesson7()
+ * \brief
+ */
+void Tester::testBracketsLesson7()
+{
+    string S;
+
+    S = "";
+    solutionBracketsLesson7(S);
+
+    S = "e";
+    solutionBracketsLesson7(S);
+
+    S = "()";
+    solutionBracketsLesson7(S);
+
+    S = "glfkj(jkhl0)";
+    solutionBracketsLesson7(S);
+
+    S = "]sdfsaf";
+    solutionBracketsLesson7(S);
+
+    S = ")(";
+    solutionBracketsLesson7(S);
+
+    S = "hfklh[";
+    solutionBracketsLesson7(S);
+
+    S = "(";
+    solutionBracketsLesson7(S);
+
+    S = ")";
+    solutionBracketsLesson7(S);
+
+    S = "g(fdhksfh[dfsadf[dfas]fasd]fsdaf(){[]})";
+    solutionBracketsLesson7(S);
+
+    S = "";
+    solutionBracketsLesson7(S);
+}
+
+/**
+ * \fn solutionBracketsLesson7()
+ * \brief verify good nesting of a string
+ */
+int solutionBracketsLesson7(const string& S)
+{
+    stack<char> sc;
+    size_t i;
+    for (i = 0; i< S.size(); i++)
+    {
+        char c = S[i];
+        if (c == '[' || c == '{' || c == '(')
+            sc.push(c);
+        else if (c == ']' || c == '}' || c == ')')
+        {
+            if (sc.empty())
+                 return 0;
+            else
+            {
+                if (c == ']')
+                {
+                    if (sc.top() != '[')
+                        return 0;
+                    else
+                        sc.pop();
+                }
+                else if (c == '}')
+                {
+                    if (sc.top() != '{')
+                        return 0;
+                    else
+                        sc.pop();
+                }
+                else if (c == ')')
+                {
+                    if (sc.top() != '(')
+                        return 0;
+                    else
+                        sc.pop();
+                }
+            }
+        }
+        else
+            continue;
+    }       
+//    if (sc.size() == 0)
+//    {
+//        LOGS(S + " OK!");
+//    }
+//    else
+//    {
+//        LOGS(S + " KO!");
+//    }
+    return sc.size() == 0;
 }

@@ -73,7 +73,8 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testFrogJmpLessons3();
         //Tester::getInstance()->testMissingIntegerLesson4();
         //Tester::getInstance()->testCountDivLesson5();
-        Tester::getInstance()->testDistinctLesson6();
+        //Tester::getInstance()->testDistinctLesson6();
+        Tester::getInstance()->testBracketsLesson7();
     }
     catch(ExceptErr& e)
     {

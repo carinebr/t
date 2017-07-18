@@ -22,6 +22,7 @@ class Tester
         void testMissingIntegerLesson4();
         void testCountDivLesson5();
         void testDistinctLesson6();
+        void testBracketsLesson7();
     private:
         static Tester* m_Instance;
         //constructor
