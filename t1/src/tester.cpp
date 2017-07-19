@@ -684,6 +684,7 @@ void Tester::testMaxProfitLesson9()
 {
     int myA[] = {10, 8, 9, 13, 6, 11};
     vector<int> A(myA, myA + 6);//<<<<<< + le nbr d'elements
+    VECTOR(A);
     LOGS("max profit: " + std::to_string(solutionMaxProfitLesson9(A)));
 }
 
