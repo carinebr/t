@@ -24,6 +24,7 @@ int solutionMissingIntegerLesson4(vector<int>& A);
 int solutionContDivLesson5(int A, int B, int K);
 int solutionDistinctLesson6(vector<int>& A);
 int solutionBracketsLesson7(const string& S);
+int solutionDomminatorLesson8(vector<int> &A);
 
 /// \fn Tester::Tester(void)
 /// constructor
@@ -608,3 +609,68 @@ int solutionBracketsLesson7(const string& S)
 //    }
     return sc.size() == 0;
 }
+
+/**
+ * \fn testDomminatorLesson8()
+ * \brief
+ */
+void Tester::testDomminatorLesson8()
+{
+    int myA[] = {3, 2, 4, 1, 5, 1, 3, 2, 3, 3, 5678, 3, 6, 3, 3, 3, 3};
+    size_t i;
+    vector<int> A(myA, myA + 17);
+    for (i = 0; i< A.size(); i++)
+    {
+        LOGS(std::to_string(A[i]));
+    }
+    LOGS("index: " + std::to_string(solutionDomminatorLesson8(A)));
+}
+
+/**
+ * \fn solutionDomminatorLesson8()
+ * \brief minimalize the stones for building a wall
+ */
+int solutionDomminatorLesson8(vector<int> &A)
+{
+    stack<int> S;
+    int val;
+    size_t i, index;
+
+    for (i = 0; i< A.size(); i++)
+    {
+        if (S.empty())
+        {
+            S.push(A[i]);
+        }
+        else
+        {
+            val = S.top();
+            if (A[i] == val)
+            {
+                S.push(A[i]);
+            }
+            else
+            {
+                S.pop();
+            }
+        }
+    }
+
+    if (S.empty())
+        return -1;
+    //int leader = -1;
+    size_t counter(0);
+
+    for  (i = 0; i < A.size(); i++)
+    {
+        if (S.top() == A[i])
+        {
+            counter ++;
+            index = i;
+        }
+    }
+    if (counter> A.size()/2)
+        return index;
+    return -1;
+}
+

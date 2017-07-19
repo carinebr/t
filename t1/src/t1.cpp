@@ -74,7 +74,8 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testMissingIntegerLesson4();
         //Tester::getInstance()->testCountDivLesson5();
         //Tester::getInstance()->testDistinctLesson6();
-        Tester::getInstance()->testBracketsLesson7();
+        //Tester::getInstance()->testBracketsLesson7();
+        Tester::getInstance()->testDomminatorLesson8();
     }
     catch(ExceptErr& e)
     {
