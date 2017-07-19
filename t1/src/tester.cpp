@@ -25,6 +25,8 @@ int solutionContDivLesson5(int A, int B, int K);
 int solutionDistinctLesson6(vector<int>& A);
 int solutionBracketsLesson7(const string& S);
 int solutionDomminatorLesson8(vector<int> &A);
+int solutionMaxSlice(vector<int>& A);
+int solutionMaxProfitLesson9(vector<int> &A);
 
 /// \fn Tester::Tester(void)
 /// constructor
@@ -674,3 +676,47 @@ int solutionDomminatorLesson8(vector<int> &A)
     return -1;
 }
 
+/**
+ * \fn testMaxProfitLesson9
+ * \brief
+ */
+void Tester::testMaxProfitLesson9()
+{
+    int myA[] = {10, 8, 9, 13, 6, 11};
+    vector<int> A(myA, myA + 6);//<<<<<< + le nbr d'elements
+    LOGS("max profit: " + std::to_string(solutionMaxProfitLesson9(A)));
+}
+
+/**
+ * \fn solutionMaxProfitLesson9()
+ * \brief test le max profit d 'une liste de prix
+ */
+int solutionMaxProfitLesson9(vector<int>& A)
+{
+    //transformer en vecteur de gain/lost
+    vector<int> B;
+    size_t i;
+    for (i = 1; i <A.size(); i++)
+    {
+        B.push_back(A[i] - A[i-1]);
+        LOGS(std::to_string(B[i-1]));
+    }
+    //trouver le max slice            
+    return(solutionMaxSlice(B));
+}
+
+/**
+ * \fn maxSlice()
+ * \brief rend la somme max d'une section du vector
+ */
+int solutionMaxSlice(vector<int>& A)
+{
+    int max_ending(0), max_slice(0);
+    vector<int>::iterator itr;
+    for (itr = A.begin(); itr != A.end(); itr++)
+    {
+       max_ending = max(0, max_ending + *itr);
+       max_slice = max(max_slice, max_ending);
+    }
+    return max_slice;
+}
