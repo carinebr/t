@@ -25,6 +25,7 @@ class Tester
         void testBracketsLesson7();
         void testDomminatorLesson8();
         void testMaxProfitLesson9();
+        void testMinPerimRectangle();
     private:
         static Tester* m_Instance;
         //constructor

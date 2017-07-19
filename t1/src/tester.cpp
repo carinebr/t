@@ -27,6 +27,7 @@ int solutionBracketsLesson7(const string& S);
 int solutionDomminatorLesson8(vector<int> &A);
 int solutionMaxSlice(vector<int>& A);
 int solutionMaxProfitLesson9(vector<int> &A);
+int solutionMinPerimRectangleLesson10(int N);
 
 /// \fn Tester::Tester(void)
 /// constructor
@@ -720,4 +721,41 @@ int solutionMaxSlice(vector<int>& A)
        max_slice = max(max_slice, max_ending);
     }
     return max_slice;
+}
+
+/**
+ * \fn Tester::testMinPerimRectengle
+ * \brief
+ */
+void Tester::testMinPerimRectangle()
+{
+    int N(1234);//101 got 40 expected 204
+    LOGS("area: " + std::to_string(N));
+    solutionMinPerimRectangleLesson10(N);
+    LOGS("perim :" 
+            + std::to_string(solutionMinPerimRectangleLesson10(N)));
+}
+
+/**
+ * \fn solutionMinPerimRectangleLesson10()
+ * \brief return the min perimeter for a rectangle of surface N
+ * \param[in] N surface
+ */
+int solutionMinPerimRectangleLesson10(int N)
+{
+    int i(1), P((N+1)*2), tmp;
+
+    while(N/i >= i)
+    {
+        if (N%i == 0)
+        {
+            tmp = (i + N/i)*2;
+            if (P == 0)
+                P = tmp;//first result 1* N
+            if (tmp < P)
+                P = tmp;
+        }
+        i++;
+    }
+    return P;
 }
