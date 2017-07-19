@@ -10,6 +10,7 @@ using namespace std;
 #define LOGIT(str) Logger::getInstance()->logIt(DBG, "", __FUNCTION__, __LINE__, str);
 #define LOGS(str) {std::string s=str;Logger::getInstance()->logIt(DBG, "", __FUNCTION__, __LINE__, s);}
 #define STACK(aStack) {std::string s;stackIntToString(aStack, s);Logger::getInstance()->logIt(DBG, "", __FUNCTION__, __LINE__, s);}
+#define VECTOR(aVector) {std::string s;vectorIntToString(aVector, s);Logger::getInstance()->logIt(DBG, "", __FUNCTION__, __LINE__, s);}
 
 /// \file logger.h
 /// \brief log handler header

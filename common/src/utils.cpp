@@ -17,21 +17,41 @@ int get_random (int max)
 }
 
 /**
- * \fn stackToString(stack& S, string& S)
+ * \fn stackIntToString(stack& S, string& S)
  * \brief set a string as a separated ' ' of the element of a stack<int>
  * \param[in] S
  * \param[out] the string
  */
-void stackIntToString(std::stack<int> &Stack, std::string &Str)
+void stackIntToString(std::stack<int> &Stack, std::string &theString)
 {
-    Str.clear();
+    theString.clear();
     stack<int> S (Stack);
     while(!S.empty())
     {
-        Str = Str + std::to_string(S.top());
-        Str = Str + " ";
+        theString = theString + std::to_string(S.top());
+        theString = theString + " ";
         S.pop();
     }
-    if (!Str.empty())
-        Str.pop_back();
+    if (!theString.empty())
+        theString.pop_back();
+}
+
+/**
+ * \fn vectorIntToString(stack& S, string& S)
+ * \brief set a string as a separated ' ' of the element of a stack<int>
+ * \param[in] S
+ * \param[out] the string
+ */
+void vectorIntToString(const std::vector<int> &theVector, std::string &theString)
+{
+    theString.clear();
+    vector<int>::const_iterator itr;
+
+    for (itr = theVector.begin(); itr != theVector.end(); itr++)
+    {
+        theString = theString + std::to_string(*itr);
+        theString = theString + " ";
+    }
+    if (!theString.empty())
+        theString.pop_back();
 }
