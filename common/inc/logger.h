@@ -2,12 +2,14 @@
 #define LOGGER_H_INCLUDED
 
 #include <string>
+#include "utils.h"
 
 enum LoggerLevelEnum {NOLOG, INF, DBG, ERR};
 using namespace std;
 
 #define LOGIT(str) Logger::getInstance()->logIt(DBG, "", __FUNCTION__, __LINE__, str);
 #define LOGS(str) {std::string s=str;Logger::getInstance()->logIt(DBG, "", __FUNCTION__, __LINE__, s);}
+#define STACK(aStack) {std::string s;stackIntToString(aStack, s);Logger::getInstance()->logIt(DBG, "", __FUNCTION__, __LINE__, s);}
 
 /// \file logger.h
 /// \brief log handler header
