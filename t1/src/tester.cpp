@@ -34,6 +34,7 @@ vector<int> factorizationArray(int n);
 vector<int> factorization(int x, vector<int>F);
 int gcd(int a, int b, int res);//grand commun diviseur a utiliser quand res == 1
 long long int fibo(int n);
+int binSearchLe(vector<int> &A, int x);
 /// \fn Tester::Tester(void)
 /// constructor
 /// 
@@ -979,3 +980,49 @@ long long int fibo(int n)
     }
     return fib[n];
 }
+
+/**
+ * \fn Tester::testBinSearchLe
+ * \brief
+ */
+void Tester::testBinSearchLe()
+{
+    int x;
+    int myA[] = {2, 4, 8, 567, 1, 45, 345, 456, 654, 321, 11, 12};
+    vector<int> A(myA, myA+12);
+    std::sort(A.begin(), A.end());
+    VECTOR(A);
+    while(1)
+    {
+        cout << "\nenter x ! ";
+        cin >> x;
+        cout << endl;
+        LOGS("the largest element less or equal to " + std::to_string(x) +
+            " is " + std::to_string(binSearchLe(A, x)));
+    }
+}
+
+/**
+ * \fn binSearchLe
+ * \brief binary search returns the x or the largest element less
+ *  than x in a sorted vector 
+ */
+int binSearchLe(vector <int> &A, int x)
+{
+    int beg(0), end(A.size() - 1), result(-1), mid;
+    while (beg <= end)
+    {
+        mid = (beg + end) / 2;
+        if (A[mid] <= x)
+        {
+            beg = mid + 1;
+            result = mid;
+        }
+        else
+        {
+            end = mid - 1;
+        }
+    }
+    return A[result];
+}
+

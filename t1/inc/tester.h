@@ -27,9 +27,10 @@ class Tester
         void testMaxProfitLesson9();
         void testMinPerimRectangle();
         void testCountSemiPrimesLesson11();
+        void testChocolatesLesson12();
         void testGcd(); 
         void testFibo();
-        void testChocolatesLesson12();
+        void testBinSearchLe();//Le ie Less or Equal
     private:
         static Tester* m_Instance;
         //constructor
