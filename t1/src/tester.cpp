@@ -31,6 +31,7 @@ int solutionMinPerimRectangleLesson10(int N);
 vector<int> solutionCountSemiPrimesLesson11(int N, vector<int> &P, vector<int>&Q);
 vector<int> factorizationArray(int n);
 vector<int> factorization(int x, vector<int>F);
+int gcd(int a, int b, int res);//grand commun diviseur a utiliser quand res == 1
 
 /// \fn Tester::Tester(void)
 /// constructor
@@ -858,5 +859,43 @@ vector<int> factorization(int x, vector<int>F)
     }
     primeFactors.push_back(x);
     return primeFactors;
+}
+
+/**
+ * \fn gcd 
+ * \brief rend le + grand diviseur commun de a et b. res ==1
+ */
+int gcd(int a, int b, int res = 1)
+{
+    if (a == b)
+        return res * a;
+    else if ((a % 2 == 0) && (b % 2 == 0))
+        return gcd(a / 2, b / 2, 2 * res);
+    else if (a % 2 == 0)
+        return gcd(a / 2, b, res);
+    else if (b % 2 == 0)
+        return gcd(a, b / 2, res);
+    else if (a > b)
+        return gcd(a - b, b, res);
+    else
+        return gcd(a, b - a, res);
+    return 0;
+}
+
+/**
+ *\fn Tester::testGcd()
+ *\brief test interactivement gcd
+ */
+ void Tester::testGcd()
+{
+    int a, b;
+    while (1)
+    {
+        cout << "input 2 numbers! stop by C-c " ; 
+        cin >> a >>b;
+        cout << "gcd of " << a << " and " << b << " is "
+            << gcd(a, b, 1) << endl; 
+    }
+    return; 
 }
 

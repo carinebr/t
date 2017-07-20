@@ -78,7 +78,8 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testDomminatorLesson8();
         //Tester::getInstance()->testMaxProfitLesson9();
         //Tester::getInstance()->testMinPerimRectangle();
-        Tester::getInstance()->testCountSemiPrimesLesson11();
+        //Tester::getInstance()->testCountSemiPrimesLesson11();
+        Tester::getInstance()->testGcd();
     }
     catch(ExceptErr& e)
     {
