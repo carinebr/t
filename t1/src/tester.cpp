@@ -28,6 +28,9 @@ int solutionDomminatorLesson8(vector<int> &A);
 int solutionMaxSlice(vector<int>& A);
 int solutionMaxProfitLesson9(vector<int> &A);
 int solutionMinPerimRectangleLesson10(int N);
+vector<int> solutionCountSemiPrimesLesson11(int N, vector<int> &P, vector<int>&Q);
+vector<int> factorizationArray(int n);
+vector<int> factorization(int x, vector<int>F);
 
 /// \fn Tester::Tester(void)
 /// constructor
@@ -759,3 +762,101 @@ int solutionMinPerimRectangleLesson10(int N)
     }
     return P;
 }
+
+/**
+ * \fn testCountSemiPrimesLesson11
+ * \brief
+ */
+void Tester::testCountSemiPrimesLesson11()
+{
+    int myP[] = {1, 4, 16};
+    int myQ[] = {26, 10, 20};
+    vector<int> P(myP, myP + 3);
+    vector<int> Q(myQ, myQ + 3);
+
+    VECTOR(P);
+    VECTOR(Q);
+    VECTOR(solutionCountSemiPrimesLesson11(26, P, Q));
+}
+
+/**
+ * \fn solutionCountSemiPrimesLesson11
+ * \brief give the number of semiprimes between 2 matching elements of 2 vectors
+ */
+vector<int> solutionCountSemiPrimesLesson11(int N, vector<int>&P, vector<int>&Q)
+{
+    vector<int> R, SP;
+    size_t i;
+    int num;
+    int counter(0);
+    vector<int>::iterator itr;
+
+    //vecteur des semiprime number jusqu'a N
+    for (num = 4; num<=N; num++)
+    {
+        vector<int> F(factorizationArray(num));
+        if (factorization(num, F).size() == 2)
+            SP.push_back(num);
+    }
+    //VECTOR(SP);
+    for(i = 0; i < P.size(); i++)
+    {
+        counter = 0;
+        //donnee un range P[i] - Q[i] iterer sur SP
+        for (itr = SP.begin(); itr != SP.end(); itr ++)
+        {
+            if (*itr > Q[i])
+                break;
+            if (*itr < P[i])
+                continue;
+            counter ++;
+        }
+        R.push_back(counter);
+    }
+    return R;
+}
+
+/**
+ * \fn factorizationArray
+ * \brief rend tous les semi prime numbers sous de 2 a n
+ */
+vector<int> factorizationArray(int n)
+{
+    vector<int> F(n + 1, 0);
+//    VECTOR(F);
+    int i(2), k;
+    while (i*i <= n)
+    {
+       if (F[i] == 0)
+       {
+           k = i * i;
+           while (k <= n)
+           {
+               if (F[k] == 0)
+                   F[k] = i;
+               k += i;
+           }
+       }
+       i += 1;
+    }
+    return F;
+}
+
+/**
+ * \fn factorization
+ * \brief rend pour n les chiffres premiers < n qui factorize n
+ *  (dont la multiplication est n. Doit etre appele sur le vecteur fourni
+ *  par factorizationArray(int n)
+ */
+vector<int> factorization(int x, vector<int>F)
+{
+    vector<int> primeFactors;
+    while (F[x] > 0)
+    {
+        primeFactors.push_back(F[x]);
+        x = x/F[x];
+    }
+    primeFactors.push_back(x);
+    return primeFactors;
+}
+

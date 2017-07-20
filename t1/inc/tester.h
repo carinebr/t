@@ -26,6 +26,7 @@ class Tester
         void testDomminatorLesson8();
         void testMaxProfitLesson9();
         void testMinPerimRectangle();
+        void testCountSemiPrimesLesson11();
     private:
         static Tester* m_Instance;
         //constructor

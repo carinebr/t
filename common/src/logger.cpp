@@ -51,7 +51,8 @@ void Logger::logIt(LoggerLevelEnum in_nLevel, const string& in_sFile, const stri
         throw ExceptErr(1, 0, sErr, __FILE__, __FUNCTION__, __LINE__);
     }
     string sCurrentTime(currentDateTime()); 
-    logFile << sCurrentTime << SPACE << in_sFile << SPACE << in_sFunction << SPACE << in_nLine << SPACE << in_sPhrase << endl; 
+    logFile << sCurrentTime << SPACE << in_sFile << SPACE << in_sFunction << SPACE
+        << "L" << in_nLine << SPACE << in_sPhrase << endl; 
     logFile.close(); 
     return;
 }
