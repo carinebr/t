@@ -28,6 +28,7 @@ int solutionDomminatorLesson8(vector<int> &A);
 int solutionMaxSlice(vector<int>& A);
 int solutionMaxProfitLesson9(vector<int> &A);
 int solutionMinPerimRectangleLesson10(int N);
+int solutionChocolatesLesson12(int M, int N);
 vector<int> solutionCountSemiPrimesLesson11(int N, vector<int> &P, vector<int>&Q);
 vector<int> factorizationArray(int n);
 vector<int> factorization(int x, vector<int>F);
@@ -897,5 +898,53 @@ int gcd(int a, int b, int res = 1)
             << gcd(a, b, 1) << endl; 
     }
     return; 
+}
+
+/**
+ * \fn testChocolatesLesson12()
+ * \brief
+ */
+void Tester::testChocolatesLesson12()
+{
+    int M, N;
+    //while (1)
+    {
+        //cout << endl << "enter M (jump) and N (number of chocolates) : ";
+        //cin >> M >> N;
+        M = 10; N = 34560;
+        cout << "number of eaten : " << solutionChocolatesLesson12(M, N)
+            << endl;
+    }
+}
+
+/**
+ * \solutionChocolatesLesson12()
+ * \brief N number of pieces, M jump, returns the eaten
+ */
+int solutionChocolatesLesson12(int M, int N)
+{
+    return N/gcd(M, N, 1);
+}
+
+/**
+ * \solutionChocolatesLesson12()
+ * \brief N number of pieces, M jump, returns the eaten
+ */
+int solutionChocolatesLesson12_2(int M, int N)
+{
+    vector <int> V(N, 0);
+    int i(0), counter(0);
+    while (1)
+    {
+        if (V[i] == 1)
+            break;
+        V[i] = 1;//flag it as eaten
+        counter ++;
+        //jum to the next
+        i = i + M;
+        if (i > N-1)
+            i = i % N;
+    }
+    return counter;
 }
 

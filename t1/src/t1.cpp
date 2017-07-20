@@ -79,7 +79,8 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testMaxProfitLesson9();
         //Tester::getInstance()->testMinPerimRectangle();
         //Tester::getInstance()->testCountSemiPrimesLesson11();
-        Tester::getInstance()->testGcd();
+        //Tester::getInstance()->testGcd();
+        Tester::getInstance()->testChocolatesLesson12();
     }
     catch(ExceptErr& e)
     {
