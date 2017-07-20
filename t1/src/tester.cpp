@@ -33,7 +33,7 @@ vector<int> solutionCountSemiPrimesLesson11(int N, vector<int> &P, vector<int>&Q
 vector<int> factorizationArray(int n);
 vector<int> factorization(int x, vector<int>F);
 int gcd(int a, int b, int res);//grand commun diviseur a utiliser quand res == 1
-
+long long int fibo(int n);
 /// \fn Tester::Tester(void)
 /// constructor
 /// 
@@ -948,3 +948,34 @@ int solutionChocolatesLesson12_2(int M, int N)
     return counter;
 }
 
+/**
+ * \fn Tester::testFibo
+ */
+void Tester::testFibo()
+{
+    int n;
+
+    while (1)
+    {
+        cout << "testFibo enter n :";
+        cin >> n;
+        cout << endl << "the fibo number is : " <<  fibo(n) << endl;
+    }
+}
+
+/**
+ * \fn fibo
+ * \brief return the fibo number of n
+ */
+long long int fibo(int n)
+{
+    int i;
+
+    vector <long long int> fib(n + 2, 0);
+    fib[1] = 1;
+    for (i = 2; i < n+1; i++)
+    {
+        fib[i] = fib[i - 1] + fib[i - 2];
+    }
+    return fib[n];
+}

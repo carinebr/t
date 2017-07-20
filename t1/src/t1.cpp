@@ -80,7 +80,8 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testMinPerimRectangle();
         //Tester::getInstance()->testCountSemiPrimesLesson11();
         //Tester::getInstance()->testGcd();
-        Tester::getInstance()->testChocolatesLesson12();
+        Tester::getInstance()->testFibo();
+        //Tester::getInstance()->testChocolatesLesson12();
     }
     catch(ExceptErr& e)
     {
