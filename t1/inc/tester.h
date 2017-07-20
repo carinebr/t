@@ -31,6 +31,7 @@ class Tester
         void testGcd(); 
         void testFibo();
         void testBinSearchLe();//Le ie Less or Equal
+        void testCountAbsolute();
     private:
         static Tester* m_Instance;
         //constructor

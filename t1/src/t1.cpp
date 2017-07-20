@@ -81,8 +81,9 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testCountSemiPrimesLesson11();
         //Tester::getInstance()->testGcd();
         //Tester::getInstance()->testFibo();
-        Tester::getInstance()->testBinSearchLe();
+        //Tester::getInstance()->testBinSearchLe();
         //Tester::getInstance()->testChocolatesLesson12();
+        Tester::getInstance()->testCountAbsolute();
     }
     catch(ExceptErr& e)
     {

@@ -35,6 +35,7 @@ vector<int> factorization(int x, vector<int>F);
 int gcd(int a, int b, int res);//grand commun diviseur a utiliser quand res == 1
 long long int fibo(int n);
 int binSearchLe(vector<int> &A, int x);
+int countAbsolute(vector <int> &A);
 /// \fn Tester::Tester(void)
 /// constructor
 /// 
@@ -1026,3 +1027,50 @@ int binSearchLe(vector <int> &A, int x)
     return A[result];
 }
 
+/**
+ * \fn testCountAbsolute
+ * \brief
+ */
+void Tester::testCountAbsolute()
+{
+    int myA[] = {-23, -4, 5, 6, 7, 5, 23, -7};
+    vector<int> A(myA, myA + 8);
+    VECTOR(A);
+    LOGS("count absolute: " + std::to_string(countAbsolute(A)));
+}
+
+/**
+ * \fn countAbsolute
+ * \brief returns the counter of absolute distinct of a vector
+ */
+int countAbsolute(vector <int> &A)
+{
+    int res(0), prev_val;
+    //copie vers B
+    vector<int> B(A);
+    vector<int>::iterator itr;
+    for(itr = B.begin(); itr != B.end(); itr++)
+    {
+        *itr = abs(*itr);
+    }
+    //sort B
+    std::sort(B.begin(), B.end());
+    //VECTOR(B);
+    //passe sur B a chaque changement, B++
+    for (itr = B.begin(); itr != B.end(); itr++)
+    {
+        //LOGS(std::to_string(*itr));
+        if (itr == B.begin())
+        {
+            prev_val = *itr;
+            res++;
+            continue;
+        }
+        //not first iteration
+        if (prev_val!=*itr)
+            res++;
+        prev_val = *itr;
+    }
+
+    return res; 
+}
