@@ -85,7 +85,8 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testChocolatesLesson12();
         //Tester::getInstance()->testCountAbsolute();
         //Tester::getInstance()->testBinaryGap();
-        Tester::getInstance()->testCyclicRotation();
+        //Tester::getInstance()->testCyclicRotation();
+        Tester::getInstance()->testTapeEquilibriumLesson3();
     }
     catch(ExceptErr& e)
     {

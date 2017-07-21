@@ -31,6 +31,8 @@ int solutionMaxProfitLesson9(vector<int> &A);
 int solutionMinPerimRectangleLesson10(int N);
 int solutionChocolatesLesson12(int M, int N);
 vector<int> solutionCyclicRotation(vector<int> &A, int K);
+int solutionTapeEquilibriumLesson3(vector<int> &A);
+
 
 vector<int> solutionCountSemiPrimesLesson11(int N, vector<int> &P,
         vector<int>&Q);
@@ -1185,4 +1187,47 @@ vector<int> solutionCyclicRotation(vector<int> &A, int K)
         B[j] = A[i];
     }
     return B;
+}
+
+/**
+ * \fn testTapeEquilibriumLesson3
+ */
+void Tester::testTapeEquilibriumLesson3()
+{
+    int myA[] = {-3, -4, 0, -2};
+    vector <int> A (myA, myA + 4);
+    LOGS("input:");
+    VECTOR(A);
+    LOGS(" res tape equilibrium: " + 
+            std::to_string(solutionTapeEquilibriumLesson3(A)));
+}
+
+/**
+ * \fn solutionTapeEquilibriumLesson3
+ * \brief calcule la difference minimale entre 2 la somme de partie 
+ *        d'un vector
+ */
+int solutionTapeEquilibriumLesson3(vector<int> &A)
+{
+    int diff, diffTmp, i, sizeA(A.size()), sumR(0), sumL(A[0]);
+
+    if (sizeA == 2)
+        return abs(A[0] - A[1]);
+    // travailler avec somme de droite et de gauhe
+    for(i = 1; i < sizeA; i++)
+    {
+        sumR+=A[i];
+    }
+    //LOGS(std::to_string(sumL));
+    //LOGS(std::to_string(sumR));
+    diff = abs(sumL-sumR);//1er contre 2...N
+    for (i = 1; i < sizeA; i ++)
+    {
+        sumL+=A[i];
+        sumR= sumR - A[i];
+        diffTmp = abs(sumL - sumR);
+        if (diff > diffTmp)
+            diff = diffTmp;
+    }
+    return diff;
 }
