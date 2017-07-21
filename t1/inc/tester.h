@@ -35,6 +35,7 @@ class Tester
         void testBinaryGap();
         void testCyclicRotation();
         void testTapeEquilibriumLesson3();
+        void testPermLesson4();
 
     private:
         static Tester* m_Instance;

@@ -32,6 +32,7 @@ int solutionMinPerimRectangleLesson10(int N);
 int solutionChocolatesLesson12(int M, int N);
 vector<int> solutionCyclicRotation(vector<int> &A, int K);
 int solutionTapeEquilibriumLesson3(vector<int> &A);
+int solutionPermLesson4(vector<int> &A);
 
 
 vector<int> solutionCountSemiPrimesLesson11(int N, vector<int> &P,
@@ -1230,4 +1231,44 @@ int solutionTapeEquilibriumLesson3(vector<int> &A)
             diff = diffTmp;
     }
     return diff;
+}
+
+
+/**
+ * \fn testPermLesson4
+ */
+void Tester::testPermLesson4()
+{
+    int myA[] = {1, 1};
+    vector <int> A (myA, myA + 2);
+    LOGS("input:");
+    VECTOR(A);
+    LOGS(" res is permutaion: " + 
+            std::to_string(solutionPermLesson4(A)));
+} 
+
+
+/**
+ * \fn solutionPermLesson4
+ * \brief check whether a vector is a permutation
+ */
+int solutionPermLesson4(vector <int> &A)
+{
+    vector<int> B(A);
+    size_t i;
+
+    if(A.size() == 1 && A[0] != 1)
+        return 0;
+
+    std::sort(B.begin(), B.end());
+    if (B[0] != 1)
+        return 0;
+    for (i = 1; i < B.size(); i ++)
+    {
+        if (B[i] != B[i - 1]+ 1)
+            return 0;
+    }
+    
+  //  VECTOR(B);
+    return 1;
 }
