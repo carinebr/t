@@ -32,6 +32,7 @@ class Tester
         void testFibo();
         void testBinSearchLe();//Le ie Less or Equal
         void testCountAbsolute();
+        void testBinaryGap();
     private:
         static Tester* m_Instance;
         //constructor

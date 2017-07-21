@@ -17,6 +17,7 @@
 
 using namespace std;
 
+int solutionBinaryGap(int i);
 int solutionTestOddOccurencesInArrays(vector<int> &A);
 int solutionPermMissingElemLessons3(vector<int>& A);
 int solutionFrogJmpLesson3(int x, int y, int d);
@@ -36,6 +37,10 @@ int gcd(int a, int b, int res);//grand commun diviseur a utiliser quand res == 1
 long long int fibo(int n);
 int binSearchLe(vector<int> &A, int x);
 int countAbsolute(vector <int> &A);
+void binaryBitsLoop(int N);
+
+    
+    
 /// \fn Tester::Tester(void)
 /// constructor
 /// 
@@ -1073,4 +1078,73 @@ int countAbsolute(vector <int> &A)
     }
 
     return res; 
+}
+
+/**
+ * \fn testBinaryGap
+ */
+void Tester::testBinaryGap()
+{
+    int N;
+    while (1)
+    {
+        cout <<" enter int !";
+        cin >> N;
+        binaryBitsLoop(N);
+        LOGS("\nbinary gap is " + std::to_string(solutionBinaryGap(N)));
+        //binaryBitsLoop(N);
+    }
+}
+
+/**
+ * \fn binaryInt
+ * \brief loop over the bits of an int  Note: le resultat est a l'envert.
+ *        ex:
+ *        4 >>>> 001 et nos 100
+ */
+void binaryBitsLoop(int N)
+{
+    unsigned long long x = static_cast<unsigned long long>(N);
+    while (x != 0)
+    {
+        //unsigned long long bit = x & 1;
+        if(x & 1 )
+        {
+            cout << "1";
+        }
+        else //zero
+        {
+            cout <<"0";
+        }
+        x >>= 1;
+    }
+    cout <<endl;
+}
+/**
+ * \fn solutionBinaryGap
+ * \brief count the 0 between to 1 in the binary representation of a int
+ */
+int solutionBinaryGap(int N)
+{
+    int res(0), tmp_count(0), flagCount(0);
+    //loop over the bits
+    unsigned long long x = static_cast<unsigned long long>(N);
+    while (x != 0)
+    {
+        unsigned long long bit = x & 1;
+        if( bit == 1 )
+        {
+            flagCount = 1;
+            if (tmp_count > res)
+                res = tmp_count;
+            tmp_count = 0;
+        }
+        else //zero
+        {
+            if (flagCount)
+                tmp_count++;
+        }
+        x >>= 1;
+    }
+    return res;
 }

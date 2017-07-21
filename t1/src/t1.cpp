@@ -83,7 +83,8 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testFibo();
         //Tester::getInstance()->testBinSearchLe();
         //Tester::getInstance()->testChocolatesLesson12();
-        Tester::getInstance()->testCountAbsolute();
+        //Tester::getInstance()->testCountAbsolute();
+        Tester::getInstance()->testBinaryGap();
     }
     catch(ExceptErr& e)
     {
