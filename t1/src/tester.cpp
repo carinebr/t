@@ -30,7 +30,10 @@ int solutionMaxSlice(vector<int>& A);
 int solutionMaxProfitLesson9(vector<int> &A);
 int solutionMinPerimRectangleLesson10(int N);
 int solutionChocolatesLesson12(int M, int N);
-vector<int> solutionCountSemiPrimesLesson11(int N, vector<int> &P, vector<int>&Q);
+vector<int> solutionCyclicRotation(vector<int> &A, int K);
+
+vector<int> solutionCountSemiPrimesLesson11(int N, vector<int> &P,
+        vector<int>&Q);
 vector<int> factorizationArray(int n);
 vector<int> factorization(int x, vector<int>F);
 int gcd(int a, int b, int res);//grand commun diviseur a utiliser quand res == 1
@@ -1147,4 +1150,39 @@ int solutionBinaryGap(int N)
         x >>= 1;
     }
     return res;
+}
+
+/**
+ * \fn testCyclicRotation
+ */
+void Tester::testCyclicRotation()
+{
+    int myA[] = {0, 1, 2,3 ,4,5,6,7,8,9};
+    int K;
+    vector <int> A (myA, myA + 10);
+    VECTOR(A);
+    while (1)
+    {
+        cout << "enter K:  ";
+        cin >> K;
+        cout <<endl;
+        VECTOR(solutionCyclicRotation(A, K));
+    }
+}
+
+/**
+ * \fn solutionCyclicRotation
+ */
+vector<int> solutionCyclicRotation(vector<int> &A, int K)
+{
+    size_t i, j, sizeA(A.size());
+    vector<int> B(A.size(), 0);
+    for (i = 0; i < sizeA; i++)
+    {
+        j = i + K;
+        if (j >= sizeA)
+            j = (i + K) % sizeA;
+        B[j] = A[i];
+    }
+    return B;
 }

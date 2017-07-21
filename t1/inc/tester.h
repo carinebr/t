@@ -33,6 +33,8 @@ class Tester
         void testBinSearchLe();//Le ie Less or Equal
         void testCountAbsolute();
         void testBinaryGap();
+        void testCyclicRotation();
+
     private:
         static Tester* m_Instance;
         //constructor
