@@ -33,6 +33,7 @@ int solutionChocolatesLesson12(int M, int N);
 vector<int> solutionCyclicRotation(vector<int> &A, int K);
 int solutionTapeEquilibriumLesson3(vector<int> &A);
 int solutionPermLesson4(vector<int> &A);
+int solutionFrogLesson4(int X, vector<int> &A);
 
 
 vector<int> solutionCountSemiPrimesLesson11(int N, vector<int> &P,
@@ -1272,3 +1273,43 @@ int solutionPermLesson4(vector <int> &A)
   //  VECTOR(B);
     return 1;
 }
+
+/**
+ * \fn testFrogLesson4
+ */
+void Tester::testFrogLesson4()
+{
+    int X;
+    int myA[] = {1};
+    vector <int> A(myA, myA+1);
+    VECTOR(A);
+    while(1)
+    {
+        cout << "input X !";
+        cin >> X;
+        cout<<endl;
+        LOGS("solution: " + std::to_string(solutionFrogLesson4(X, A)));
+        cout << endl;
+    }
+}
+
+/**
+ * \fn solutionFrogLesson4
+ * \brief find the first time where there is a continues til K + 1 in A
+ */
+int solutionFrogLesson4(int X, vector <int> &A)
+{
+    size_t i;
+    //creer XV 
+    vector <int> XV(X, -1);
+    //VECTOR(XV);
+    for (i = 0; i < A.size(); i ++)
+        if(XV[A[i]-1] == -1)
+            XV[A[i]-1] = i;
+    //VECTOR(XV);
+    std::sort(XV.begin(), XV.end());
+    if (XV[0] != -1)
+        return XV[X-1];
+    return -1;
+}
+

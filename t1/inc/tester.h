@@ -36,6 +36,7 @@ class Tester
         void testCyclicRotation();
         void testTapeEquilibriumLesson3();
         void testPermLesson4();
+        void testFrogLesson4();
 
     private:
         static Tester* m_Instance;
