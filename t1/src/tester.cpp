@@ -36,6 +36,7 @@ int solutionPermLesson4(vector<int> &A);
 int solutionFrogLesson4(int X, vector<int> &A);
 int solutionCarsLesson5(vector<int>&);
 int solutionEqu(vector <int> &A);
+int solutionMaxProd(vector<int> &A);
 
 
 vector<int> solutionCountSemiPrimesLesson11(int N, vector<int> &P,
@@ -1380,4 +1381,26 @@ int solutionEqu(vector<int> &A)
     return -1;
 
     //LOGS("sR = : " + to_string(sR));
+}
+
+/**
+ * \fn testMaxProduct
+ */
+void Tester::testMaxProd()
+{
+    int myA[] = {-1, 3, -4, 5, 1, -6, 2, 1};
+    vector <int> A(myA, myA + 8);
+    VECTOR(A);
+    LOGS("max prod : " + to_string(solutionMaxProd(A)));
+}
+
+/**
+ * \fn solutionMaxProd(vector<int> &A)
+ */
+int solutionMaxProd(vector<int> &A)
+{
+    int S(A.size());
+    sort(A.begin(), A.end());
+    VECTOR(A);
+    return max(A[S-3]*A[S-2]*A[S-1], A[S-1]*A[0]*A[1]);
 }

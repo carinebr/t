@@ -89,7 +89,7 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testTapeEquilibriumLesson3();
         //Tester::getInstance()->testPermLesson4();
         //Tester::getInstance()->testFrogLesson4();
-        Tester::getInstance()->testEqu();
+        Tester::getInstance()->testMaxProd();
     }
     catch(ExceptErr& e)
     {
