@@ -282,20 +282,10 @@ int solutionTestOddOccurencesInArrays(vector<int> &A)
  */
 void Tester::testPermMissingElemLessons3()
 {
-    vector<int> A;
-    A.push_back(2);
-    A.push_back(3);
-    A.push_back(4);
-    A.push_back(1);
-    A.push_back(6);
-    A.push_back(7);
-    A.push_back(9);
-    A.push_back(10);
-    A.push_back(5);
-    solutionPermMissingElemLessons3(A);
-    A.clear();
-    A.push_back(1);
-    solutionPermMissingElemLessons3(A);
+    int myA[]={2, 3, 4, 5};
+    vector<int> A(myA, myA + 4);
+    VECTOR(A);
+    LOGS("missing: " + to_string(solutionPermMissingElemLessons3(A)));
 }
 
 /**
@@ -306,47 +296,28 @@ void Tester::testPermMissingElemLessons3()
  */
 int solutionPermMissingElemLessons3(vector<int> &A)
 {
-    int max(A.size() + 1);
-    bool found(false);
-//#define LOGS(STR) 
-    vector<int>::iterator itr, itr2;
+    size_t i;
+
+    if (A.size() == 0)
+        return 0;
+    std::sort(A.begin(), A.end());
     if (A.size() == 1)
-        return 2;
-    for (itr = A.begin(); itr != A.end(); itr++)
     {
-        LOGS(std::to_string(*itr));
+        if (A[0] == 1)
+            return 2;
+        else
+            return 1;
     }
-    
-    for (itr = A.begin(); itr != A.end(); itr++)
+    if (A[0] != 1)
+        return 1;
+    for(i = 0; i < A.size() - 1; i ++)
     {
-        LOGS("*itr: " + std::to_string(*itr));
-        if(*itr != max)
+        if (A[i+1] != A[i] + 1)
         {
-            found = false;
-            for (itr2 = A.begin(); itr2 != A.end(); itr2++)
-            {
-                if (itr == itr2)
-                    continue;
-                if (*itr2 == (*itr) + 1)
-                {
-                    found = true;
-                    break;
-                }
-                else
-                {
-                    continue;
-                }
-            }
+            return A[i] + 1;
         }
-        if (found == false)
-            break;
     }
-    if (found == false)
-    {
-        LOGS("missing elem: " + std::to_string((*itr) + 1));
-        return (*itr) + 1;
-    }
-    return 0;
+    return A[A.size()-1] + 1;
 }
 
 /**
