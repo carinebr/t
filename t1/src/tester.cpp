@@ -35,6 +35,7 @@ int solutionTapeEquilibriumLesson3(vector<int> &A);
 int solutionPermLesson4(vector<int> &A);
 int solutionFrogLesson4(int X, vector<int> &A);
 int solutionCarsLesson5(vector<int>&);
+int solutionEqu(vector <int> &A);
 
 
 vector<int> solutionCountSemiPrimesLesson11(int N, vector<int> &P,
@@ -1346,3 +1347,37 @@ int solutionCarsLesson5(vector <int> &A)
     return p;
 }
 
+/**
+ * \fn testEqu()
+ */
+void Tester::testEqu()
+{
+    int myA[] = {-1, 3, -4, 5, 1, -6, 2, 1};
+    vector <int> A(myA, myA + 8);
+    VECTOR(A);
+    LOGS("eq : " + to_string(solutionEqu(A)));
+}
+
+/**
+ * \fn solutionEqu
+ */
+int solutionEqu(vector<int> &A)
+{
+    int sL(0), sR(0);
+    size_t i;
+
+    for (i=1; i < A.size() - 1; i++)
+    {
+        sR += A[i];
+    }
+    for (i = 1; i < A.size() -1; i++)
+    {
+        if (sL == sR)
+            return i;
+        sL += A[i];
+        sR = sR - A[i];
+    }
+    return -1;
+
+    //LOGS("sR = : " + to_string(sR));
+}

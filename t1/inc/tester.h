@@ -38,6 +38,7 @@ class Tester
         void testPermLesson4();
         void testFrogLesson4();
         void testCarsLesson5();
+        void testEqu();
 
     private:
         static Tester* m_Instance;
