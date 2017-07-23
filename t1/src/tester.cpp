@@ -17,6 +17,7 @@
 
 using namespace std;
 
+int solutionEquilibrium(vector<int> &A);
 int solutionBinaryGap(int i);
 int solutionTestOddOccurencesInArrays(vector<int> &A);
 int solutionPermMissingElemLessons3(vector<int>& A);
@@ -1405,3 +1406,42 @@ int solution333(vector<int> &A)
     return 0;
 }
 
+/**
+ * \fn testEquilibrium
+ */
+void Tester::testEquilibrium()
+{
+    int myA[] = {3, 1, 2, 4, 3};
+    vector<int> A(myA, myA+ 4);
+
+    VECTOR(A);
+    LOGS("equilibrium min diff between sums: " + 
+            to_string(solutionEquilibrium(A)));
+}
+
+/**
+ * \fn solutionEquilibrium
+ */
+int solutionEquilibrium(vector<int> &A)
+{
+    size_t i;
+    int diffMin, sumL(A[0]), sumR(0), diffTmp;
+    //first sumR
+    for (i = 1; i< A.size(); i ++)
+        sumR += A[i];
+
+    //calc diff before
+    diffMin = abs(sumR -sumL);
+
+    for (i = 1; i < A.size() -1; i++)
+    {
+        sumL += A[i];
+        sumR -= A[i];
+        diffTmp = abs(sumL -sumR);
+        //LOGS(to_string(i) + " " + to_string(sumL) + " " + to_string(sumR));
+        if (diffTmp < diffMin)
+            diffMin = diffTmp;
+    }
+
+    return diffMin;
+}

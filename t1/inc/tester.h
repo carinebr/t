@@ -40,6 +40,7 @@ class Tester
         void testCarsLesson5();
         void testEqu();
         void testMaxProd();
+        void testEquilibrium();
         //==================
         void test111();
         void test222();
