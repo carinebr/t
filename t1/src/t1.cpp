@@ -88,7 +88,8 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testCyclicRotation();
         //Tester::getInstance()->testTapeEquilibriumLesson3();
         //Tester::getInstance()->testPermLesson4();
-        Tester::getInstance()->testFrogLesson4();
+        //Tester::getInstance()->testFrogLesson4();
+        Tester::getInstance()->testCarsLesson5();
     }
     catch(ExceptErr& e)
     {

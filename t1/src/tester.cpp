@@ -34,6 +34,7 @@ vector<int> solutionCyclicRotation(vector<int> &A, int K);
 int solutionTapeEquilibriumLesson3(vector<int> &A);
 int solutionPermLesson4(vector<int> &A);
 int solutionFrogLesson4(int X, vector<int> &A);
+int solutionCarsLesson5(vector<int>&);
 
 
 vector<int> solutionCountSemiPrimesLesson11(int N, vector<int> &P,
@@ -1311,5 +1312,37 @@ int solutionFrogLesson4(int X, vector <int> &A)
     if (XV[0] != -1)
         return XV[X-1];
     return -1;
+}
+
+/**
+ * \fn testCarsLesson5
+ */
+void Tester::testCarsLesson5()
+{
+    int myA[]={0, 1, 0, 1, 1};
+    vector<int> A(myA, myA + 5);
+    VECTOR(A);
+    LOGS("pairs : " +to_string(solutionCarsLesson5(A)));
+}
+
+/**
+ * \fn solutionCarsLesson5(vector<int> &)
+ * \brief count num of 1 after 0
+ */
+int solutionCarsLesson5(vector <int> &A)
+{
+    size_t i;
+    int s(0), p(0);
+
+    for (i = 0; i < A.size(); i++)
+    {
+        if (A[i] == 0)
+            s++;
+        if (A[i] == 1)
+            p = p+s;
+        if (p>= 1000000000)
+            return -1;
+    }
+    return p;
 }
 
