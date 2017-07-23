@@ -40,6 +40,10 @@ class Tester
         void testCarsLesson5();
         void testEqu();
         void testMaxProd();
+        //==================
+        void test111();
+        void test222();
+        void test333();
 
     private:
         static Tester* m_Instance;

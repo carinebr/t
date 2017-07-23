@@ -37,6 +37,10 @@ int solutionFrogLesson4(int X, vector<int> &A);
 int solutionCarsLesson5(vector<int>&);
 int solutionEqu(vector <int> &A);
 int solutionMaxProd(vector<int> &A);
+//====================================
+int solution111(vector<int> &A);
+int solution222(vector<int> &A);
+int solution333(vector<int> &A);
 
 
 vector<int> solutionCountSemiPrimesLesson11(int N, vector<int> &P,
@@ -1339,3 +1343,64 @@ int solutionMaxProd(vector<int> &A)
     VECTOR(A);
     return max(A[S-3]*A[S-2]*A[S-1], A[S-1]*A[0]*A[1]);
 }
+
+/**
+ * \fn test111()
+ */
+void Tester::test111()
+{
+    int myA[] = {1, 2, 3, 4};
+    vector<int> A(myA, myA+ 4);
+
+    VECTOR(A);
+    LOGS("solution 111: " + to_string(solution111(A)));
+}
+
+/**
+ * \fn solution111
+ */
+int solution111(vector<int> &A)
+{
+    return 0;
+}
+
+/**
+ * \fn test222()
+ */
+void Tester::test222()
+{
+    int myA[] = {1, 2, 3, 4};
+    vector<int> A(myA, myA+ 4);
+
+    VECTOR(A);
+    LOGS("solution 222: " + to_string(solution222(A)));
+}
+
+/**
+ * \fn solution222
+ */
+int solution222(vector<int> &A)
+{
+    return 0;
+}
+
+/**
+ * \fn test333()
+ */
+void Tester::test333()
+{
+    int myA[] = {1, 2, 3, 4};
+    vector<int> A(myA, myA+ 4);
+
+    VECTOR(A);
+    LOGS("solution 333: " + to_string(solution333(A)));
+}
+
+/**
+ * \fn solution333
+ */
+int solution333(vector<int> &A)
+{
+    return 0;
+}
+
