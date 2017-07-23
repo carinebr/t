@@ -68,7 +68,7 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testTemplate();
         //Tester::getInstance()->testFactory();
         //Tester::getInstance()->testVectorErase();
-        //Tester::getInstance()->testOddOccurencesInArrays();
+        Tester::getInstance()->testOddOccurencesInArrays();
         //Tester::getInstance()->testPermMissingElemLessons3();
         //Tester::getInstance()->testFrogJmpLessons3();
         //Tester::getInstance()->testMissingIntegerLesson4();
@@ -89,7 +89,7 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testTapeEquilibriumLesson3();
         //Tester::getInstance()->testPermLesson4();
         //Tester::getInstance()->testFrogLesson4();
-        Tester::getInstance()->testMaxProd();
+        //Tester::getInstance()->testMaxProd();
     }
     catch(ExceptErr& e)
     {

@@ -241,28 +241,10 @@ void Tester::testVectorErase()
  */
 void Tester::testOddOccurencesInArrays()
 {
-    vector<int> v;
-//    v.push_back(8);
-//    v.push_back(8);
-//    v.push_back(4);
-//    v.push_back(444);
-//    v.push_back(5);
-//    v.push_back(4);
-//    v.push_back(5);
-//    v.push_back(6);
-//    v.push_back(6);
-//    v.push_back(7);
-//    v.push_back(444);
-//    v.push_back(789);
-//    v.push_back(789);
-    v.push_back(9);
-    v.push_back(3);
-    v.push_back(9);
-    v.push_back(3);
-    v.push_back(9);
-    v.push_back(7);
-    v.push_back(9);
-    solutionTestOddOccurencesInArrays(v);
+    int myA[] = {9, 3, 9, 3, 9, 7, 9};
+    vector<int> A(myA, myA+7);
+    VECTOR(A)
+    LOGS("solu odd: " + to_string(solutionTestOddOccurencesInArrays(A)));
     //8 4 8 5 4 5 6 6 7
 }
 /**
@@ -272,44 +254,26 @@ void Tester::testOddOccurencesInArrays()
  */
 int solutionTestOddOccurencesInArrays(vector<int> &A)
 {
+    size_t i, S(A.size());
 //#define LOGS(STR) 
-    for (vector<int>::iterator itr = A.begin(); itr != A.end(); itr++)
+    if (S == 1)
+        return A[0];
+    std::sort(A.begin(), A.end());
+    if (A[S-1] != A[S-2])
+        return A[S - 1];
+    for(i = 0; i < A.size()-1; i++)
     {
-        LOGS(std::to_string(*itr));
-    }
-    bool removed(false);
-    LOGS("");
-    for (vector<int>::iterator itr = A.begin(); itr != A.end(); itr++)
-    {
-        removed = false;
-        LOGS("*itr:" + std::to_string(*itr));
-        vector<int>::iterator itr2=itr;
-        itr2++;
-        for ( ;itr2 != A.end(); itr2++)
+        if (A[i] == A[i+1])
         {
-            if (*itr == *itr2)
-            {
-                LOGS("erase itr2: " + std::to_string(*itr2));
-                LOGS("erase itr: " + std::to_string(*itr));
-                A.erase(itr2);
-                itr = A.erase(itr);
-                removed = true;
-                break;
-            }
-        }
-        if (removed)
-        {
-            itr--;
+            i++;
             continue;
         }
+        else
+        {
+            return A[i];
+        }
     }
-    LOGS("fin!");
-    for (vector<int>::iterator itr = A.begin(); itr != A.end(); itr++)
-    {
-        LOGS("*itr: " + std::to_string(*itr));
-    }
-    
-    return *(A.begin());
+    return 0;
 }
 
 /**
