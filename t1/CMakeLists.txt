@@ -16,7 +16,7 @@ add_definitions(-D_REENTRANT)
 file(GLOB SOURCES "src/*.cpp" "../common/src/*.cpp")
 
 add_executable(t1 ${SOURCES})
-target_link_libraries(t1 curl pthread)
+target_link_libraries(t1 curl pthread mysqlclient)
 #mode debug
 set(CMAKE_BUILD_TYPE Debug)
 #compilation flags
