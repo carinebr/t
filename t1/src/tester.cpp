@@ -40,8 +40,8 @@ int solutionEqu(vector <int> &A);
 int solutionMaxProd(vector<int> &A);
 //====================================
 int solution111(vector<int> &A);
-int solution222(vector<int> &A);
-int solution333(vector<int> &A);
+int solution222(string &E, string &L);
+int solution333(int N);
 
 
 vector<int> solutionCountSemiPrimesLesson11(int N, vector<int> &P,
@@ -1351,9 +1351,9 @@ int solutionMaxProd(vector<int> &A)
  */
 void Tester::test111()
 {
-    int myA[] = {1, 2, 3, 4};
-    vector<int> A(myA, myA+ 4);
-
+    int myA[] = {-1, 1, 3, 3, 3, 2, 1, 0};
+    vector<int> A(myA, myA+ 8);
+ 
     VECTOR(A);
     LOGS("solution 111: " + to_string(solution111(A)));
 }
@@ -1363,7 +1363,26 @@ void Tester::test111()
  */
 int solution111(vector<int> &A)
 {
-    return 0;
+    size_t i, k;
+    size_t sizeA(A.size());
+    int res(0), diff;
+
+    if (sizeA == 3)
+        return (A[2] -A[1] == A[1] - A[0]);
+    for (i = 0; i< sizeA - 3; i++)
+    {
+        k = 1;
+        diff = A[i+1] - A[i];
+        while((A[i + k] == A[i] + static_cast<int>(k*diff)) && i + k < sizeA)
+        {
+            k++;
+            continue;
+        }
+        if (k>= 2)
+            res++;
+    }
+
+    return res;
 }
 
 /**
@@ -1371,19 +1390,50 @@ int solution111(vector<int> &A)
  */
 void Tester::test222()
 {
-    int myA[] = {1, 2, 3, 4};
-    vector<int> A(myA, myA+ 4);
-
-    VECTOR(A);
-    LOGS("solution 222: " + to_string(solution222(A)));
+    string E, L;
+    E= "10:00";
+    L="13:21";
+    while (1)
+    {
+        cout << "entry : ";
+        cin >> E;
+        cout << endl << "leaving : " ;
+        cin >> L;
+        cout << endl;
+        solution222(E, L);
+        cout <<endl;
+    }
+    //LOGS("solution 222: " + to_string(solution222(E, L)));
 }
 
 /**
  * \fn solution222
  */
-int solution222(vector<int> &A)
+int solution222(string &E, string &L)
 {
-    return 0;
+    cout << E << "  to  " << L << endl;
+    int res(2), diffHour;
+    int minute1 = std::stoi(E.substr(0, 2)) * 60  + 
+            stoi(E.substr(3,2));
+    int minute2 = std::stoi(L.substr(0, 2)) * 60  + 
+            stoi(L.substr(3,2));
+    int diffMinute = minute2 - minute1; 
+    if ((diffHour = diffMinute / 60) > 0) //at least the begining of the first hour
+       res += 3;
+    
+    if (diffHour > 1 )// more than 1 hour
+    {
+        res += 4 * (diffHour - 1);
+    }
+    if ((diffMinute % 60)>0)
+    {
+        if (diffHour==0)
+            res +=3;//least than one hour
+        else
+            res +=4;
+    }
+    cout << "res: " << res << endl;
+    return res; 
 }
 
 /**
@@ -1391,18 +1441,23 @@ int solution222(vector<int> &A)
  */
 void Tester::test333()
 {
-    int myA[] = {1, 2, 3, 4};
-    vector<int> A(myA, myA+ 4);
-
-    VECTOR(A);
-    LOGS("solution 333: " + to_string(solution333(A)));
+    LOGS("solution 333: " + to_string(solution333(3)));
 }
 
 /**
  * \fn solution333
  */
-int solution333(vector<int> &A)
+int solution333(int n)
 {
+    int d[30];
+    int l = 0;
+    while (n > 0) {
+        d[l] = n % 2;
+        n /= 2;
+        l++;
+    }
+    for (int i = 0; i < 30; i++)
+        cout << d[i];
     return 0;
 }
 

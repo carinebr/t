@@ -90,10 +90,10 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testPermLesson4();
         //Tester::getInstance()->testFrogLesson4();
         //Tester::getInstance()->testMaxProd();
-        Tester::getInstance()->testEquilibrium();
+        //Tester::getInstance()->testEquilibrium();
         //
         //
-        //Tester::getInstance()->test111();
+        Tester::getInstance()->test111();
         //Tester::getInstance()->test222();
         //Tester::getInstance()->test333();
     }
