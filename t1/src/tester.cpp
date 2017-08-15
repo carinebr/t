@@ -14,6 +14,7 @@
 #include "arraystmpl.h"
 #include "person.h"
 #include "date.h"
+#include "tcpserver.h"
 
 using namespace std;
 
@@ -1500,3 +1501,30 @@ int solutionEquilibrium(vector<int> &A)
 
     return diffMin;
 }
+
+/**
+ *\fn Tester::testTcpServer()
+ *\brief test le server tcp
+ */
+void Tester::testTcpServer()
+{
+    TcpServer myTcpSrv(std::stoi(Appli::getInstance()->getInivalue("tcpPortServer")));
+
+    cout << "test tcp server - port :  " << myTcpSrv.getPort() << endl;  
+    try
+    {
+        myTcpSrv.startListening();
+    }
+    catch(ExceptErr& e)
+    {
+        //todo ajouter a ExceptErr un methode pour ajouter la ligne a la pile. A utiliser a chaque catch(ExceptErr...
+        e.addStackInfo(__FILE__, __FUNCTION__, __LINE__);
+        throw;//handled in the invoker funct
+    }
+    catch(const exception& e)
+    {
+        throw;//handled in the invoker funct
+    }
+    return; 
+}
+

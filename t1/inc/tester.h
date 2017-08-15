@@ -45,6 +45,8 @@ class Tester
         void test111();
         void test222();
         void test333();
+        //==================
+        void testTcpServer();
 
     private:
         static Tester* m_Instance;

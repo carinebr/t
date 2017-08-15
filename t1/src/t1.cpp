@@ -93,9 +93,10 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testEquilibrium();
         //
         //
-        Tester::getInstance()->test111();
+        //Tester::getInstance()->test111();
         //Tester::getInstance()->test222();
         //Tester::getInstance()->test333();
+        Tester::getInstance()->testTcpServer();
     }
     catch(ExceptErr& e)
     {
