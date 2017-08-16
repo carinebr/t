@@ -46,10 +46,12 @@ class Tester
         void test222();
         void test333();
         //==================
-        void testTcpServer();
+        void testTcp();
 
     private:
         static Tester* m_Instance;
+        void testTcpServer();
+        void testTcpClient();
         //constructor
         Tester();
 };

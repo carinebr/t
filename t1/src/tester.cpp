@@ -15,6 +15,7 @@
 #include "person.h"
 #include "date.h"
 #include "tcpserver.h"
+#include "tcpclient.h"
 
 using namespace std;
 
@@ -43,7 +44,7 @@ int solutionMaxProd(vector<int> &A);
 int solution111(vector<int> &A);
 int solution222(string &E, string &L);
 int solution333(int N);
-
+//====================================
 
 vector<int> solutionCountSemiPrimesLesson11(int N, vector<int> &P,
         vector<int>&Q);
@@ -101,7 +102,6 @@ int Tester::testIt(const string& in_sWhichTest)
         }
         catch(ExceptErr& e)
         {
-            //todo ajouter a ExceptErr un methode pour ajouter la ligne a la pile. A utiliser a chaque catch(ExceptErr...
             e.addStackInfo(__FILE__, __FUNCTION__, __LINE__);
             throw;//handled in the invoker funct
         }
@@ -1503,17 +1503,69 @@ int solutionEquilibrium(vector<int> &A)
 }
 
 /**
+ *\fn Tester::testTcp()
+ *\brief test le server/client tcp selon le flag tcpserverclientflag
+ */
+void Tester::testTcp()
+{
+    try
+    {
+        if (Appli::getInstance()->getInivalue("tcpserverclientflag")
+                == "server")
+            testTcpServer();
+        else
+            testTcpClient();
+    }
+    catch(ExceptErr& e)
+    {
+        //todo ajouter a ExceptErr un methode pour ajouter la ligne a la pile. A utiliser a chaque catch(ExceptErr...
+        e.addStackInfo(__FILE__, __FUNCTION__, __LINE__);
+        throw;//handled in the invoker funct
+    }
+    catch(const exception& e)
+    {
+        throw;//handled in the invoker funct
+    }
+}
+/**
  *\fn Tester::testTcpServer()
  *\brief test le server tcp
  */
 void Tester::testTcpServer()
 {
-    TcpServer myTcpSrv(std::stoi(Appli::getInstance()->getInivalue("tcpPortServer")));
+    TcpServer myTcpSrv(std::stoi(Appli::getInstance()->getInivalue("tcpportserver")));
 
     cout << "test tcp server - port :  " << myTcpSrv.getPort() << endl;  
     try
     {
         myTcpSrv.startListening();
+    }
+    catch(ExceptErr& e)
+    {
+        //todo ajouter a ExceptErr un methode pour ajouter la ligne a la pile. A utiliser a chaque catch(ExceptErr...
+        e.addStackInfo(__FILE__, __FUNCTION__, __LINE__);
+        throw;//handled in the invoker funct
+    }
+    catch(const exception& e)
+    {
+        throw;//handled in the invoker funct
+    }
+    return; 
+}
+
+/**
+ *\fn Tester::testTcpclient()
+ *\brief test le client tcp
+ */
+void Tester::testTcpClient()
+{
+    TcpClient myTcpClient(Appli::getInstance()->getInivalue("tcpserveripaddress"),             std::stoi(Appli::getInstance()->getInivalue("tcpportserver")));
+
+    cout << "test tcp client address : " << myTcpClient.getServerAddress()
+        << " - port :  " << myTcpClient.getPort() << endl;
+    try
+    {
+        myTcpClient.uxClient();
     }
     catch(ExceptErr& e)
     {
