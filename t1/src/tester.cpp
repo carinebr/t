@@ -16,6 +16,7 @@
 #include "date.h"
 #include "tcpserver.h"
 #include "tcpclient.h"
+#include "roundforest.h"
 
 using namespace std;
 
@@ -1580,3 +1581,31 @@ void Tester::testTcpClient()
     return; 
 }
 
+/**
+ * \fn Tester::testRoundForest()
+ * \brief test the roundforest excercise
+ */
+void Tester::testRoundForest()
+{
+    bool bMainMachineFlag = Appli::getInstance()->getInivalue
+        ("rfmainmachineflag") == "true"? true: false;
+    RoundForest rf(Appli::getInstance()->getInivalue("rffile"),
+            stoi(Appli::getInstance()->getInivalue("rfnumber")),
+            bMainMachineFlag);
+    try
+    {
+        rf.doIt();
+    }
+    catch(ExceptErr& e)
+    {
+        //todo ajouter a ExceptErr un methode pour ajouter la ligne a la pile. A utiliser a chaque catch(ExceptErr...
+        e.addStackInfo(__FILE__, __FUNCTION__, __LINE__);
+        throw;//handled in the invoker funct
+    }
+    catch(const exception& e)
+    {
+        throw;//handled in the invoker funct
+    }
+    return; 
+}
+        

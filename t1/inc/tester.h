@@ -47,6 +47,8 @@ class Tester
         void test333();
         //==================
         void testTcp();
+        void testRoundForest();
+
 
     private:
         static Tester* m_Instance;
