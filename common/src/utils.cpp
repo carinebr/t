@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <curl/curl.h>
 #include <pthread.h>
 #include "httputils.h"
@@ -54,4 +55,14 @@ void vectorIntToString(const std::vector<int> &theVector, std::string &theString
     }
     if (!theString.empty())
         theString.pop_back();
+}
+int textFileLinesNumber(const string& in_sFileName)
+{
+    int number_of_lines = 0;
+    std::string line;
+    std::ifstream myfile(in_sFileName);
+
+    while (std::getline(myfile, line))
+            ++number_of_lines;
+    return number_of_lines;
 }

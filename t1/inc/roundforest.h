@@ -5,6 +5,8 @@
 #include <string>
 using namespace std;
 
+class  RoundForestThreadInfo;
+
 class RoundForest
 {
     public :
@@ -23,6 +25,7 @@ class RoundForest
 
        void doIt();
        void createDataSets();
+
     private:
         string m_sFileName;
         int m_nMachineNumber;
