@@ -18,8 +18,9 @@ class SqlClient
         ~SqlClient();
         ///copy constructor
         SqlClient(const SqlClient& in_anotherSqlClient);
+        void connect();
     private:
-        MYSQL *conn;
+        MYSQL conn;
         MYSQL_RES *res;
         MYSQL_ROW row;
         string m_sSqlClient;

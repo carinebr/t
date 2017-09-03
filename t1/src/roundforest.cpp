@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <map>
 #include <sstream>
 #include <cstdio>
 #include <pthread.h>
@@ -13,8 +14,14 @@
 #include "utils.h"
 #include <stdlib.h>
 #include <unistd.h>
+#include <boost/tokenizer.hpp>
+#include <fstream>      // fstream
+#include <vector>
+#include <algorithm>    // copy
+#include <iterator>     // ostream_operator
 
 using namespace std;
+using namespace boost;
 
 static void* threadDataSetsHandle(void* in_RoundForestThreadInfo);
 //constructor
@@ -24,6 +31,18 @@ RoundForest::RoundForest(const string& in_sFilename, int in_nMachineNumber,
 {
 }
 const int MAX_MACHINE_NUMBER = 100;
+class ProfName
+{
+    public:
+        ProfName(const string &in_sProfMame): m_sProfName(in_sProfMame), m_nCounter(1) {}
+        ~ProfName() {}
+        const string& getProfName() {return m_sProfName;}
+        void increaseCounter() {m_nCounter++;}
+        int getCounter() {return m_nCounter;}
+    private:
+        string m_sProfName;
+        int m_nCounter;
+};
 class RoundForestThreadInfo
 {
     public:
@@ -133,12 +152,72 @@ void RoundForest::doIt()
  */
 void* threadDataSetsHandle(void* in_pRoundForestThreadInfo)
 {
+    map <string, int> profNameMap;
     std::string* psErr = new(std::string);
     RoundForestThreadInfo* pThreadInfo = static_cast<RoundForestThreadInfo*> (in_pRoundForestThreadInfo);
     string sLog("thread index: ");
     sLog+=std::to_string(pThreadInfo->getTid()) + " dataset name: " + pThreadInfo->getDataSetName();
     pThreadInfo->logIt(DBG, __FILE__, __FUNCTION__, __LINE__, sLog);
 
+    string separator1("");//dont let quoted arguments escape themselves
+    string separator2(",");//split on spaces
+    string separator3("\"\'");//let it have quoted arguments
+    ifstream in(pThreadInfo->getDataSetName().c_str());
+    if (!in.is_open())
+        return NULL;
+    typedef tokenizer< escaped_list_separator<char> > Tokenizer;
+    vector< string > vec;
+    string line;
+    while (getline(in,line))
+    {
+        boost::char_separator<char> sep(",");
+        Tokenizer tok(line, escaped_list_separator<char>(separator1,separator2,separator3));
+        vec.assign(tok.begin(),tok.end());
+        ProfName profName(vec[3]);
+        ++profNameMap[vec[3]];//icrement the counter
+    }
+    //iterate on the map for debugging
+//    map<string, int>::iterator itr;
+//  for (itr = profNameMap.begin(); itr != profNameMap.end(); itr++)
+//  {
+//      if (itr->second > 1)
+//          cout << "profile name : " << itr->first << " -  occurences: "  << itr->second <<endl;
+//  }
+
+    //map to vector
+    vector <pair<string, int>> profNameVector;
+    map<string, int>::iterator itr;
+    for (itr = profNameMap.begin(); itr != profNameMap.end(); itr++)
+    {
+        profNameVector.push_back(*itr);
+    }
+    cout << "vector size : " << profNameVector.size() << endl;
+    //fonctor
+    struct Greater {
+          bool operator() (pair<string, int> r, pair<string,int> l) { return (r.second > l.second);}
+    } myGreater;
+
+    std::sort(profNameVector.begin(), profNameVector.end(), myGreater);
+    //debug
+    vector <pair<string, int>>::iterator itrV;
+    string s;
+    for (size_t i = 0; i < 100 && i<profNameVector.size(); i++)
+    {
+//      cout << "threasd index: " << pThreadInfo->getTid()
+//          << " profile name : " << profNameVector[i].first << " -  occurences: "
+//          << profNameVector[i].second <<endl;
+        s = "threasd index: ";
+        s += to_string(pThreadInfo->getTid());
+        s += " profile name : ";
+        s += profNameVector[i].first + " -  occurences: ";
+        s += to_string(profNameVector[i].second);
+        pThreadInfo->logIt(DBG, "", "", __LINE__, s);
+    }
+    //read the data line after line
+    //find the 1000 more active users (profile name)
+    //find the 1000 more food items (item ids)
+    //              more used world in the reviews
+    //
     pthread_exit((void*)psErr);//thread will stop anyway. But mandatory for using psErr in the calling func
     return NULL;
 } 
@@ -162,6 +241,5 @@ void RoundForest::createDataSets()
 
     string sCommand("split --numeric-suffixes --lines=" +
             std::to_string(nNumLinesEachDateSet) + " " + m_sFileName);
-    //cout << sCommand << endl;
-//  system(sCommand.c_str());
+    //system(sCommand.c_str());
 }
