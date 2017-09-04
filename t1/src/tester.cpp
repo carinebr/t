@@ -6,6 +6,8 @@
 #include <vector>
 #include <algorithm>
 #include <stack>
+#include <cassert>
+#include <boost/shared_ptr.hpp>
 #include "appli.h"
 #include "tester.h"
 #include "excepterr.h"
@@ -17,6 +19,7 @@
 #include "tcpserver.h"
 #include "tcpclient.h"
 #include "roundforest.h"
+#include "d.h"
 
 using namespace std;
 
@@ -1609,3 +1612,18 @@ void Tester::testRoundForest()
     return; 
 }
         
+/**
+ * \fn testBD()
+ * \brief test Base Derived issues
+ */
+void Tester::testBD()
+{
+    boost::shared_ptr<B> pb (new D(19));//les 2 constructeurs sont invoque
+
+    //invoque a B public method
+    assert(pb->getX() == 0);
+    //idem
+    D d(19);
+    assert(d.getX() == 0);
+    d.getBaseXProtected();
+}

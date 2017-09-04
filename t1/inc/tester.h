@@ -12,6 +12,7 @@ class Tester
         //destructor
         ~Tester(void);
         int testIt(const string& in_sWhichTest);
+        void testBD();
         void testTemplate();
         void testFactory();
         void testNullClass();
