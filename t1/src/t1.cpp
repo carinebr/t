@@ -98,7 +98,8 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->test333();
         //Tester::getInstance()->testTcp();
         //Tester::getInstance()->testRoundForest();
-        Tester::getInstance()->testBD();
+        //Tester::getInstance()->testBD();
+        Tester::getInstance()->testVikiSense();
     }
     catch(ExceptErr& e)
     {

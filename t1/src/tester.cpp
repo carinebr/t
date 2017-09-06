@@ -20,6 +20,7 @@
 #include "tcpclient.h"
 #include "roundforest.h"
 #include "d.h"
+#include "speechsamples.h"
 
 using namespace std;
 
@@ -1626,4 +1627,39 @@ void Tester::testBD()
     D d(19);
     assert(d.getX() == 0);
     d.getBaseXProtected();
+}
+
+/**
+ * \fn testVikiSense()
+ */
+void Tester::testVikiSense()
+{
+    int nSamplesNbr;
+    double dMean, dStdDeviation;
+    try
+    {
+        SpeechSamples speech("nst.vks", 4000);//4KHz sampling
+        speech.fetchSpeechInfo();
+        nSamplesNbr = speech.samplesNumbers(200);
+        speech.calculateMeanStdDev(200, &dMean, &dStdDeviation);
+        cout << "mean: " << dMean << "  std deviation: "
+            << dStdDeviation << endl;
+        vector<int> v;
+        for (int i = 0; i < nSamplesNbr; i++)
+        {
+            cout << +(unsigned char)speech[i] << endl;
+            if ((abs(speech[i]-dMean)/dStdDeviation) < 0.3)
+                v.push_back(0);
+            else
+                v.push_back(1);
+        }
+        vector<int>::iterator itr;
+        for (itr = v.begin(); itr != v.end(); itr++)
+            cout << *itr;
+    }
+    catch(const exception& e)
+    {
+        cout << e.what();
+    }
+    return;
 }
