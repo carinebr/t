@@ -29,6 +29,7 @@ class SpeechSamples
                 vector<int>& out_v) const;
         void convertWindowsToZeroOrOne(int in_nPeriodWindowsMSec,
                 int in_nSamplingRate, vector<int>& out_v) const;
+        void collectOriginalSamplesrCorespToOne(vector<int>& inout_v) const;
 
     private:
         unsigned char readBuffer2Amplitude(char* in_buff);

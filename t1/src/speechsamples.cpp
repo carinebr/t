@@ -149,7 +149,7 @@ unsigned char SpeechSamples::operator[](int i)const
  * occurences of 0 or 1
  */
 void SpeechSamples::convertWindowsToZeroOrOne(int in_nPeriodWindowsMSec,
-                int in_nSamplingRate, vector<int>& out_v) const
+                int in_nSamplingRate, vector<int>& inout_vec) const
 {
     int nWindowsNbr;
     int i, nZeroCounter(0), nOneCounter(0), nIndexInWin(0);
@@ -157,12 +157,12 @@ void SpeechSamples::convertWindowsToZeroOrOne(int in_nPeriodWindowsMSec,
         static_cast<double>(static_cast<double>(in_nPeriodWindowsMSec)/
                 static_cast<double>(1000)) * in_nSamplingRate;
     cout << "nWinSizeSamples: " << nWinSizeSamples << endl;
-    nWindowsNbr = out_v.size() / nWinSizeSamples;
-    if (out_v.size()%nWinSizeSamples != 0)
+    nWindowsNbr = inout_vec.size() / nWinSizeSamples;
+    if (inout_vec.size()%nWinSizeSamples != 0)
         ++nWindowsNbr; 
 
     vector<int>::iterator itr;
-    for (itr = out_v.begin(); itr != out_v.end(); itr++)
+    for (itr = inout_vec.begin(); itr != inout_vec.end(); itr++)
     {
         if (*itr == 0)
             ++nZeroCounter;
@@ -178,6 +178,25 @@ void SpeechSamples::convertWindowsToZeroOrOne(int in_nPeriodWindowsMSec,
             nZeroCounter = nOneCounter = 0;
         }
         ++nIndexInWin;
+    }
+    return;
+}
+
+/**
+ * \fn collectOriginalSamplescoeerspToOne
+ * \brief Collect samples from the original corresponding to 1 from the
+ *  converted sgnal
+ *  \param [in out] inout_vec
+ */
+void SpeechSamples::collectOriginalSamplesrCorespToOne(
+        vector<int>& inout_vec) const
+{
+    vector<int>::iterator itr;
+    int i = 0;
+    for (itr = inout_vec.begin(); itr != inout_vec.end(); itr++)
+    {
+        *itr = (*itr == 0)? 0: static_cast<int>(v[i]);
+        i++;
     }
     return;
 }

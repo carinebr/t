@@ -1640,25 +1640,32 @@ void Tester::testVikiSense()
     {
         SpeechSamples speech("nst.vks", 4000);//4KHz sampling
         speech.fetchSpeechInfo();
-        speech.calculateMeanStdDev(201, &dMean, &dStdDeviation);
-        cout << "for the first 201 ms, mean: " << dMean 
+        speech.calculateMeanStdDev(200, &dMean, &dStdDeviation);
+        cout << endl << "for the first 200 ms, mean: " << dMean 
             << "  std deviation: " << dStdDeviation << endl;
 
         //mark in a new vector the sample as 0/1 depending upon 
         //|val-mean|/stddev<0.3
-        vector<int> vecStdScore;
-        speech.markSampleStdScore(200, dMean, dStdDeviation, vecStdScore);
+        vector<int> vecTask;
+        speech.markSampleStdScore(200, dMean, dStdDeviation, vecTask);
         //display it
         cout << "std scor vector:" << endl;
         vector<int>::iterator itr;
-        for (itr = vecStdScore.begin(); itr != vecStdScore.end(); itr++)
+        for (itr = vecTask.begin(); itr != vecTask.end(); itr++)
             cout << *itr;
         cout <<endl;
         speech.convertWindowsToZeroOrOne(WINDOWS_SIZE_MSEC,
-                4000, vecStdScore);
-        cout << "after conversion!" << endl;
-        for (itr = vecStdScore.begin(); itr != vecStdScore.end(); itr++)
+                4000, vecTask);
+        for (itr = vecTask.begin(); itr != vecTask.end(); itr++)
             cout << *itr;
+        cout <<endl;
+        
+        //collect samples corresponding to 1
+        speech.collectOriginalSamplesrCorespToOne(vecTask);
+        cout <<" after collecting original corresponding to 1!" << endl;
+        for (itr = vecTask.begin(); itr != vecTask.end(); itr++)
+            cout << *itr << " ";
+        cout <<endl;
     }
     catch(const exception& e)
     {
