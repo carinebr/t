@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "building vikisense"
+g++ -Wall vikisense.cpp speechsamples.cpp -o vikisense
