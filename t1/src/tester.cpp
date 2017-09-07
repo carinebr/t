@@ -1634,27 +1634,30 @@ void Tester::testBD()
  */
 void Tester::testVikiSense()
 {
-    int nSamplesNbr;
+    const int WINDOWS_SIZE_MSEC = 10;
     double dMean, dStdDeviation;
     try
     {
         SpeechSamples speech("nst.vks", 4000);//4KHz sampling
         speech.fetchSpeechInfo();
-        nSamplesNbr = speech.samplesNumbers(200);
-        speech.calculateMeanStdDev(200, &dMean, &dStdDeviation);
-        cout << "mean: " << dMean << "  std deviation: "
-            << dStdDeviation << endl;
-        vector<int> v;
-        for (int i = 0; i < nSamplesNbr; i++)
-        {
-            cout << +(unsigned char)speech[i] << endl;
-            if ((abs(speech[i]-dMean)/dStdDeviation) < 0.3)
-                v.push_back(0);
-            else
-                v.push_back(1);
-        }
+        speech.calculateMeanStdDev(201, &dMean, &dStdDeviation);
+        cout << "for the first 201 ms, mean: " << dMean 
+            << "  std deviation: " << dStdDeviation << endl;
+
+        //mark in a new vector the sample as 0/1 depending upon 
+        //|val-mean|/stddev<0.3
+        vector<int> vecStdScore;
+        speech.markSampleStdScore(200, dMean, dStdDeviation, vecStdScore);
+        //display it
+        cout << "std scor vector:" << endl;
         vector<int>::iterator itr;
-        for (itr = v.begin(); itr != v.end(); itr++)
+        for (itr = vecStdScore.begin(); itr != vecStdScore.end(); itr++)
+            cout << *itr;
+        cout <<endl;
+        speech.convertWindowsToZeroOrOne(WINDOWS_SIZE_MSEC,
+                4000, vecStdScore);
+        cout << "after conversion!" << endl;
+        for (itr = vecStdScore.begin(); itr != vecStdScore.end(); itr++)
             cout << *itr;
     }
     catch(const exception& e)
@@ -1663,3 +1666,4 @@ void Tester::testVikiSense()
     }
     return;
 }
+

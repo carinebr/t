@@ -24,6 +24,11 @@ class SpeechSamples
                 double* out_pdMean, double* out_pdStdDeviation)const;
         int samplesNumbers(int in_TimeInSec)const;
         unsigned char operator[](int i) const;
+        void markSampleStdScore(int in_nTimeInSec, 
+                double in_dMean, double in_dStdDeviation,
+                vector<int>& out_v) const;
+        void convertWindowsToZeroOrOne(int in_nPeriodWindowsMSec,
+                int in_nSamplingRate, vector<int>& out_v) const;
 
     private:
         unsigned char readBuffer2Amplitude(char* in_buff);
