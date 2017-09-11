@@ -11,6 +11,7 @@ class Tester
         static Tester* getInstance();
         //destructor
         ~Tester(void);
+        void testBinaryGap2();
         int testIt(const string& in_sWhichTest);
         void testVikiSense();
         void testBD();

@@ -1674,3 +1674,60 @@ void Tester::testVikiSense()
     return;
 }
 
+/**
+ * \fn int2BinaryString(int N)
+ * \brief convert int to binary string. Ex: 9 ==> 1001
+ */
+string int2BinaryString(int N)
+{
+    string binary;
+    int mask = 1;
+    for(int i = 0; i < 31; i++)
+    {
+        if((mask&N) >= 1)
+            binary = "1"+binary;
+        else
+            binary = "0"+binary;
+        mask<<=1;
+    }
+    //get rid of trailing '0'
+    binary.erase(0, binary.find_first_not_of('0'));
+    return binary;
+}
+
+/**
+ * \fn binaryGap2
+ * \brief return maximal sequence of consecutive zeros that is surrounded by 
+ * ones at both ends in the binary representation of N.
+ */
+int binaryGap2(int N)
+{
+    string s(int2BinaryString(N));
+    int i, result(0), tmp(0);
+    for(i = 0; i< (int)s.size(); i++)
+    {
+        if (s[i]=='1')
+        {
+            if (tmp>result)
+                result=tmp;
+            tmp=0;
+        }
+        else//==0
+            ++tmp;
+    }
+    cout << s;
+    cout << "result : " << result;
+
+    return result;
+}
+
+/**
+ * \fn testBinaryGap
+ * \brief codility 1
+ */
+void Tester::testBinaryGap2()
+{
+    int N;
+    cin>>N;
+    binaryGap2(N);
+}
