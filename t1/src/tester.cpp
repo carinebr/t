@@ -6,6 +6,7 @@
 #include <vector>
 #include <algorithm>
 #include <stack>
+#include <set>
 #include <cassert>
 #include <boost/shared_ptr.hpp>
 #include "appli.h"
@@ -1730,4 +1731,47 @@ void Tester::testBinaryGap2()
     int N;
     cin>>N;
     binaryGap2(N);
+}
+
+/**
+ * \fn oddOccur2
+ * \brief returns the value of the unpaired element in the array
+ */
+int oddOccur2(vector<int>& A)
+{
+    set<int> s;
+    for (auto i : A)
+    {
+        if (s.find(i) != s.end())
+            s.erase(i);
+        else
+            s.insert(i);
+    }
+    cout << "result " <<*s.begin() << endl;
+    return *(s.begin());
+}
+/**
+ * \fn Tester::testOddOccurencesInArrays2()
+ * \brief test codility 2 odd occurence
+ */
+void Tester::testOddOccurencesInArrays2()
+{
+    vector<int> v;
+    int i(99);
+
+    while(i)    
+    {
+        cin>>i;
+        if (i == 0)
+            break;
+        v.push_back(i);
+    }
+    vector<int>::iterator itr;
+    cout << endl;
+    cout << "size:" << v.size() << endl;
+    for(itr = v.begin(); itr != v.end(); itr++)
+        cout << *itr << "-";
+    cout  << endl;
+    oddOccur2(v);
+    return;
 }

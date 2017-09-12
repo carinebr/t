@@ -20,6 +20,7 @@ class Tester
         void testNullClass();
         void testVectorErase();
         void testOddOccurencesInArrays();
+        void testOddOccurencesInArrays2();
         void testPermMissingElemLessons3();
         void testFrogJmpLessons3();
         void testMissingIntegerLesson4();

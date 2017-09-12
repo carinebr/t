@@ -100,7 +100,7 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testRoundForest();
         //Tester::getInstance()->testBD();
         //Tester::getInstance()->testVikiSense();
-        Tester::getInstance()->testBinaryGap2();
+        Tester::getInstance()->testOddOccurencesInArrays2();
     }
     catch(ExceptErr& e)
     {
