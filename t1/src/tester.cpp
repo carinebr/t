@@ -308,29 +308,19 @@ void Tester::testPermMissingElemLessons3()
  */
 int solutionPermMissingElemLessons3(vector<int> &A)
 {
-    size_t i;
-
-    if (A.size() == 0)
-        return 0;
-    std::sort(A.begin(), A.end());
-    if (A.size() == 1)
+    int s(A.size());
+    vector<int> B(s+1, 0);
+    int i;
+    for (i = 0; i < s; i++)
     {
-        if (A[0] == 1)
-            return 2;
-        else
-            return 1;
+        B[A[i]-1] = A[i];
     }
-    if (A[0] != 1)
-        return 1;
-    for(i = 0; i < A.size() - 1; i ++)
-    {
-        if (A[i+1] != A[i] + 1)
-        {
-            return A[i] + 1;
-        }
-    }
-    return A[A.size()-1] + 1;
+    for (i = 0; i < (int)B.size(); i++)
+        if (B[i] == 0)
+            return i+1;
+    return 0;
 }
+
 
 /**
  * \fn testFrogJmpLessons3()
