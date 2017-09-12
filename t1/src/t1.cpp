@@ -70,7 +70,7 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testVectorErase();
         //Tester::getInstance()->testOddOccurencesInArrays();
         //Tester::getInstance()->testPermMissingElemLessons3();
-        //Tester::getInstance()->testFrogJmpLessons3();
+        Tester::getInstance()->testFrogJmpLessons3();
         //Tester::getInstance()->testMissingIntegerLesson4();
         //Tester::getInstance()->testCountDivLesson5();
         //Tester::getInstance()->testDistinctLesson6();
@@ -85,7 +85,7 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testChocolatesLesson12();
         //Tester::getInstance()->testCountAbsolute();
         //Tester::getInstance()->testBinaryGap();
-        Tester::getInstance()->testCyclicRotation();
+        //Tester::getInstance()->testCyclicRotation();
         //Tester::getInstance()->testTapeEquilibriumLesson3();
         //Tester::getInstance()->testPermLesson4();
         //Tester::getInstance()->testFrogLesson4();

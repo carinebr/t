@@ -353,18 +353,10 @@ void Tester::testFrogJmpLessons3()
 
 int solutionFrogJmpLesson3(int X, int Y, int D)
 {
-    int steps(0);
-
-    int diff(Y-X);
-    if (diff == 0)
-        return 0;
-    if (diff%D ==0)
-        steps = (diff)/D;
-    else
-        steps = (diff/D) + 1;
-    //LOGS("X: " + std::to_string(X) + " Y: " + std::to_string(Y) + " D: "
-    //        + std::to_string(D) + " steps: " + std::to_string(steps));
-    return steps;
+    int diff (Y-X);
+    if (diff%D == 0)
+        return diff/D;
+    return diff/D + 1;
 }
 
 /**
