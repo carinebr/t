@@ -1120,7 +1120,7 @@ void Tester::testCyclicRotation()
     {
         cout << "enter K:  ";
         cin >> K;
-        cout <<endl;
+        cout << endl;
         VECTOR(solutionCyclicRotation(A, K));
     }
 }
@@ -1130,14 +1130,14 @@ void Tester::testCyclicRotation()
  */
 vector<int> solutionCyclicRotation(vector<int> &A, int K)
 {
-    size_t i, j, sizeA(A.size());
-    vector<int> B(A.size(), 0);
-    for (i = 0; i < sizeA; i++)
+    int N(A.size()), i;
+    vector<int>B(N);
+    if (N == 0)
+        return B;
+
+    for (i = 0; i < N; i++)
     {
-        j = i + K;
-        if (j >= sizeA)
-            j = (i + K) % sizeA;
-        B[j] = A[i];
+        B[(i+K)%N] = A[i];
     }
     return B;
 }

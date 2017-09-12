@@ -85,7 +85,7 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testChocolatesLesson12();
         //Tester::getInstance()->testCountAbsolute();
         //Tester::getInstance()->testBinaryGap();
-        //Tester::getInstance()->testCyclicRotation();
+        Tester::getInstance()->testCyclicRotation();
         //Tester::getInstance()->testTapeEquilibriumLesson3();
         //Tester::getInstance()->testPermLesson4();
         //Tester::getInstance()->testFrogLesson4();
@@ -100,7 +100,7 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testRoundForest();
         //Tester::getInstance()->testBD();
         //Tester::getInstance()->testVikiSense();
-        Tester::getInstance()->testOddOccurencesInArrays2();
+        //Tester::getInstance()->testOddOccurencesInArrays2();
     }
     catch(ExceptErr& e)
     {
