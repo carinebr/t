@@ -434,15 +434,15 @@ void Tester::testDistinctLesson6()
 {
     int myA[] = {2, 1, 1, 2, 3, 1};
     vector<int> A (myA, myA + 6);
-    solutionDistinctLesson6(A);
+    cout << solutionDistinctLesson6(A) <<endl;
 
     A.clear();
-    solutionDistinctLesson6(A);
+    cout << solutionDistinctLesson6(A) <<endl;
 
     A.push_back(3);
-    solutionDistinctLesson6(A);
+    cout << solutionDistinctLesson6(A) <<endl;
     A.push_back(2);
-    solutionDistinctLesson6(A);
+    cout << solutionDistinctLesson6(A) <<endl;
 }
 
 /**
@@ -451,21 +451,8 @@ void Tester::testDistinctLesson6()
  */
 int solutionDistinctLesson6(vector<int>& A)
 {
-    size_t i;
-    int res(1);
-    
-    if(A.size() == 0)
-        return 0;
-    vector<int> B(A);
-    std::sort(B.begin(), B.end());
-    
-    for (i = 1; i < B.size(); i++)
-    {
-       if (B[i-1]!=B[i])
-          res++;
-    } 
-    //LOGS("res: " + std::to_string(res));
-    return res;
+    set<int> S(A.begin(), A.end());
+    return S.size();
 }
 
 /**
