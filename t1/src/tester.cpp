@@ -25,6 +25,7 @@
 
 using namespace std;
 
+int solutionPassingCars(vector<int>&A);
 int solutionEquilibrium(vector<int> &A);
 int solutionBinaryGap(int i);
 int solutionTestOddOccurencesInArrays(vector<int> &A);
@@ -1756,4 +1757,49 @@ void Tester::testOddOccurencesInArrays2()
     cout  << endl;
     oddOccur2(v);
     return;
+}
+/**
+ * \fn solutionPassingCars
+ */
+int solutionPassingCars(vector<int>&A)
+{
+    int res(0), sr(0), i, l(A.size());
+
+    for (i = 0; i < l; i++)
+        sr+=A[i];
+    //cout << sr << endl;
+    for (i = 0; i < l; i++)
+    {
+        if (A[i] == 0)
+            res = res + sr;
+        else//1
+            sr=sr-1;
+    }
+    return res;
+}
+/**
+ * \fn solutionPassingCars2
+ */
+int solutionPassingCars2(vector<int>&A)
+{
+    int res(0), i, l(A.size()), zerosnbr(0);
+
+    for (i = 0; i < l; i++)
+    {
+        if (A[i] == 0)
+            ++zerosnbr;
+        else//1
+            res = res + zerosnbr;
+    }
+    return res;
+}
+/**
+ * \fn testPassingCa
+ */
+void Tester::testPassingCars()
+{
+    int myA[] = {0, 1, 0, 1, 1, 0, 1, 0};
+    vector<int> A(myA, myA+8);
+    VECTOR(A)
+    cout << solutionPassingCars2(A) <<endl;
 }

@@ -15,6 +15,7 @@ class Tester
         int testIt(const string& in_sWhichTest);
         void testVikiSense();
         void testBD();
+        void testPassingCars();
         void testTemplate();
         void testFactory();
         void testNullClass();

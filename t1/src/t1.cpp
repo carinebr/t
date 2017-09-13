@@ -70,7 +70,8 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testVectorErase();
         //Tester::getInstance()->testOddOccurencesInArrays();
         //Tester::getInstance()->testPermMissingElemLessons3();
-        Tester::getInstance()->testFrogJmpLessons3();
+        //Tester::getInstance()->testFrogJmpLessons3();
+        Tester::getInstance()->testPassingCars();
         //Tester::getInstance()->testMissingIntegerLesson4();
         //Tester::getInstance()->testCountDivLesson5();
         //Tester::getInstance()->testDistinctLesson6();
