@@ -27,6 +27,7 @@ using namespace std;
 
 int solutionPassingCars(vector<int>&A);
 int solution111(vector<int> &A);
+int solution444(vector<int> &A);
 int solution222(int A, int B);
 int solution333(vector<int> &A);
 int solutionEquilibrium(vector<int> &A);
@@ -1882,7 +1883,7 @@ int solution222(int A, int B)
         for (; i< (int)la; i++)
             sc.append(1, sb[i]);
     }
-    /cout << sc << endl;
+    cout << sc << endl;
     //string to binary
     size_t toto;
     int x = std::stoi(sc.c_str(), &toto, 2);
@@ -1917,3 +1918,43 @@ int solution333(vector<int> &A)
     return 0;
 }
 
+/**
+ * \fn test444()
+ */
+void Tester::test444()
+{
+    int myA[] = {1, 2, 3 };
+    vector<int> A(myA, myA+ 3);
+ 
+    VECTOR(A);
+    LOGS("solution 444: " + to_string(solution444(A)));
+    vector<int>::iterator itr;
+    for (itr = A.begin(); itr != A.end(); itr ++)
+        cout << *itr << " ";
+    cout <<endl;
+
+}
+
+/**
+ * \fn solution444
+ */
+int solution444(vector<int> &A)
+{
+    int ret = 1;
+    int i, s(A.size());
+    vector<int> B(s+1, 0);
+    for (i = 0; i < s; i++)
+    {
+        if (A[i]>=1 && A[i]<= s)
+        {
+            B[A[i]-1] = A[i];
+        }
+    }
+    VECTOR (B);
+    for (i = 0; i < B.size(); i++)
+    {
+        if (B[i] == 0)
+            return i+1;
+    }
+    return ret;
+}

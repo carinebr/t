@@ -102,8 +102,9 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testVikiSense();
         //Tester::getInstance()->testOddOccurencesInArrays2();
         //Tester::getInstance()->test111();
-        Tester::getInstance()->test222();
+        //Tester::getInstance()->test222();
         //Tester::getInstance()->test333();
+        Tester::getInstance()->test444();
     }
     catch(ExceptErr& e)
     {

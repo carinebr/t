@@ -53,6 +53,7 @@ class Tester
         void test111();
         void test222();
         void test333();
+        void test444();
         //==================
         void testTcp();
         void testRoundForest();
