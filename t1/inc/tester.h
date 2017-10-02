@@ -25,6 +25,7 @@ class Tester
         void testPermMissingElemLessons3();
         void testPermMissingElem2();
         void testFrogJmpLessons3();
+        void testFrogJmp2();
         void testMissingIntegerLesson4();
         void testCountDivLesson5();
         void testDistinctLesson6();

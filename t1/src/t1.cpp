@@ -85,7 +85,7 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testBinSearchLe();
         //Tester::getInstance()->testChocolatesLesson12();
         //Tester::getInstance()->testCountAbsolute();
-        Tester::getInstance()->testPermMissingElem2();
+        //Tester::getInstance()->testPermMissingElem2();
         //Tester::getInstance()->testCyclicRotation();
         //Tester::getInstance()->testTapeEquilibriumLesson3();
         //Tester::getInstance()->testPermLesson4();
@@ -93,6 +93,7 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testMaxProd();
         //Tester::getInstance()->testEquilibrium();
         //
+        Tester::getInstance()->testFrogJmp2();
         //
         //Tester::getInstance()->testAAA();
         //Tester::getInstance()->test333();

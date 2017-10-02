@@ -35,6 +35,7 @@ int solutionBinaryGap(int i);
 int solutionTestOddOccurencesInArrays(vector<int> &A);
 int solutionPermMissingElemLessons3(vector<int>& A);
 int solutionFrogJmpLesson3(int x, int y, int d);
+int solutionFrogJmp2(int x, int y, int d);
 int solutionMissingIntegerLesson4(vector<int>& A);
 int solutionContDivLesson5(int A, int B, int K);
 int solutionDistinctLesson6(vector<int>& A);
@@ -326,7 +327,31 @@ int solutionPermMissingElemLessons3(vector<int> &A)
     return 0;
 }
 
+/**
+ * \fn solution solutionFrogJmp2()
+ */
+int solutionFrogJmp2(int X, int Y,int D)
+{
+    int steps;
 
+    steps = (Y-X)/D;
+    if ((Y-X)%D != 0)
+        ++steps;
+    return steps;
+}
+
+/**
+ * \fn testFrogJmp2()
+ */
+void Tester::testFrogJmp2()
+{
+    cout << "\n" << solutionFrogJmp2(1, 2, 3);
+    cout << "\n" << solutionFrogJmp2(1, 10, 3);
+    cout << "\n" << solutionFrogJmp2(1, 100, 3);
+    cout << "\n" << solutionFrogJmp2(1, 2, 10);
+    cout << "\n" << solutionFrogJmp2(1, 1, 3);
+}
+ 
 /**
  * \fn testFrogJmpLessons3()
  */
@@ -1965,7 +1990,7 @@ int solution444(vector<int> &A)
 }
 int solutionPermMissingElem2(vector<int>&A)
 {
-    int i;
+    size_t i;
     vector<int> B(A.size() + 1, 0);
 
     for (i = 0; i< A.size(); i++)
