@@ -26,6 +26,9 @@
 using namespace std;
 
 int solutionPassingCars(vector<int>&A);
+int solution111(vector<int> &A);
+int solution222(int A, int B);
+int solution333(vector<int> &A);
 int solutionEquilibrium(vector<int> &A);
 int solutionBinaryGap(int i);
 int solutionTestOddOccurencesInArrays(vector<int> &A);
@@ -48,9 +51,9 @@ int solutionCarsLesson5(vector<int>&);
 int solutionEqu(vector <int> &A);
 int solutionMaxProd(vector<int> &A);
 //====================================
-int solution111(vector<int> &A);
-int solution222(string &E, string &L);
-int solution333(int N);
+int solutionAAA(vector<int> &A);
+int solutionBBB(string &E, string &L);
+int solutionCCC(int N);
 //====================================
 
 vector<int> solutionCountSemiPrimesLesson11(int N, vector<int> &P,
@@ -1324,21 +1327,21 @@ int solutionMaxProd(vector<int> &A)
 }
 
 /**
- * \fn test111()
+ * \fn testAAA()
  */
-void Tester::test111()
+void Tester::testAAA()
 {
     int myA[] = {-1, 1, 3, 3, 3, 2, 1, 0};
     vector<int> A(myA, myA+ 8);
  
     VECTOR(A);
-    LOGS("solution 111: " + to_string(solution111(A)));
+    LOGS("solution AAA: " + to_string(solutionAAA(A)));
 }
 
 /**
- * \fn solution111
+ * \fn solutionAAA
  */
-int solution111(vector<int> &A)
+int solutionAAA(vector<int> &A)
 {
     size_t i, k;
     size_t sizeA(A.size());
@@ -1363,9 +1366,9 @@ int solution111(vector<int> &A)
 }
 
 /**
- * \fn test222()
+ * \fn testBBB()
  */
-void Tester::test222()
+void Tester::testBBB()
 {
     string E, L;
     E= "10:00";
@@ -1377,16 +1380,16 @@ void Tester::test222()
         cout << endl << "leaving : " ;
         cin >> L;
         cout << endl;
-        solution222(E, L);
+        solutionBBB(E, L);
         cout <<endl;
     }
-    //LOGS("solution 222: " + to_string(solution222(E, L)));
+    //LOGS("solution BBB: " + to_string(solutionBBB(E, L)));
 }
 
 /**
- * \fn solution222
+ * \fn solutionBBB
  */
-int solution222(string &E, string &L)
+int solutionBBB(string &E, string &L)
 {
     cout << E << "  to  " << L << endl;
     int res(2), diffHour;
@@ -1414,17 +1417,17 @@ int solution222(string &E, string &L)
 }
 
 /**
- * \fn test333()
+ * \fn testCCC()
  */
-void Tester::test333()
+void Tester::testCCC()
 {
-    LOGS("solution 333: " + to_string(solution333(3)));
+    LOGS("solution CCC: " + to_string(solutionCCC(3)));
 }
 
 /**
- * \fn solution333
+ * \fn solutionCCC
  */
-int solution333(int n)
+int solutionCCC(int n)
 {
     int d[30];
     int l = 0;
@@ -1790,3 +1793,127 @@ void Tester::testPassingCars()
     VECTOR(A)
     cout << solutionPassingCars2(A) <<endl;
 }
+/**
+ * \fn test111()
+ */
+void Tester::test111()
+{
+    int myA[] = {-1, 1, 3, 3, 3, 2, 1, 0};
+    vector<int> A(myA, myA+ 8);
+ 
+    VECTOR(A);
+    LOGS("solution 111: " + to_string(solution111(A)));
+    vector<int>::iterator itr;
+    for (itr = A.begin(); itr != A.end(); itr ++)
+        cout << *itr << " ";
+    cout <<endl;
+
+}
+
+/**
+ * \fn solution111
+ */
+int solution111(vector<int> &A)
+{
+    std::sort(A.begin(), A.end());
+    int i, s(A.size());
+    int ret(0), counter(1);
+    if (s < 2)
+        return 0;
+    if (s == 2)
+    {
+        if (( A[0] == A[1]))
+            return 1;
+        else
+            return 0;
+    }
+    for (i = 1; i<s; i++)
+    {
+        ++counter;
+        if (i != 0 && A[i] != A[i-1])
+        {
+            ret = ret + ((counter-1)*(counter-2)/2);
+            counter = 1;
+        }
+        else
+        {
+            if (i== s-1)//last
+                ret = ret + ((counter)*(counter)/2);
+        }
+    }
+    return ret;
+}
+
+/**
+ * \fn test222()
+ */
+void Tester::test222()
+{
+    int A= 12, B = 56;
+    LOGS("solution 222: " + to_string(solution222(A, B)));
+    cout <<endl;
+
+}
+
+/**
+ * \fn solution222
+ */
+int solution222(int A, int B)
+{
+    string sa(int2BinaryString(A)), sb(int2BinaryString(B)), sc;
+    size_t la(sa.size()), lb(sb.size()), lsmall;
+    int i;
+    lsmall= la < lb? la: lb;
+    cout << A << ": " << sa << ", size:" << la <<endl;
+    cout << B << ": " << sb << ", size:" << lb <<endl;
+    for (i = 0; i < (int)lsmall; i++)
+    {
+        sc.append(1, sa[i]);
+        sc.append(1, sb[i]);
+    }
+
+    if (lb>la)
+    {
+        for (; i< (int)lb; i++)
+            sc.append(1, sb[i]);
+    }
+    if (la>lb)
+    {
+        for (; i< (int)la; i++)
+            sc.append(1, sb[i]);
+    }
+    /cout << sc << endl;
+    //string to binary
+    size_t toto;
+    int x = std::stoi(sc.c_str(), &toto, 2);
+    //cout <<" result:" << x << endl;
+
+
+    return x;
+}
+
+/**
+ * \fn test333()
+ */
+void Tester::test333()
+{
+    int myA[] = {-1, 1, 3, 3, 3, 2, 1, 0};
+    vector<int> A(myA, myA+ 8);
+ 
+    VECTOR(A);
+    LOGS("solution 333: " + to_string(solution333(A)));
+    vector<int>::iterator itr;
+    for (itr = A.begin(); itr != A.end(); itr ++)
+        cout << *itr << " ";
+    cout <<endl;
+
+}
+
+/**
+ * \fn solution333
+ */
+int solution333(vector<int> &A)
+{
+    return 0;
+}
+

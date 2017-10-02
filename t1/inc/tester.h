@@ -47,6 +47,9 @@ class Tester
         void testMaxProd();
         void testEquilibrium();
         //==================
+        void testAAA();
+        void testBBB();
+        void testCCC();
         void test111();
         void test222();
         void test333();

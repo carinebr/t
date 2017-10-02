@@ -74,7 +74,7 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testPassingCars();
         //Tester::getInstance()->testMissingIntegerLesson4();
         //Tester::getInstance()->testCountDivLesson5();
-        Tester::getInstance()->testDistinctLesson6();
+        //Tester::getInstance()->testDistinctLesson6();
         //Tester::getInstance()->testBracketsLesson7();
         //Tester::getInstance()->testDomminatorLesson8();
         //Tester::getInstance()->testMaxProfitLesson9();
@@ -94,14 +94,16 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testEquilibrium();
         //
         //
-        //Tester::getInstance()->test111();
-        //Tester::getInstance()->test222();
+        //Tester::getInstance()->testAAA();
         //Tester::getInstance()->test333();
         //Tester::getInstance()->testTcp();
         //Tester::getInstance()->testRoundForest();
         //Tester::getInstance()->testBD();
         //Tester::getInstance()->testVikiSense();
         //Tester::getInstance()->testOddOccurencesInArrays2();
+        //Tester::getInstance()->test111();
+        Tester::getInstance()->test222();
+        //Tester::getInstance()->test333();
     }
     catch(ExceptErr& e)
     {
