@@ -23,6 +23,7 @@ class Tester
         void testOddOccurencesInArrays();
         void testOddOccurencesInArrays2();
         void testPermMissingElemLessons3();
+        void testPermMissingElem2();
         void testFrogJmpLessons3();
         void testMissingIntegerLesson4();
         void testCountDivLesson5();

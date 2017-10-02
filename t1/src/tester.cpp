@@ -1691,7 +1691,7 @@ int binaryGap2(int N)
             ++tmp;
     }
     cout << s;
-    cout << "result : " << result;
+    cout << "\n result : " << result;
 
     return result;
 }
@@ -1703,8 +1703,13 @@ int binaryGap2(int N)
 void Tester::testBinaryGap2()
 {
     int N;
-    cin>>N;
-    binaryGap2(N);
+    while (1)
+    {
+        cout << "\n\nenter a number ";
+        cin>>N;
+        cout <<endl;
+        binaryGap2(N);
+    }
 }
 
 /**
@@ -1951,10 +1956,41 @@ int solution444(vector<int> &A)
         }
     }
     VECTOR (B);
-    for (i = 0; i < B.size(); i++)
+    for (i = 0; i < (int)B.size(); i++)
     {
         if (B[i] == 0)
             return i+1;
     }
     return ret;
+}
+int solutionPermMissingElem2(vector<int>&A)
+{
+    int i;
+    vector<int> B(A.size() + 1, 0);
+
+    for (i = 0; i< A.size(); i++)
+    {
+        B[A[i] - 1] = A[i];
+    }
+    VECTOR(B);
+    for (i = 0; i < B.size(); i++)
+    {
+        if (B[i] == 0)
+        {
+            return i+1;
+        }
+    }
+    return 0;
+}
+/*
+ * \fn testPermMissingElem2
+ */
+void Tester::testPermMissingElem2()
+{
+    int myA[] = {2, 3 , 1, 5};
+    vector<int> A(myA, myA+ 4);
+
+    VECTOR(A);
+    LOGS("solution perm missing: " + to_string(solutionPermMissingElem2(A)));
+    cout <<endl;
 }
