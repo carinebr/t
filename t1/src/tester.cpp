@@ -25,6 +25,8 @@
 
 using namespace std;
 
+void coutIntVector(const vector<int> A);
+int solutionDemoCodility(vector<int>&A);
 int solutionPassingCars(vector<int>&A);
 int solutionDDD(vector<int> &A);
 int solution444(vector<int> &A);
@@ -2068,6 +2070,64 @@ void Tester::testBitWiseOps()
     return;
 }
 
+/**
+ * \fn testDemoCodility()
+ */
+void Tester::testDemoCodility()
+{
+    int myA[] = {1, 3, 4, 6, 4, 1, 2};
+    vector<int> A(myA, myA+ 7);
+ 
+    cout << "\nsolutionDemoCodibility : " << solutionDemoCodility(A)<< endl;
+    VECTOR(A);
+    LOGS("solution DemoCodility: " + to_string(solutionDemoCodility(A)));
+}
+
+/**
+ * \fn coutIntVector
+ * \brief print vector int 
+ */
+void coutIntVector(const vector<int> A)
+{
+    size_t i;
+    cout << endl;
+    for (i = 0; i< A.size(); i++)
+    {
+        cout<<A[i] << " ";
+    }
+    cout << endl;
+}
+
+
+/**
+ * \fn solutionDemoCodility
+ * For example, given A = [1, 3, 6, 4, 1, 2], the function should return 5.
+ * Given A = [1, 2, 3], the function should return 4.
+ * Given A = [−1, −3], the function should return 1.
+ */
+int solutionDemoCodility(vector<int> &A)
+{
+    size_t i, s(A.size());
+
+    //cout <<"\nsolutionDemoCodility" << endl;
+    //coutIntVector(A);
+    if (s == 1 && A[0] != 1)
+        return 1;
+    vector<int> B(s, 0);
+    for (i = 0; i< s; i++)
+    {
+        if (A[i]>0 && A[i]<(int)s)
+        {
+            B[A[i]] = 1;
+        }
+    }
+    //coutIntVector(B);
+
+    for(i = 1; i< B.size(); i++)
+        if (B[i] == 0)
+            return i;
+    return i+1;
+}
 
 /**
  * \fn test111()
@@ -2135,4 +2195,5 @@ int solution333(vector<int> &A)
 
     return res;
 }
+
 
