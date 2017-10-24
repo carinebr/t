@@ -53,6 +53,9 @@ class Tester
         void testAAA();
         void testBBB();
         void testCCC();
+        void testDDD();
+        void testEEE();
+        void testFFF();
         void test111();
         void test222();
         void test333();

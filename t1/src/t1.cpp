@@ -102,11 +102,11 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testBD();
         //Tester::getInstance()->testVikiSense();
         //Tester::getInstance()->testOddOccurencesInArrays2();
-        //Tester::getInstance()->test111();
+        Tester::getInstance()->test111();
         //Tester::getInstance()->test222();
         //Tester::getInstance()->test333();
         //Tester::getInstance()->test444();
-        Tester::getInstance()->testBitWiseOps();
+        //Tester::getInstance()->testBitWiseOps();
     }
     catch(ExceptErr& e)
     {

@@ -26,10 +26,10 @@
 using namespace std;
 
 int solutionPassingCars(vector<int>&A);
-int solution111(vector<int> &A);
+int solutionDDD(vector<int> &A);
 int solution444(vector<int> &A);
-int solution222(int A, int B);
-int solution333(vector<int> &A);
+int solutionEEE(int A, int B);
+int solutionFFF(vector<int> &A);
 int solutionEquilibrium(vector<int> &A);
 int solutionBinaryGap(int i);
 int solutionTestOddOccurencesInArrays(vector<int> &A);
@@ -56,6 +56,9 @@ int solutionMaxProd(vector<int> &A);
 int solutionAAA(vector<int> &A);
 int solutionBBB(string &E, string &L);
 int solutionCCC(int N);
+int solution111(vector<int> &A);
+int solution222(vector<int> &A);
+int solution333(vector<int> &A);
 //====================================
 
 vector<int> solutionCountSemiPrimesLesson11(int N, vector<int> &P,
@@ -1849,15 +1852,15 @@ void Tester::testPassingCars()
     cout << solutionPassingCars2(A) <<endl;
 }
 /**
- * \fn test111()
+ * \fn testDDD()
  */
-void Tester::test111()
+void Tester::testDDD()
 {
     int myA[] = {-1, 1, 3, 3, 3, 2, 1, 0};
     vector<int> A(myA, myA+ 8);
  
     VECTOR(A);
-    LOGS("solution 111: " + to_string(solution111(A)));
+    LOGS("solution DDD: " + to_string(solutionDDD(A)));
     vector<int>::iterator itr;
     for (itr = A.begin(); itr != A.end(); itr ++)
         cout << *itr << " ";
@@ -1866,9 +1869,9 @@ void Tester::test111()
 }
 
 /**
- * \fn solution111
+ * \fn solutionDDD
  */
-int solution111(vector<int> &A)
+int solutionDDD(vector<int> &A)
 {
     std::sort(A.begin(), A.end());
     int i, s(A.size());
@@ -1900,20 +1903,20 @@ int solution111(vector<int> &A)
 }
 
 /**
- * \fn test222()
+ * \fn testEEE()
  */
-void Tester::test222()
+void Tester::testEEE()
 {
     int A= 12, B = 56;
-    LOGS("solution 222: " + to_string(solution222(A, B)));
+    LOGS("solution EEE: " + to_string(solutionEEE(A, B)));
     cout <<endl;
 
 }
 
 /**
- * \fn solution222
+ * \fn solutionEEE
  */
-int solution222(int A, int B)
+int solutionEEE(int A, int B)
 {
     string sa(int2BinaryString(A)), sb(int2BinaryString(B)), sc;
     size_t la(sa.size()), lb(sb.size()), lsmall;
@@ -1948,15 +1951,15 @@ int solution222(int A, int B)
 }
 
 /**
- * \fn test333()
+ * \fn testFFF()
  */
-void Tester::test333()
+void Tester::testFFF()
 {
     int myA[] = {-1, 1, 3, 3, 3, 2, 1, 0};
     vector<int> A(myA, myA+ 8);
  
     VECTOR(A);
-    LOGS("solution 333: " + to_string(solution333(A)));
+    LOGS("solution FFF: " + to_string(solutionFFF(A)));
     vector<int>::iterator itr;
     for (itr = A.begin(); itr != A.end(); itr ++)
         cout << *itr << " ";
@@ -1965,9 +1968,9 @@ void Tester::test333()
 }
 
 /**
- * \fn solution333
+ * \fn solutionFFF
  */
-int solution333(vector<int> &A)
+int solutionFFF(vector<int> &A)
 {
     return 0;
 }
@@ -2064,3 +2067,72 @@ void Tester::testBitWiseOps()
     binaryBitsLoopReadable(n);
     return;
 }
+
+
+/**
+ * \fn test111()
+ */
+void Tester::test111()
+{
+    int myA[] = {-1, 1, 3, 3, 3, 2, 1, 0};
+    vector<int> A(myA, myA+ 8);
+ 
+    VECTOR(A);
+    LOGS("solution 111: " + to_string(solution111(A)));
+}
+
+
+/**
+ * \fn test222()
+ */
+void Tester::test222()
+{
+    int myA[] = {-1, 1, 3, 3, 3, 2, 1, 0};
+    vector<int> A(myA, myA+ 8);
+ 
+    VECTOR(A);
+    LOGS("solution 222: " + to_string(solution222(A)));
+}
+
+/**
+ * \fn test333()
+ */
+void Tester::test333()
+{
+    int myA[] = {-1, 1, 3, 3, 3, 2, 1, 0};
+    vector<int> A(myA, myA+ 8);
+ 
+    VECTOR(A);
+    LOGS("solution 333: " + to_string(solution333(A)));
+}
+
+/**
+ * \fn solution111
+ */
+int solution111(vector<int> &A)
+{
+    int res(0);
+
+    return res;
+}
+
+/**
+ * \fn solution222
+ */
+int solution222(vector<int> &A)
+{
+    int res(0);
+
+    return res;
+}
+
+/**
+ * \fn solution333
+ */
+int solution333(vector<int> &A)
+{
+    int res(0);
+
+    return res;
+}
+
