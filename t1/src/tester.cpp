@@ -1728,26 +1728,39 @@ string int2BinaryString(int N)
  * \fn binaryGap2
  * \brief return maximal sequence of consecutive zeros that is surrounded by 
  * ones at both ends in the binary representation of N.
+ * 24/10/2017 maniere correcte de passe sur les bits d'un int. base sur binaryBitsLoopReadable
  */
 int binaryGap2(int N)
 {
-    string s(int2BinaryString(N));
-    int i, result(0), tmp(0);
-    for(i = 0; i< (int)s.size(); i++)
+    // write your code in C++14 (g++ 6.2.0)
+    // write your code in C++14 (g++ 6.2.0)
+    //loop sur le nbr
+    int x, res(0), tempres(0), oneSeen(0);
+    size_t i;
+    size_t s(sizeof(int)*8);
+    for (i = 0; i< s; i++)
     {
-        if (s[i]=='1')
+        x = N>>(s-1 -i);
+        if ((x&1) == 1)
         {
-            if (tmp>result)
-                result=tmp;
-            tmp=0;
+            oneSeen  = 1;
+            if (tempres>res)
+                res = tempres;
+            tempres=0;
+            cout << "1 ";
         }
-        else//==0
-            ++tmp;
+        else
+        {
+            if (oneSeen == 1)
+            {
+                tempres++;
+                cout << " 0 ";
+            }
+            //cout << " 0 ";
+        }
     }
-    cout << s;
-    cout << "\n result : " << result;
-
-    return result;
+    cout << endl << "res: " << res <<endl;
+    return res;
 }
 
 /**

@@ -107,7 +107,8 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->test333();
         //Tester::getInstance()->test444();
         //Tester::getInstance()->testBitWiseOps();
-        Tester::getInstance()->testDemoCodility();
+        //Tester::getInstance()->testDemoCodility();
+        Tester::getInstance()->testBinaryGap2();
     }
     catch(ExceptErr& e)
     {
