@@ -1078,6 +1078,30 @@ void binaryBitsLoop(int N)
     cout <<endl;
 }
 /**
+ * \fn binaryBitsLoopReadable
+ * \brief like binaryBitsLoop: le resultat est a l'endroit
+ */
+void binaryBitsLoopReadable(int N)
+{
+    int x, oneSeen(0);
+    size_t i;
+    size_t s=sizeof(int)*8;
+    for (i = 0; i < sizeof(int)*8; i++)
+    {
+        x = N>>(s-1-i);
+        if ((x & 1) == 1)
+        {
+            oneSeen = 1;
+            cout << "1 ";
+        }
+        else 
+        {
+            if (oneSeen)
+                cout << "0 ";
+        }
+    }
+}
+/**
  * \fn solutionBinaryGap
  * \brief count the 0 between to 1 in the binary representation of a int
  */
@@ -1988,6 +2012,7 @@ int solution444(vector<int> &A)
     }
     return ret;
 }
+
 int solutionPermMissingElem2(vector<int>&A)
 {
     size_t i;
@@ -2018,4 +2043,24 @@ void Tester::testPermMissingElem2()
     VECTOR(A);
     LOGS("solution perm missing: " + to_string(solutionPermMissingElem2(A)));
     cout <<endl;
+}
+
+void Tester::testBitWiseOps()
+{
+    cout<< "testBitWiseOps() \n";
+
+    int n;
+    cout << " input n! ";
+    cin >> n;
+    cout << endl;
+    //>> cad diviser par 8 et concatener puis multiplier par 8
+    cout << "multiple de 8 sous " << n << ": " << ((n >> 3) << 3) << endl; 
+    //reste de division par 8  sans modulo
+    cout << "reste de division par 8 de " << n << ": " << (n&7) << endl; 
+
+    // presente / renverse les bits
+    cout <<"\ninput n: (binaryBitsLoop()) and binaryBitsLoopReadable(): " <<endl;
+    binaryBitsLoop(n);    
+    binaryBitsLoopReadable(n);
+    return;
 }

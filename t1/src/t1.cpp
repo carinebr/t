@@ -93,7 +93,7 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testMaxProd();
         //Tester::getInstance()->testEquilibrium();
         //
-        Tester::getInstance()->testFrogJmp2();
+        //Tester::getInstance()->testFrogJmp2();
         //
         //Tester::getInstance()->testAAA();
         //Tester::getInstance()->test333();
@@ -106,6 +106,7 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->test222();
         //Tester::getInstance()->test333();
         //Tester::getInstance()->test444();
+        Tester::getInstance()->testBitWiseOps();
     }
     catch(ExceptErr& e)
     {
