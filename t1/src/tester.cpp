@@ -1269,8 +1269,10 @@ int solutionPermLesson4(vector <int> &A)
 void Tester::testFrogLesson4()
 {
     int X;
-    int myA[] = {1};
-    vector <int> A(myA, myA+1);
+    int myA[] = {1, 3, 1, 4, 2, 3, 5, 4};
+    vector <int> A(myA, myA+8);
+    cout << "input vec: ";
+    coutIntVector(A);
     VECTOR(A);
     while(1)
     {
@@ -1278,6 +1280,7 @@ void Tester::testFrogLesson4()
         cin >> X;
         cout<<endl;
         LOGS("solution: " + std::to_string(solutionFrogLesson4(X, A)));
+        cout << "solution: " << std::to_string(solutionFrogLesson4(X, A));
         cout << endl;
     }
 }
@@ -1288,18 +1291,25 @@ void Tester::testFrogLesson4()
  */
 int solutionFrogLesson4(int X, vector <int> &A)
 {
-    size_t i;
-    //creer XV 
-    vector <int> XV(X, -1);
-    //VECTOR(XV);
-    for (i = 0; i < A.size(); i ++)
-        if(XV[A[i]-1] == -1)
-            XV[A[i]-1] = i;
-    //VECTOR(XV);
-    std::sort(XV.begin(), XV.end());
-    if (XV[0] != -1)
-        return XV[X-1];
-    return -1;
+    size_t i, s(A.size());;
+    //creer B
+    vector<int> B (X, -1); 
+
+    for (i = 0; i < s; i++)
+    {
+        if (B[A[i]-1] == -1)
+            B[A[i]-1] = i;
+    }
+    coutIntVector(B);
+    int last=-1;
+    for (i = 0; i< B.size(); i++)
+    {
+        if (B[i] == -1)
+            return -1;
+        if (B[i]>last)
+            last = B[i];
+    }
+    return last;
 }
 
 /**
