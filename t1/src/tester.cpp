@@ -2033,21 +2033,19 @@ int solution444(vector<int> &A)
 
 int solutionPermMissingElem2(vector<int>&A)
 {
-    size_t i;
-    vector<int> B(A.size() + 1, 0);
-
-    for (i = 0; i< A.size(); i++)
+    size_t s(A.size()), i;
+    vector<int> B(s + 1, 0);
+    for (i=0; i< s; i++)
     {
-        B[A[i] - 1] = A[i];
+        B[A[i]-1] = A[i];
     }
-    VECTOR(B);
-    for (i = 0; i < B.size(); i++)
+    coutIntVector(B);
+    for(i = 0; i< B.size(); i++)
     {
         if (B[i] == 0)
-        {
             return i+1;
-        }
     }
+
     return 0;
 }
 /*
@@ -2059,7 +2057,9 @@ void Tester::testPermMissingElem2()
     vector<int> A(myA, myA+ 4);
 
     VECTOR(A);
+    coutIntVector(A);
     LOGS("solution perm missing: " + to_string(solutionPermMissingElem2(A)));
+    cout <<"solution perm missing: " << to_string(solutionPermMissingElem2(A));
     cout <<endl;
 }
 
