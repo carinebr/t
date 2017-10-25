@@ -85,9 +85,8 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testBinSearchLe();
         //Tester::getInstance()->testChocolatesLesson12();
         //Tester::getInstance()->testCountAbsolute();
-        Tester::getInstance()->testPermMissingElem2();
+        ///Tester::getInstance()->testPermMissingElem2();
         //Tester::getInstance()->testCyclicRotation();
-        //Tester::getInstance()->testTapeEquilibriumLesson3();
         //Tester::getInstance()->testPermLesson4();
         //Tester::getInstance()->testFrogLesson4();
         //Tester::getInstance()->testMaxProd();
@@ -109,6 +108,7 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testBitWiseOps();
         //Tester::getInstance()->testDemoCodility();
         //Tester::getInstance()->testBinaryGap2();
+        Tester::getInstance()->testTapeEquilibriumLesson3();
     }
     catch(ExceptErr& e)
     {

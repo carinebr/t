@@ -5,6 +5,7 @@
 #include <list>
 #include <vector>
 #include <algorithm>
+#include <climits>
 #include <stack>
 #include <set>
 #include <cassert>
@@ -1175,12 +1176,12 @@ vector<int> solutionCyclicRotation(vector<int> &A, int K)
  */
 void Tester::testTapeEquilibriumLesson3()
 {
-    int myA[] = {-3, -4, 0, -2};
-    vector <int> A (myA, myA + 4);
-    LOGS("input:");
+    int myA[] = {-1000, 1, 1000};
+    vector <int> A (myA, myA + 3);
+    cout <<"input: ";
+    coutIntVector(A);
     VECTOR(A);
-    LOGS(" res tape equilibrium: " + 
-            std::to_string(solutionTapeEquilibriumLesson3(A)));
+    cout <<" res tape equilibrium: " <<  std::to_string(solutionTapeEquilibriumLesson3(A));
 }
 
 /**
@@ -1190,26 +1191,24 @@ void Tester::testTapeEquilibriumLesson3()
  */
 int solutionTapeEquilibriumLesson3(vector<int> &A)
 {
-    int diff, diffTmp, i, sizeA(A.size()), sumR(0), sumL(A[0]);
+    int diff(INT_MAX), tempdiff(0), r(0), l(0);
+    size_t s(A.size()), i;
+    
+    //r sum
+    for(i = 0; i< s; i++)
+        r += A[i];
+    //cout << "right : " << r << endl;
 
-    if (sizeA == 2)
-        return abs(A[0] - A[1]);
-    // travailler avec somme de droite et de gauhe
-    for(i = 1; i < sizeA; i++)
+    for (i = 0; i< s - 1; i++)
     {
-        sumR+=A[i];
+        l = l + A[i];
+        r = r - A[i];
+        tempdiff = abs(l - r);
+        cout << "i: " << i << "  left: " << l << " right: " << r << "  tempdiff: "<< tempdiff << " diff:" << diff <<endl;
+        if (tempdiff < diff)
+            diff = tempdiff;
     }
-    //LOGS(std::to_string(sumL));
-    //LOGS(std::to_string(sumR));
-    diff = abs(sumL-sumR);//1er contre 2...N
-    for (i = 1; i < sizeA; i ++)
-    {
-        sumL+=A[i];
-        sumR= sumR - A[i];
-        diffTmp = abs(sumL - sumR);
-        if (diff > diffTmp)
-            diff = diffTmp;
-    }
+
     return diff;
 }
 
