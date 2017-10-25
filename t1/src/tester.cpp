@@ -437,7 +437,7 @@ int solutionMissingIntegerLesson4(vector<int> & A)
  */
 void Tester::testCountDivLesson5()
 {
-    solutionContDivLesson5(8, 34, 3);
+    cout << "solutionContDivLesson5(8, 34, 3) " << solutionContDivLesson5(8, 34, 3) << endl;
     solutionContDivLesson5(6, 11, 2);
     solutionContDivLesson5(6, 7, 2);
     solutionContDivLesson5(6, 6, 2);
@@ -449,15 +449,12 @@ void Tester::testCountDivLesson5()
  */
 int solutionContDivLesson5(int A, int B, int K)
 {
-//#define LOGS(s)
-    int sum(0);
-    for (int i = A; i < B+1; i++)
-        if (i%K == 0)
-            sum++;
-    LOGS("A: " + std::to_string(A) + ", B: " + std::to_string(B) +
-            ", K: " + std::to_string(K) + " - result: "
-            + std::to_string(sum));
-    return sum;
+    int diffs = B/K - A/K;
+
+    if (A % K == 0)
+        diffs += 1;
+
+    return diffs;
 }
 
 /**
