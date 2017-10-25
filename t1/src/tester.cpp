@@ -397,13 +397,12 @@ int solutionFrogJmpLesson3(int X, int Y, int D)
  */
 void Tester::testMissingIntegerLesson4()
 {
-    vector<int> A;
-    A.push_back(1);
-    A.push_back(3);
-    A.push_back(6);
-    A.push_back(4);
-    A.push_back(2);
-    solutionMissingIntegerLesson4(A);
+    int myA[] = {1, -3, 6, 4, 1, 2};
+    vector<int> A(myA, myA + 6);
+    cout << "input vec: ";
+    coutIntVector(A);
+    cout << solutionMissingIntegerLesson4(A) <<endl;
+
     return;
 }
 
@@ -415,28 +414,22 @@ void Tester::testMissingIntegerLesson4()
 int solutionMissingIntegerLesson4(vector<int> & A)
 {
 //#define LOGS(STR)
-    size_t i, size_a(A.size());
-    //utiliser un array <bool>
-    vector<bool> B(size_a + 1, false);
-    for (i=0; i< size_a + 1; i++)
+    size_t i, s(A.size());
+    vector<int> B(s, 0);
+    for (i = 0; i< s; i++)
     {
-        if (A[i]> 0 && A[i] <= static_cast<int> (size_a + 1))
+        if (A[i]>0 && A[i]<=(int)s)
         {
-            LOGS("A[i]: " + std::to_string(A[i]));
-            B[A[i]-1] = true;
+            B[A[i]-1] = A[i];
         }
     }
-//    for (i = 0; i < B.size() + 1; i++)
-//        LOGS(std::to_string(B[i]));
-    for (i=0; i<B.size(); i++)
+    coutIntVector(B);
+    for (i = 0; i < B.size(); i++)
     {
-        if (B[i] == false)
-        {
-            LOGS(std::to_string(i+1));
+        if (B[i]== 0)
             return i+1;
-        }
     }
-    return 0;
+    return i+1;
 }
 
 /**
