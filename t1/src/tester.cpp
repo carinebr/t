@@ -1855,14 +1855,17 @@ int solutionPassingCars(vector<int>&A)
  */
 int solutionPassingCars2(vector<int>&A)
 {
-    int res(0), i, l(A.size()), zerosnbr(0);
+    int res(0), E(0);
+    size_t i, s(A.size());
 
-    for (i = 0; i < l; i++)
+    if (s == 1)
+        return 0;
+    for (i = 0; i< s; i++)
     {
         if (A[i] == 0)
-            ++zerosnbr;
-        else//1
-            res = res + zerosnbr;
+            E++;
+        else
+            res+=E;
     }
     return res;
 }
@@ -1871,10 +1874,11 @@ int solutionPassingCars2(vector<int>&A)
  */
 void Tester::testPassingCars()
 {
-    int myA[] = {0, 1, 0, 1, 1, 0, 1, 0};
-    vector<int> A(myA, myA+8);
-    VECTOR(A)
-    cout << solutionPassingCars2(A) <<endl;
+    int myA[] = {0, 1, 0, 1, 1};
+    vector<int> A(myA, myA+5);
+    cout <<"inpuct vect: ";
+    coutIntVector(A);
+    cout << "solutionPassingCars2: " << solutionPassingCars2(A) <<endl;
 }
 /**
  * \fn testDDD()
