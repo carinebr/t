@@ -379,10 +379,16 @@ void Tester::testFrogJmpLessons3()
 
 int solutionFrogJmpLesson3(int X, int Y, int D)
 {
-    int diff (Y-X);
-    if (diff%D == 0)
-        return diff/D;
-    return diff/D + 1;
+    int diff (Y-X), jump;
+
+    if (X == Y)
+        return 0;
+    jump = diff/D;
+    if (diff%D !=0)
+        jump++;
+
+    cout << "\nX: " << X << " Y: " << Y << " D: " << D << "solution : " << jump << endl;
+    return jump;
 }
 
 /**

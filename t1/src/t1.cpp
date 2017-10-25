@@ -70,7 +70,6 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testVectorErase();
         //Tester::getInstance()->testOddOccurencesInArrays();
         //Tester::getInstance()->testPermMissingElemLessons3();
-        //Tester::getInstance()->testFrogJmpLessons3();
         //Tester::getInstance()->testPassingCars();
         //Tester::getInstance()->testMissingIntegerLesson4();
         //Tester::getInstance()->testCountDivLesson5();
@@ -108,7 +107,8 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testBitWiseOps();
         //Tester::getInstance()->testDemoCodility();
         //Tester::getInstance()->testBinaryGap2();
-        Tester::getInstance()->testTapeEquilibriumLesson3();
+        //Tester::getInstance()->testTapeEquilibriumLesson3();
+        Tester::getInstance()->testFrogJmpLessons3();
     }
     catch(ExceptErr& e)
     {
