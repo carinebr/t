@@ -1224,12 +1224,14 @@ int solutionTapeEquilibriumLesson3(vector<int> &A)
  */
 void Tester::testPermLesson4()
 {
-    int myA[] = {1, 1};
+    int myA[] = {1, 3};
     vector <int> A (myA, myA + 2);
     LOGS("input:");
     VECTOR(A);
-    LOGS(" res is permutaion: " + 
-            std::to_string(solutionPermLesson4(A)));
+    cout << "input: ";
+    coutIntVector(A);
+    cout << endl;
+    cout <<" res is permutation: " <<  std::to_string(solutionPermLesson4(A));
 } 
 
 
@@ -1239,22 +1241,25 @@ void Tester::testPermLesson4()
  */
 int solutionPermLesson4(vector <int> &A)
 {
-    vector<int> B(A);
+    size_t s(A.size());
+    vector<int> B(s + 1, 0);
     size_t i;
 
-    if(A.size() == 1 && A[0] != 1)
-        return 0;
-
-    std::sort(B.begin(), B.end());
-    if (B[0] != 1)
-        return 0;
-    for (i = 1; i < B.size(); i ++)
+    if(s == 1)
     {
-        if (B[i] != B[i - 1]+ 1)
+       if  (A[0] == 1)
+           return 1;
+       else
+           return 0;
+    }
+    for (i = 0; i < s; i++)
+        B[A[i]-1] = A[i];
+    coutIntVector(B);
+    for (i = 0; i< B.size(); i++)
+    {
+        if (B[i] == 0 && i != B.size() -1)
             return 0;
     }
-    
-  //  VECTOR(B);
     return 1;
 }
 
