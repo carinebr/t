@@ -12,6 +12,7 @@ class Tester
         //destructor
         ~Tester(void);
         void testDemoCodility();
+        void testLeaderSort();
         void testBitWiseOps();
         void testBinaryGap2();
         int testIt(const string& in_sWhichTest);

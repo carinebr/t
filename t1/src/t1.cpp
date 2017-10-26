@@ -108,7 +108,8 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testFrogLesson4();
         //Tester::getInstance()->testMissingIntegerLesson4();
         //Tester::getInstance()->testCountDivLesson5();
-        Tester::getInstance()->testPassingCars();
+        //Tester::getInstance()->testPassingCars();
+        Tester::getInstance()->testLeaderSort();
     }
     catch(ExceptErr& e)
     {

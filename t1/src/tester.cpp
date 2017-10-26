@@ -26,6 +26,7 @@
 
 using namespace std;
 
+int solutionLeaderSort(vector<int>&A);
 void coutIntVector(const vector<int> A);
 int solutionDemoCodility(vector<int>&A);
 int solutionPassingCars(vector<int>&A);
@@ -1855,7 +1856,7 @@ int solutionPassingCars(vector<int>&A)
  */
 int solutionPassingCars2(vector<int>&A)
 {
-    int res(0), E(0);
+    int res(0), E(0);//E ie east nbr
     size_t i, s(A.size());
 
     if (s == 1)
@@ -1868,6 +1869,56 @@ int solutionPassingCars2(vector<int>&A)
             res+=E;
     }
     return res;
+}
+/**
+ * \fn testLeaderSort
+ */
+void Tester::testLeaderSort()
+{
+    //int myA[] = {7, 8, 8, 8, 1, 9, 8, 7, 6, 8, 8};
+    //vector<int> A(myA, myA+11);
+    int myA[] = {8, 8};
+    vector<int> A(myA, myA+2);
+    cout <<"inpuct vect: ";
+    coutIntVector(A);
+    cout << "solutionLeaderSort: " << solutionLeaderSort(A) <<endl;
+}
+
+/**
+ * \fn solutionLeaderSort
+ * \fn get the leader of a vector - the leader is the element whose value
+ * occurs more than n/2 times
+ */
+int solutionLeaderSort(vector<int>&A)
+{
+    size_t i, s(A.size());
+    int leader, tempcounter(1), highcounter(1);
+
+    if (s==1)
+        return A[1];
+    std::sort(A.begin(), A.end());
+    coutIntVector(A);
+
+    leader = A[1];
+    for (i = 1; i < s; i++)
+    {
+        if (A[i] != A[i-1])
+        {
+            if (tempcounter>highcounter)
+            {
+                highcounter = tempcounter;
+                leader = A[i-1];
+                tempcounter = 1;
+            }
+        }
+        else //same value
+        {
+            {
+                tempcounter++;
+            }
+        }
+    }
+    return leader;
 }
 /**
  * \fn testPassingCa
