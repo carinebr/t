@@ -34,7 +34,7 @@ typedef struct
 using namespace std;
 
 static pthread_mutex_t theMutex;
-void* Misc(void*);
+void* miscthreadFunct(void*);
 void testMiscThread();
 int solutionLeaderSort(vector<int>&A);
 void coutIntVector(const vector<int> A);
@@ -2284,9 +2284,9 @@ int solution333(vector<int> &A)
     return res;
 }
 /**
- * \fn Misc
+ * \fn miscthreadFunct
  */
-void* Misc(void* in_threadIdx)
+void* miscthreadFunct(void* in_threadIdx)
 {
     while (1)
     {
@@ -2326,11 +2326,11 @@ void testMiscThread()
     threadInfo[0].pCounter = threadInfo[1].pCounter = &counter;
 
     cout  << "testMisc!!" << endl;
-    //lancer 2 thread dont la fonction est Misc
+    //lancer 2 thread dont la fonction est miscthreadFunct
     for(int i = 0; i< THREAD_NUMBER; i++)
     {
         threadInfo[i].idx = i; 
-        pthread_create(&tid[i], NULL, Misc, (void*)&threadInfo[i]);
+        pthread_create(&tid[i], NULL, miscthreadFunct, (void*)&threadInfo[i]);
     }
     //attendre la fin
     for (i = 0; i< THREAD_NUMBER; i++)
