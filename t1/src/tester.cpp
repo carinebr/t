@@ -34,8 +34,8 @@ typedef struct
 using namespace std;
 
 static pthread_mutex_t theMutex;
-void* tandGThreadFnc(void*);
-void testTandemGThread();
+void* Misc(void*);
+void testMiscThread();
 int solutionLeaderSort(vector<int>&A);
 void coutIntVector(const vector<int> A);
 int solutionDemoCodility(vector<int>&A);
@@ -2284,9 +2284,9 @@ int solution333(vector<int> &A)
     return res;
 }
 /**
- * \fn tandGThreadFnc
+ * \fn Misc
  */
-void* tandGThreadFnc(void* in_threadIdx)
+void* Misc(void* in_threadIdx)
 {
     while (1)
     {
@@ -2304,16 +2304,16 @@ void* tandGThreadFnc(void* in_threadIdx)
     return NULL;
 }
 /**
- * \fn testTandemG
+ * \fn testMisc
  */
-void Tester::testTandemG()
+void Tester::testMisc()
 {
-    testTandemGThread();
+    testMiscThread();
 }
 /**
- * \fn testTandemG
+ * \fn testMisc
  */
-void testTandemGThread()
+void testMiscThread()
 {
     const int THREAD_NUMBER = 2;
     int i;
@@ -2325,12 +2325,12 @@ void testTandemGThread()
     ThreadInfoType threadInfo[2];
     threadInfo[0].pCounter = threadInfo[1].pCounter = &counter;
 
-    cout  << "testTandemG!!" << endl;
-    //lancer 2 thread dont la fonction est tandGThreadFnc
+    cout  << "testMisc!!" << endl;
+    //lancer 2 thread dont la fonction est Misc
     for(int i = 0; i< THREAD_NUMBER; i++)
     {
         threadInfo[i].idx = i; 
-        pthread_create(&tid[i], NULL, tandGThreadFnc, (void*)&threadInfo[i]);
+        pthread_create(&tid[i], NULL, Misc, (void*)&threadInfo[i]);
     }
     //attendre la fin
     for (i = 0; i< THREAD_NUMBER; i++)

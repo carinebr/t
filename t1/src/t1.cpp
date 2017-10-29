@@ -110,7 +110,7 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testCountDivLesson5();
         //Tester::getInstance()->testPassingCars();
         //Tester::getInstance()->testLeaderSort();
-        Tester::getInstance()->testTandemG();
+        Tester::getInstance()->testMisc();
     }
     catch(ExceptErr& e)
     {
