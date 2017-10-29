@@ -1,5 +1,11 @@
 /// \file tester.cpp
 /// \brief functionnality testing implementation
+#define psleep(sec) sleep ((sec))
+typedef struct
+{
+    int idx;
+    int* pCounter;
+}ThreadInfoType;
 
 #include <iostream>
 #include <list>
@@ -10,6 +16,7 @@
 #include <set>
 #include <cassert>
 #include <boost/shared_ptr.hpp>
+#include <sys/types.h>
 #include "appli.h"
 #include "tester.h"
 #include "excepterr.h"
@@ -26,6 +33,9 @@
 
 using namespace std;
 
+static pthread_mutex_t theMutex;
+void* tandGThreadFnc(void*);
+void testTandemGThread();
 int solutionLeaderSort(vector<int>&A);
 void coutIntVector(const vector<int> A);
 int solutionDemoCodility(vector<int>&A);
@@ -2273,5 +2283,59 @@ int solution333(vector<int> &A)
 
     return res;
 }
+/**
+ * \fn tandGThreadFnc
+ */
+void* tandGThreadFnc(void* in_threadIdx)
+{
+    while (1)
+    {
+        pthread_mutex_lock(&theMutex);
+        ++(*((((ThreadInfoType*)in_threadIdx)->pCounter)));
+        cout << "thread id: " << pthread_self() << " thread idx: "
+            << ((ThreadInfoType*)in_threadIdx)->idx << "  - counter: " <<
+            *(((ThreadInfoType*)in_threadIdx)->pCounter) << endl;
+        pthread_mutex_unlock(&theMutex);
+        //if (((ThreadInfoType*)in_threadIdx)->idx == 0)
+            //psleep(1);
+        //else
+            //psleep(2);
+    }
+    return NULL;
+}
+/**
+ * \fn testTandemG
+ */
+void Tester::testTandemG()
+{
+    testTandemGThread();
+}
+/**
+ * \fn testTandemG
+ */
+void testTandemGThread()
+{
+    const int THREAD_NUMBER = 2;
+    int i;
+    int counter = 0;
+    pthread_t tid[2];
+    void* pNotUsed = NULL;
 
+    theMutex = PTHREAD_MUTEX_INITIALIZER;
+    ThreadInfoType threadInfo[2];
+    threadInfo[0].pCounter = threadInfo[1].pCounter = &counter;
 
+    cout  << "testTandemG!!" << endl;
+    //lancer 2 thread dont la fonction est tandGThreadFnc
+    for(int i = 0; i< THREAD_NUMBER; i++)
+    {
+        threadInfo[i].idx = i; 
+        pthread_create(&tid[i], NULL, tandGThreadFnc, (void*)&threadInfo[i]);
+    }
+    //attendre la fin
+    for (i = 0; i< THREAD_NUMBER; i++)
+    {
+        pthread_join(tid[i], (void**)&pNotUsed);
+    }
+    return;
+}

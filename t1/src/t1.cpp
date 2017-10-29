@@ -109,7 +109,8 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testMissingIntegerLesson4();
         //Tester::getInstance()->testCountDivLesson5();
         //Tester::getInstance()->testPassingCars();
-        Tester::getInstance()->testLeaderSort();
+        //Tester::getInstance()->testLeaderSort();
+        Tester::getInstance()->testTandemG();
     }
     catch(ExceptErr& e)
     {

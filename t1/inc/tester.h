@@ -11,6 +11,7 @@ class Tester
         static Tester* getInstance();
         //destructor
         ~Tester(void);
+        void testTandemG();
         void testDemoCodility();
         void testLeaderSort();
         void testBitWiseOps();
