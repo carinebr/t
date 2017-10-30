@@ -33,6 +33,8 @@ typedef struct
 
 using namespace std;
 
+void testReverseCharLoop();
+unsigned char reverseCharLoop(unsigned char N);
 static pthread_mutex_t theMutex;
 void testFibonacci();
 int fibonacciRecursive(int N);
@@ -2355,7 +2357,8 @@ int fibonacciRecursive(int N)
 void Tester::testMisc()
 {
     //testMiscThread();
-    testFibonacci();
+    //testFibonacci();
+    testReverseCharLoop();
 }
 /**
  * \fn testMisc
@@ -2386,3 +2389,40 @@ void testMiscThread()
     }
     return;
 }
+
+/**
+ * \fn reverseCharLoop
+ */
+unsigned char reverseCharLoop(unsigned char N)
+{
+    int i;
+    unsigned char res(0), x, one(1);
+    for (i = 0; i< 8; ++i, N>>=1)
+    {
+        res = res<<1;
+        x = N & one;
+        res = res | x;
+    }
+    cout << endl;
+
+    return res;
+}
+/**
+ * \fn testReverseCharLoop
+ */
+void testReverseCharLoop()
+{
+    unsigned char n;
+    int input;
+    while (1)
+    {
+        cout << "enter N! ";
+        cin >> input;
+        n = (unsigned char)input;
+        cout << endl;
+        //binaryBitsLoopReadable((int)n);
+        //cout<<endl;
+        cout << (unsigned int)reverseCharLoop(n);
+        cout <<endl;
+    }
+} 
