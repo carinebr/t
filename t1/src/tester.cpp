@@ -34,6 +34,9 @@ typedef struct
 using namespace std;
 
 static pthread_mutex_t theMutex;
+void testFibonacci();
+int fibonacciRecursive(int N);
+int fibonacci(int N);
 void* miscthreadFunct(void*);
 void testMiscThread();
 int solutionLeaderSort(vector<int>&A);
@@ -2304,11 +2307,55 @@ void* miscthreadFunct(void* in_threadIdx)
     return NULL;
 }
 /**
+ * \fn testFibonacci
+ */
+void testFibonacci()
+{
+    int n;
+    while (1)
+    {
+        cout << "enter N! ";
+        cin >> n;
+        cout << endl << "fibo num recursive is :" << fibonacciRecursive(n) << endl;
+        cout << "fibo num           is :" << fibonacci(n) << endl;
+    }
+}
+/**
+ * \fn fibonacci
+ */
+int fibonacci(int N)
+{
+    int fiboN = 0, fiboMinus1 = 1, fiboMinus2=0, i;
+    if (N == 0)
+        return 0;
+    if (N==1)
+        return 1;
+    for(i = 0; i <N; i++)
+    {
+        fiboMinus2 = fiboMinus1;
+        fiboMinus1 = fiboN;
+        fiboN = fiboMinus2 + fiboMinus1;
+    }
+    return fiboN;
+}
+/**
+ * \fn fibonacciRecursive
+ */
+int fibonacciRecursive(int N)
+{
+    if (N == 0)
+        return 0;
+    if (N==1)
+        return 1;
+    return (fibonacciRecursive(N-1) +fibonacciRecursive(N-2));
+}
+/**
  * \fn testMisc
  */
 void Tester::testMisc()
 {
-    testMiscThread();
+    //testMiscThread();
+    testFibonacci();
 }
 /**
  * \fn testMisc
