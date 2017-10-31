@@ -33,6 +33,9 @@ typedef struct
 
 using namespace std;
 
+int solutionMoc1(vector<int>&A);
+int solutionMoc2(vector<int>&A);
+int solutionMoc3(vector<int>&A);
 void testReverseCharLoop();
 unsigned char reverseCharLoop(unsigned char N);
 static pthread_mutex_t theMutex;
@@ -2426,3 +2429,69 @@ void testReverseCharLoop()
         cout <<endl;
     }
 } 
+/**
+ * \fn solutionMoc1
+ */
+int solutionMoc1(vector<int>&A)
+{
+    return 111;
+}
+
+/**
+ * \fn testMoc1
+ */
+void Tester::testMoc1()
+{
+    int myA[] = {1, -3, 6, 4, 1, 2};
+    vector<int> A(myA, myA + 6);
+    cout << " Moc1 input vec: ";
+    coutIntVector(A);
+    cout << solutionMoc1(A) <<endl;
+
+    return;
+}
+
+/**
+ * \fn solutionMoc2
+ */
+int solutionMoc2(vector<int>&A)
+{
+    return 222;
+}
+
+/**
+ * \fn testMoc2
+ */
+void Tester::testMoc2()
+{
+    int myA[] = {1, -3, 6, 4, 1, 2};
+    vector<int> A(myA, myA + 6);
+    cout << "Moc2 input vec: ";
+    coutIntVector(A);
+    cout << solutionMoc2(A) <<endl;
+
+    return;
+}
+
+/**
+ * \fn solutionMoc3
+ */
+int solutionMoc3(vector<int>&A)
+{
+    return 333;
+}
+
+/**
+ * \fn testMoc3
+ */
+void Tester::testMoc3()
+{
+    int myA[] = {1, -3, 6, 4, 1, 2};
+    vector<int> A(myA, myA + 6);
+    cout << "Moc 3 input vec: ";
+    coutIntVector(A);
+    cout << solutionMoc3(A) <<endl;
+
+    return;
+}
+

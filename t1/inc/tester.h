@@ -8,6 +8,9 @@ using namespace std;
 class Tester
 {
     public :
+        void testMoc1();
+        void testMoc2();
+        void testMoc3();
         static Tester* getInstance();
         //destructor
         ~Tester(void);
