@@ -33,6 +33,7 @@ typedef struct
 
 using namespace std;
 
+int solutionFactorsNbr(int N);
 int solutionMoc1(vector<int>&A);
 int solutionMoc2(vector<int>&A);
 int solutionMoc3(vector<int>&A);
@@ -2489,3 +2490,37 @@ void Tester::testMoc3()
     return;
 }
 
+/**
+ * \fn solutionFactorsNbr
+ */
+int solutionFactorsNbr(int N)
+{
+    int i, j, res(2);
+    for (i = 2; i*i <=N; i++)
+    {
+        for (j = i; j*i<=N; j++)
+        {
+            if (i*j == N)
+            {
+                res++;
+                if (i != j)
+                    res++;
+            }
+        }
+    }
+
+    return res;
+}
+
+/**
+ * \fn testFactorsNbr
+ */
+void Tester::testFactorsNbr()
+{
+    int N;
+    cout << "enter N: ";
+    cin >> N;
+    cout << "factor nbr of N is: " << solutionFactorsNbr(N) << endl;
+
+    return;
+}

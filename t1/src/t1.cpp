@@ -74,7 +74,7 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testBracketsLesson7();
         //Tester::getInstance()->testDomminatorLesson8();
         //Tester::getInstance()->testMaxProfitLesson9();
-        Tester::getInstance()->testMinPerimRectangle();
+        //Tester::getInstance()->testMinPerimRectangle();
         //Tester::getInstance()->testCountSemiPrimesLesson11();
         //Tester::getInstance()->testGcd();
         //Tester::getInstance()->testFibo();
@@ -113,7 +113,7 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testMisc();
         //Tester::getInstance()->testMoc1();
         //Tester::getInstance()->testMoc2();
-        //Tester::getInstance()->testMoc3();
+        Tester::getInstance()->testFactorsNbr();
     }
     catch(ExceptErr& e)
     {
