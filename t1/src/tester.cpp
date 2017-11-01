@@ -719,11 +719,9 @@ int solutionMaxSlice(vector<int>& A)
  */
 void Tester::testMinPerimRectangle()
 {
-    int N(1234);//101 got 40 expected 204
-    LOGS("area: " + std::to_string(N));
-    solutionMinPerimRectangleLesson10(N);
-    LOGS("perim :" 
-            + std::to_string(solutionMinPerimRectangleLesson10(N)));
+    int N(30);//101 got 40 expected 204
+    cout <<"for N =: " << N << endl;
+    cout << "min perim: " << std::to_string(solutionMinPerimRectangleLesson10(N));
 }
 
 /**
@@ -733,19 +731,15 @@ void Tester::testMinPerimRectangle()
  */
 int solutionMinPerimRectangleLesson10(int N)
 {
-    int i(1), P((N+1)*2), tmp;
+    int i, P((N+1)*2), tmp;
 
-    while(N/i >= i)
+    for (i=1; i*i <N; i++)
     {
-        if (N%i == 0)
-        {
-            tmp = (i + N/i)*2;
-            if (P == 0)
-                P = tmp;//first result 1* N
-            if (tmp < P)
-                P = tmp;
-        }
-        i++;
+        if(N%i != 0)
+            continue;
+        tmp = 2*(N/i + i);
+        if (tmp<P)
+            P = tmp;
     }
     return P;
 }
