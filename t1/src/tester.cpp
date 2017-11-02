@@ -80,7 +80,7 @@ int solutionAAA(vector<int> &A);
 int solutionBBB(string &E, string &L);
 int solutionCCC(int N);
 int solution111(vector<int> &A);
-int solution222(vector<int> &A);
+int solution222(vector<int> &A, vector<int>& B, int M, int X, int Y);
 int solution333(vector<int> &A);
 //====================================
 
@@ -2225,28 +2225,89 @@ int solutionDemoCodility(vector<int> &A)
  */
 void Tester::test111()
 {
-    int myA[] = {-1, 1, 3, 3, 3, 2, 1, 0};
-    vector<int> A(myA, myA+ 8);
+    int myA[] = {1, 2, 3, 4, -1};
+    vector<int> A(myA, myA+ 5);
     cout << "input vector: ";
     coutIntVector(A);
  
     cout <<"solution 111: " << solution111(A) << endl;
 }
 
+/**
+ * \fn solution111
+ * \brief la valeur de chaque element A[k] represente le prochain node de la liste
+ *        la fonction rend la taille de la liste. La liste commence par 1. le dernier element 
+ *        a la valeur -1
+ */
+int solution111(vector<int> &A)
+{
+    int res(0);
+    int value(1);
+    if (A[0] == -1)
+        return 0;
+    while (value !=-1)
+    {
+        value = A[value];
+        res++;
+    }
+    res++;//last one
+    return res;
+}
 
 /**
  * \fn test222()
  */
-void Tester::test222()
+void Tester::test222()//
 {
-    int myA[] = {-1, 1, 3, 3, 3, 2, 1, 0};
-    vector<int> A(myA, myA+ 8);
-    cout << "input vector: ";
+    int myA[] = {40, 40, 100, 80, 20};
+    int myB[] = {3, 3, 2, 2, 3};
+    vector<int> A(myA, myA+ 5);
+    vector<int> B(myB, myB + 5);
+
+    cout << "input vector A: ";
     coutIntVector(A);
+    cout << "input vector B: ";
+    coutIntVector(B);
  
-    cout <<"solution 222: " << solution222(A) << endl;
+    cout <<"solution 222: " << solution222(A, B, 3, 5, 200) << endl;
 }
 
+/**
+ * \fn solution222
+ * \brief calcule le nombre d'arret d'un ascenseur. M, nbr d'etage, X nbr max d'utilisateur,
+ *        Y poids max, A[k] - poid de l'itilisateur k, B[K] destination de l'utilisateur k
+ */
+int solution222(vector<int> &A, vector<int>&B, int M, int X, int Y)
+{
+    size_t i, s(A.size());
+    int res(0);
+    set<int> stops;
+    int weight(0), nbr(0);
+
+    if (s==0)
+        return 0;
+    if (s==1)
+        return 2;
+    for (i = 0; i< s; i++)
+    {
+        nbr++;
+        weight +=A[i];
+        stops.insert(B[i]);
+        if (weight> Y || nbr > X)
+        {//lets go up
+            weight = nbr = 0;
+            res+=stops.size()+1;
+            i --;
+            stops.clear();
+        }
+    }
+    if (nbr>=1)
+    {
+        res+=stops.size()+1;
+    }
+
+    return res;
+}
 /**
  * \fn test333()
  */
@@ -2261,25 +2322,6 @@ void Tester::test333()
     cout <<"solution 333: " << solution333(A) << endl;
 }
 
-/**
- * \fn solution111
- */
-int solution111(vector<int> &A)
-{
-    int res(0);
-
-    return res;
-}
-
-/**
- * \fn solution222
- */
-int solution222(vector<int> &A)
-{
-    int res(0);
-
-    return res;
-}
 
 /**
  * \fn solution333

@@ -111,8 +111,8 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testMoc2();
         //Tester::getInstance()->testFactorsNbr();
         Tester::getInstance()->test111();
-        Tester::getInstance()->test222();
-        Tester::getInstance()->test333();
+        //Tester::getInstance()->test222();
+        //Tester::getInstance()->test333();
     }
     catch(ExceptErr& e)
     {
