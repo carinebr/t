@@ -89,15 +89,11 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testFrogJmp2();
         //
         //Tester::getInstance()->testAAA();
-        //Tester::getInstance()->test333();
         //Tester::getInstance()->testTcp();
         //Tester::getInstance()->testRoundForest();
         //Tester::getInstance()->testBD();
         //Tester::getInstance()->testVikiSense();
         //Tester::getInstance()->testOddOccurencesInArrays2();
-        //Tester::getInstance()->test111();
-        //Tester::getInstance()->test222();
-        //Tester::getInstance()->test333();
         //Tester::getInstance()->test444();
         //Tester::getInstance()->testBitWiseOps();
         //Tester::getInstance()->testDemoCodility();
@@ -113,7 +109,10 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testMisc();
         //Tester::getInstance()->testMoc1();
         //Tester::getInstance()->testMoc2();
-        Tester::getInstance()->testFactorsNbr();
+        //Tester::getInstance()->testFactorsNbr();
+        Tester::getInstance()->test111();
+        Tester::getInstance()->test222();
+        Tester::getInstance()->test333();
     }
     catch(ExceptErr& e)
     {

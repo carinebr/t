@@ -2227,9 +2227,10 @@ void Tester::test111()
 {
     int myA[] = {-1, 1, 3, 3, 3, 2, 1, 0};
     vector<int> A(myA, myA+ 8);
+    cout << "input vector: ";
+    coutIntVector(A);
  
-    VECTOR(A);
-    LOGS("solution 111: " + to_string(solution111(A)));
+    cout <<"solution 111: " << solution111(A) << endl;
 }
 
 
@@ -2240,9 +2241,10 @@ void Tester::test222()
 {
     int myA[] = {-1, 1, 3, 3, 3, 2, 1, 0};
     vector<int> A(myA, myA+ 8);
+    cout << "input vector: ";
+    coutIntVector(A);
  
-    VECTOR(A);
-    LOGS("solution 222: " + to_string(solution222(A)));
+    cout <<"solution 222: " << solution222(A) << endl;
 }
 
 /**
@@ -2250,11 +2252,13 @@ void Tester::test222()
  */
 void Tester::test333()
 {
+
     int myA[] = {-1, 1, 3, 3, 3, 2, 1, 0};
     vector<int> A(myA, myA+ 8);
+    cout << "input vector: ";
+    coutIntVector(A);
  
-    VECTOR(A);
-    LOGS("solution 333: " + to_string(solution333(A)));
+    cout <<"solution 333: " << solution333(A) << endl;
 }
 
 /**
@@ -2429,7 +2433,7 @@ void testReverseCharLoop()
  */
 int solutionMoc1(vector<int>&A)
 {
-    return 111;
+    return 0;
 }
 
 /**
@@ -2451,7 +2455,7 @@ void Tester::testMoc1()
  */
 int solutionMoc2(vector<int>&A)
 {
-    return 222;
+    return 0;
 }
 
 /**
@@ -2473,7 +2477,7 @@ void Tester::testMoc2()
  */
 int solutionMoc3(vector<int>&A)
 {
-    return 333;
+    return 0;
 }
 
 /**
