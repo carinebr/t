@@ -2589,3 +2589,50 @@ void Tester::testFactorsNbr()
 
     return;
 }
+
+class A
+{
+    public:
+        A():x(1){};
+        ~A(){};
+        operator bool ()const {return true;}
+        void operator << (ostream& output)const {output << "<< operator member x = " << x <<endl;}
+        friend void myCout(const A& a);
+        friend void operator << (const A&, int);
+    private:
+        int x;
+};
+/**
+ * \fn operator >> 
+ * \brief friends of A for printf A objects
+ */
+void myCout(const A& a)
+{
+    cout << " myCout prints x =: " << a.x << endl;
+}
+
+/**
+ * \fn operator <<
+ * \brief non member << operator
+ */
+void operator << (const A& a, int)
+{
+    cout << " friend operator <<  prints x =: " << a.x << endl;
+}
+
+/**
+ * \fn testFunctor
+ * \brief functor feature example
+ */
+void Tester::testFunctor()
+{
+    A a;
+    if (a)
+        cout << "true" <<endl;
+    a.operator<<(cout);//same as the next line
+    a<<cout;//member operator 
+    a<<0;//friend operator
+
+    myCout(a); 
+}
+

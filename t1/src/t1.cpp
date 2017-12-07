@@ -107,7 +107,8 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testTcp();
         //Tester::getInstance()->testRoundForest();
         //Tester::getInstance()->testBD();
-        Tester::getInstance()->testRef();
+        //Tester::getInstance()->testRef();
+        Tester::getInstance()->testFunctor();
         //Tester::getInstance()->testVikiSense();
         //Tester::getInstance()->testOddOccurencesInArrays2();
         //Tester::getInstance()->test444();
