@@ -1665,6 +1665,24 @@ void Tester::testRoundForest()
     }
     return; 
 }
+
+/**
+ * \fn testiRef()
+ * \brief test referecing issue
+ */
+void Tester::testRef()
+{
+    int a = 9;
+    int&b = a;
+    cout << "a = " << a << "  b = " << b << endl;
+    int* pa = new(int);
+    *pa = 88;
+    int& b2 = *pa;
+    cout << "*pa = " << *pa << "  b2 = " << b2 << endl;
+    delete pa;
+    cout << "b2 = " << b2 << endl;//interdit mais ca marche
+
+}
         
 /**
  * \fn testBD()
@@ -1672,14 +1690,15 @@ void Tester::testRoundForest()
  */
 void Tester::testBD()
 {
-    boost::shared_ptr<B> pb (new D(19));//les 2 constructeurs sont invoque
-
+    //boost::shared_ptr<B> pb (new D(19));//les 2 constructeurs sont invoque
+    B* pb = new D;
     //invoque a B public method
-    assert(pb->getX() == 0);
+    assert(pb->getX() == 77);
     //idem
     D d(19);
-    assert(d.getX() == 0);
-    d.getBaseXProtected();
+    assert(d.getX() == 77);
+    //d.xprotected = 7;//compile error - xprotected is not a D member
+    delete pb;
 }
 
 /**

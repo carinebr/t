@@ -49,6 +49,21 @@ Logger* Logger::m_Instance = NULL;
 /// \fn main()
 /// \brief main entry
 ///
+
+/**
+ * \fn testIt
+ */
+void testIt(int n)
+{
+    cout << "testIt(int n) " << n << endl;
+    return;
+}
+void testIt(int n , int m)
+{
+    cout << "testIt(int int) n = " << n << " m = " << m << endl;
+    return;
+}
+
 int main(int argc, char* argv[])
 {
     try
@@ -92,6 +107,7 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testTcp();
         //Tester::getInstance()->testRoundForest();
         //Tester::getInstance()->testBD();
+        Tester::getInstance()->testRef();
         //Tester::getInstance()->testVikiSense();
         //Tester::getInstance()->testOddOccurencesInArrays2();
         //Tester::getInstance()->test444();
@@ -110,7 +126,7 @@ int main(int argc, char* argv[])
         //Tester::getInstance()->testMoc1();
         //Tester::getInstance()->testMoc2();
         //Tester::getInstance()->testFactorsNbr();
-        Tester::getInstance()->test111();
+        //Tester::getInstance()->test111();
         //Tester::getInstance()->test222();
         //Tester::getInstance()->test333();
     }

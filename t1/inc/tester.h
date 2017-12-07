@@ -8,6 +8,7 @@ using namespace std;
 class Tester
 {
     public :
+        void testRef();
         void testFactorsNbr();
         void testMoc1();
         void testMoc2();

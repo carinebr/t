@@ -10,11 +10,11 @@ class D: public B
 {
     public :
         //constructor
+        D();
+        //constructor
         D(int yi);
         //destructor
         ~D(void);
-        int getBaseX();
-        int getBaseXProtected();
 
     private:
         int y;

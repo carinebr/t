@@ -8,11 +8,14 @@ using namespace std;
 class B
 {
     public :
+        //constructor 
+        B();
         //constructor
         B(int xi);
         //destructor
-        virtual ~B(void);
-        int getX();
+        virtual ~B(void);//should be virtual!!!
+        int getX(){return x;}
+        void setX(int in){x = in;}
 
     protected:
         int xprotected;

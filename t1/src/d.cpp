@@ -10,40 +10,34 @@
 
 
 using namespace std;
-
+/**
+ * \D()
+ * \fn constructor
+ */
+D::D(): y(88)
+{
+    B::xprotected = 999;//ok - but ko in the initialized list since it is not a D member
+    //B::x = 999;ko - x is private
+    cout << "D constructor y set to " << y << endl;
+}
 /// \fn D::D(void)
 /// constructor
 /// 
-D::D(int yi):B(0), y(yi)
+D::D(int yi):y(yi)
 {
     string sLog("D CONStructor - y =  " + std::to_string(y));
     Logger::getInstance()->logIt(DBG, "", "", 0, sLog);
 }
 
 /// destructor
-D::~D(void)
+D::~D()
 {
     string sLog("D DEStructor");
     Logger::getInstance()->logIt(DBG, "", "", 0, sLog);
+    cout << "D destructor" << endl;
 }
 
 /**
- *\fn getBaseX
+ *\fn getBaseX  inutile B* pb = newD peut pb->getX()
+ *              idem D d() peut d->getX()
  */
-int D::getBaseX()
-{
-    int test;
-    test =  B::getX();//ok getX is public
-    //test = B::x;//ko x is private
-    //test = x;//ko
-    test = xprotected;//ok x is protected   
-    return test;
-}
-
-/**
- * \fn getBaseXProtected
- */
-int D::getBaseXProtected()
-{
-    return B::xprotected;
-}
